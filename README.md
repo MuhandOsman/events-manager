@@ -9,3 +9,4 @@ Muhanad, Omar, Jerreh, Gabriele
 **Client:** React
 
 **Server:** Node, Express, MongoDB, AWS 
+Good Luck for our final project
