@@ -1,27 +1,41 @@
-require ("dotenv").config()
+const express = require('express')
+const mongoose = require('mongoose')
+const UserController = require('./controllers/UserController')
+const cors = require('cors')
 
-const express = require("express")
 const app = express()
-const mongoose = require("mongoose")
-
-const cors = require("cors")
 const PORT = process.env.PORT || 8000
 
-app.use(express.json())
 app.use(cors())
+app.use(express.json())
 
+require('dotenv').config()
+
+app.get('/', (req, res) => {
+    //we need to delete the line below after testing
+    console.log(req.body.firstName) 
+	res.send('HELLO PEOPLE from server.js ')
+})
+
+app.get('/register', (req, res) => {
+    //we need to delete the line below after testing
+    console.log(req.body.email) 
+	res.send('Welcome to creating a new User')
+})
+
+app.post('/register', UserController.store)
 
 try {
-    mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    })
-    console.log('MongoDb connected successfully!')
-    } catch (error) {
-    console.log(error)
-    }
-    
+	mongoose.connect(process.env.MONGO_URI, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+	})
+	console.log('MongoDb connected successfully!')
+} catch (error) {
+	console.log(error)
+}
 
+// another way to connectting to mongoDB 
 // mongoose.connect(process.env.MONGO_URI, {
 //     useNewUrlParser: true,
 //     useUnifiedTopology: true,
@@ -32,21 +46,11 @@ try {
 //     console.error(err)
 //     process.exit(1)
 // })
+
+app.listen(PORT, () => {
+	console.log(`Listening on ${PORT}`)
+})
     
 
-app.get("/", (req, res) => {
-    console.log(req.body.firstName)
-    res.send("HELLO PEOPLE")
-})
-
-app.post("/", (req, res) => {
-    console.log(req.body.email)
-    res.send("Welcome to creating a new User")
-})
-
-
-app.listen(PORT, function(){
-    console.log (`listening on ${PORT}`)
-})
 
 
