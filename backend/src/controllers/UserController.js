@@ -13,7 +13,7 @@ module.exports = {
 					email,
 					firstName,
 					lastName,
-          password,
+          				password,
 					//password: hashedPassword,
 				})
 				return res.json(user)
