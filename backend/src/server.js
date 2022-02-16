@@ -2,8 +2,10 @@ require('dotenv').config()
 
 const express = require('express')
 require('./lib/database')
-const UserController = require('./controllers/UserController')
+
 const cors = require('cors')
+
+const routes = require('./routes')
 
 const app = express()
 const PORT = process.env.PORT || 8000
@@ -11,10 +13,10 @@ const PORT = process.env.PORT || 8000
 app.use(cors())
 app.use(express.json())
 
+app.use("/" , routes)
 
 
 
-app.post('/register', UserController.store)
 
 
 app.listen(PORT, () => {
