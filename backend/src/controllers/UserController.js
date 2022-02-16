@@ -1,4 +1,5 @@
-const User = require("../models/User");
+const bcrypt = require('bcrypt')
+const User = require('../models/User');
 
 module.exports = {
   async store(req, res) {
@@ -7,11 +8,12 @@ module.exports = {
       const existentUser = await User.findOne({ email });
 
       if (!existentUser) {
+        const hashedPassword = await bcrypt.hashedPassword(password, 10)
         const user = await User.create({
-          email: email,
-          firstName: firstName,
-          lastName: lastName,
-          password: password,
+          email,
+          firstName,
+          lastName,
+        password: hashedPassword,
         });
         return res.json(user);
       }
