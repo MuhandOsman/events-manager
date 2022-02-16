@@ -3,7 +3,7 @@ const User = require('../models/User');
 
 module.exports = {
     async createEvent(req, res) {
-        const { title, description, price } = req.body;
+        const { title, description, price , eventCategory } = req.body;
         const { user_id } = req.headers;
         const { filename } = req.file;
 
@@ -16,6 +16,7 @@ module.exports = {
         const event = await Event.create({
             title,
             description,
+            eventCategory,
             price: parseFloat(price),
             user: user_id,
             // filename will have the original filename that have been uploaded to the server but we rename it over config/upload.js and will be used to store the image in the database
@@ -25,16 +26,14 @@ module.exports = {
         return res.json(event);
     },
 
-    async getEventById(req, res) {
+    async delete(req, res) {
         const { eventId } = req.params;
         try {
-            const event = await Event.findById(eventId)
+            await Event.findByIdAndDelete(eventId)
+            return res.status(204).send()
 
-            if (event) {
-                return res.json(event)
-            }
         } catch (error) {
-            return res.status(400).json({ message: 'EventId does not exist!' })
+            return res.status(400).json({ message: 'We do have any event with the ID' })
         }
     }
 }
