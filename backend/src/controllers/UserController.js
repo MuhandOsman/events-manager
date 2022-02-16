@@ -1,4 +1,4 @@
-//const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt')
 const User = require('../models/User')
 
 module.exports = {
@@ -8,13 +8,14 @@ module.exports = {
 			const existentUser = await User.findOne({ email })
 
 			if (!existentUser) {
-				//const hashedPassword = await bcrypt.hash(password, 10)
+				const hashedPassword = await bcrypt.hash(password, 10)
+				console.log(hashedPassword);
 				const user = await User.create({
 					email,
 					firstName,
 					lastName,
-          				password,
-					//password: hashedPassword,
+          			//password,
+					password: hashedPassword,
 				})
 				return res.json(user)
 			}
@@ -27,3 +28,4 @@ module.exports = {
 		}
 	},
 }
+
