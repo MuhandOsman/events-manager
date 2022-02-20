@@ -26,7 +26,7 @@ routes.get('/event/:eventId', DashboardController.getEventById)
 routes.post('/event', upload.single("thumbnail"), EventController.createEvent)
 routes.delete('/event/:eventId', EventController.delete)
 
-//Registration
+//Subscription-Registration Routes
 routes.post('/registration/:eventId', RegistrationController.create)
 routes.get('/registration/:registration_id', RegistrationController.getRegistration)
 routes.post('/registration/:registration_id/approvals', ApprovalController.approval)
@@ -37,7 +37,7 @@ routes.post('/user/register', UserController.createUser)
 routes.get('/user/:userId', UserController.getUserById)
 
 
-//API Check
+//API Check Route
 routes.get('/status', (req, res) => {
     res.send({ status: 200 })
 })
