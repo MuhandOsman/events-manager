@@ -9,6 +9,7 @@ const RegistrationController = require('./controllers/RegistrationController')
 const ApprovalController = require('./controllers/ApprovalController')
 const RejectionController = require('./controllers/RejectionController')
 const uploadConfig = require('./config/upload')
+const authentication = require('./middlewares/auth')
 
 const routes = express.Router();
 const upload = multer(uploadConfig);
@@ -25,6 +26,8 @@ routes.get('/event/:eventId', DashboardController.getEventById)
 //Events Routes
 routes.post('/event', upload.single("thumbnail"), EventController.createEvent)
 routes.delete('/event/:eventId', EventController.delete)
+routes.patch("/event/:eventId" ,authentication, EventController.updateEvent)
+
 
 //Subscription-Registration Routes
 routes.post('/registration/:eventId', RegistrationController.create)
@@ -35,7 +38,6 @@ routes.post('/registration/:registration_id/rejections', RejectionController.rej
 //User Routes
 routes.post('/user/register', UserController.createUser)
 routes.get('/user/:userId', UserController.getUserById)
-
 
 //API Check Route
 routes.get('/status', (req, res) => {

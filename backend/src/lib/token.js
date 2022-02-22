@@ -12,12 +12,12 @@ const signToken = (payload) => {
 
 const verifyToken = (token) => {
     if (!token) {
-        let error = new Error('token not provided');
+        let error = new Error('you need to login');
         console.error('error: ', error.message);
         return {valid: false, error: error};
     }
 
-    return jwt.verify(token, secret, (error, payload) => {
+    return jwt.verify(token, jwtSecret, (error, payload) => {
         if (error) return {valid: false, error: error};
         
         return {valid: true, payload: payload}

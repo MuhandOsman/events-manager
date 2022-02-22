@@ -35,5 +35,26 @@ module.exports = {
         } catch (error) {
             return res.status(400).json({ message: 'We do not have any event with the ID' })
         }
+    },
+
+    // with the help of (auth) middleware any user send a request we have his Id under (res.user) 
+    // now with auth we can allow update event only to the user who create the event ...
+    async updateEvent (req, res) {
+        const { eventId} = req.params;
+        const userId = res.user.userId
+        try {
+            const currentEvent =Event.findById(eventId);
+            if (userId === currentEvent.user) {
+                
+                const updatedEvent = await Event.findOneAndUpdate(eventId , req.body)
+                await updatedEvent.save();
+                res.status(200).json(updatedEvent)
+            } else {
+                res.status(403).send("not authorized")
+            }
+
+        } catch (error) {
+            console.error(error);
+        }
     }
 }
