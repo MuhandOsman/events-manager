@@ -1,9 +1,9 @@
 
 import './App.css';
 import {BrowserRouter as Router,Routes, Route, Link} from 'react-router-dom'
-import Users from './components/Users';
-import Events from './components/Events';
-import Home from './components/Home';
+import Users from './components/Pages/Users';
+import Events from './components/Pages/Events';
+import Home from './components/Pages/Home';
 import Footer from './components/Footer';
 
 function App() {

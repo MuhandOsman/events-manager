@@ -14,7 +14,6 @@ module.exports = {
 					email,
 					firstName,
 					lastName,
-          			//password,
 					password: hashedPassword,
 				})
 				return res.json(user)
