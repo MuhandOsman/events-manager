@@ -1,28 +1,24 @@
 
 import './App.css';
-import {BrowserRouter as Router,Routes, Route, Link} from 'react-router-dom'
+import {BrowserRouter as Router,Routes, Route} from 'react-router-dom'
 import Users from './components/Pages/Users';
 import Events from './components/Pages/Events';
 import Home from './components/Pages/Home';
 import Footer from './components/Footer';
+import Header from "./components/Header";
 
 function App() {
   return (
-    <Router className="App">
-    <Link activeClassName="active-link" to="/"></Link>
-      <Link to="/home">Home</Link>
-      <Link to="/users">Users</Link>
-      <Link to="/events">Events</Link>
-      <Link to="/footer">Footer</Link>
+    <Router>
+        <Header />
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="users" element={<Users />} />
         <Route path="events" element={<Events/>} />
-        <Route path="footer" element={<Footer/>} />
       </Routes>
-
+        <Footer />
     </Router>
-  );
+  )
 }
 
 export default App;
