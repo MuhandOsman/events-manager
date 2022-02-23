@@ -46,8 +46,8 @@ module.exports = {
             const currentEvent = await Event.findById(eventId);
             if (userId === currentEvent.user.toString()) {
                 const updatedEvent = await Event.findOneAndUpdate(eventId , req.body)
-                await updatedEvent.save();
-                res.status(200).json(updatedEvent)
+                const newEvent = await updatedEvent.save();
+                res.status(200).json(newEvent)
             } else {
                 res.status(403).send("not authorized")
             }

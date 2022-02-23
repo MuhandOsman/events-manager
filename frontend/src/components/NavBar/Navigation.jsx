@@ -1,8 +1,9 @@
-import React from 'react'
+import LinksList from "./LinksList"
+
 
 const Navigation = () => {
   return (
-    <div>Navigation</div>
+    <LinksList />
   )
 }
 

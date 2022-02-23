@@ -1,8 +1,8 @@
-import React from 'react'
+import LinksList from "./LinksList"
 
 const MobileNavigation = () => {
   return (
-    <div>MobileNavigation</div>
+    <LinksList />
   )
 }
 
