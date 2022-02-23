@@ -43,9 +43,8 @@ module.exports = {
         const { eventId} = req.params;
         const userId = res.user.userId
         try {
-            const currentEvent =Event.findById(eventId);
-            if (userId === currentEvent.user) {
-                
+            const currentEvent = await Event.findById(eventId);
+            if (userId === currentEvent.user.toString()) {
                 const updatedEvent = await Event.findOneAndUpdate(eventId , req.body)
                 await updatedEvent.save();
                 res.status(200).json(updatedEvent)

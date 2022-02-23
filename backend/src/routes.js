@@ -9,6 +9,7 @@ const RegistrationController = require('./controllers/RegistrationController')
 const ApprovalController = require('./controllers/ApprovalController')
 const RejectionController = require('./controllers/RejectionController')
 const uploadConfig = require('./config/upload')
+
 const authentication = require('./middlewares/auth')
 
 const routes = express.Router();
@@ -17,6 +18,7 @@ const upload = multer(uploadConfig);
 
 //Login Routes
 routes.post('/login', LoginController.store)
+routes.delete("/signout" , LoginController.signout)
 
 //Dashboard Routes
 routes.get('/dashboard/:sport', DashboardController.getAllEvents)
