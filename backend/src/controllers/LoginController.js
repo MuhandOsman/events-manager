@@ -43,4 +43,10 @@ module.exports = {
             throw Error(`Error while Authenticating a User ${error}`)
         }
     }
+    //  this one to delete the token and sign user out
+    ,
+     signout (req, res)  {
+        res.clearCookie('jwt');
+        res.status(200).send('cookie jwt deleted');
+    }
 }
