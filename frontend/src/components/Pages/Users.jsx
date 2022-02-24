@@ -1,9 +1,9 @@
 import React from 'react'
-
+import Login from "./Login"
 const Users = () => {
   return (
     <section>
-      <h1>Welcome To Users Page</h1>
+      <Login/>
     </section>
   )
 }

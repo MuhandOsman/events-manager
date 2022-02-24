@@ -1,10 +1,16 @@
-/* *{
-  background-color: rgb(180, 180, 30);
-} */
+ *{
+   /* background-image: url("./components/images/img4.jpeg"); */
+   background-repeat: no-repeat;
+   background-size: cover;
+ background-blend-mode: saturation;
+  
+   
+  /* background-color: rgb(180, 180, 30); */
+} 
 
 
 header {
-  background-color: rgb(53, 38, 38);
+background-color: rgba(0, 47, 255, 0.527);
   color: white;
   display: flex;
   align-items: center;
@@ -25,7 +31,13 @@ section {
 }
 
 footer {
-  background-color: red;
+  background-color: rgba(0, 47, 255, 0.527);
   color: white;
   height:10vh;
+}
+.Home-section h1 {
+  color:rgb(32, 123, 202)
+}
+.About-section h1 {
+ color:rgb(32, 123, 202)
 }
