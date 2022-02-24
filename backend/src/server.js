@@ -1,4 +1,5 @@
 require('dotenv').config()
+
 const express = require('express')
 require('./lib/database')
 const makeCookieParser = require('cookie-parser');

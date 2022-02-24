@@ -1,31 +1,31 @@
 /* *{
   background-color: rgb(180, 180, 30);
 } */
+
+
 header {
-  background-color: rgba(69, 71, 134, 0.815);
+  background-color: rgb(53, 38, 38);
   color: white;
-  display:flex;
+  display: flex;
   align-items: center;
-  justify-content:space-between;
-  height:10vh;
+  justify-content: space-between;
+  height: 10vh;
+  
 }
+
 header ul li {
   margin-left: 10px;
+
 }
+
 
 section {
   min-height:80vh;
+
 }
 
-
-
-
-
-
-
-
 footer {
-  background-color: rgb(39, 57, 90);
+  background-color: red;
   color: white;
-  height: 10vh;
+  height:10vh;
 }

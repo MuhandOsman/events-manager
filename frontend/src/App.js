@@ -4,8 +4,7 @@ import {BrowserRouter as Router,Routes, Route} from 'react-router-dom'
 import Users from './components/Pages/Users';
 import About from './components/Pages/About';
 import Home from './components/Pages/Home';
-import NotFound from "./components/Pages/NotFound"
-
+import NotFound from './components/Pages/NotFound'
 import Footer from './components/Footer';
 import Header from "./components/Header";
 
