@@ -1,10 +1,13 @@
-
+import NavBar from "./NavBar/NavBar"
 
 const Header = () => {
   return (
-    
-    <div className="logo">here will the logo go</div>
-        
+    <header>
+
+      <div className="logo">here will the logo go</div>
+      <NavBar />
+          
+    </header>
     
   )
 }

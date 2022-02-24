@@ -1,0 +1,34 @@
+ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    align-items: center;
+    padding: 5px 0;
+    margin-right: 10px;
+}
+.MobileNavigation {
+    display: none;
+}
+
+@media(max-width:780px) {
+    .Navigation {
+        display: none;
+    }
+    .MobileNavigation {
+        display: flex;
+        color:red;
+        
+    }
+    .MobileNavigation ul {
+        flex-direction:column;
+    }
+}
+a {
+
+    text-decoration:none;
+}
+
+a:visited {
+    color: aliceblue;
+
+}
