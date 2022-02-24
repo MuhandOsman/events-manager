@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Events = () => {
+const About = () => {
   return (
-    <div>
+    <section>
       <h1>Welcome To The Events Page</h1>
-    </div>
+    </section>
   );
 }
 
-export default Events
+export default About

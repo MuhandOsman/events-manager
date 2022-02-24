@@ -1,13 +1,13 @@
-import React from 'react'
+import {NavLink} from "react-router-dom"
 
 const LinksList = () => {
   return (
     <ul>
-      <li>HOME</li>
-      <li>EVENTS</li>
-      <li>LOGIN/REGISTER</li>
-      <li>CONTACT US</li>
-      <li>SOMTHING ELSE</li>
+     <NavLink to="/" ><li>HOME</li> </NavLink> 
+      <NavLink to="/about"><li >ABOUT</li> </NavLink>
+      <NavLink to="/form"><li >LOGIN/REGISTER</li> </NavLink>
+      <NavLink to="/pageNotFound"><li >SOMETHING ELSE</li> </NavLink>
+  
     </ul>
   )
 }

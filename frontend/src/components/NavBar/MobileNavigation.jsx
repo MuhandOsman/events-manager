@@ -2,7 +2,11 @@ import LinksList from "./LinksList"
 
 const MobileNavigation = () => {
   return (
-    <LinksList />
+
+    <nav className="MobileNavigation">
+
+      <LinksList />
+    </nav>
   )
 }
 

@@ -1,11 +1,13 @@
-import Navigation from "./NavBar/Navigation";
-import MobileNavigation from "./NavBar/MobileNavigation"
+import Navigation from "./Navigation";
+import MobileNavigation from "./MobileNavigation"
+
+import './NavBar.css'
 
 const NavBar = () => {
   return (
     <>
-        <Navigation />
-        <MobileNavigation />
+        <Navigation className="navigation"/>
+        <MobileNavigation/>
     </>
   )
 }

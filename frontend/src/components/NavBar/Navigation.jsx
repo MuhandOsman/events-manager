@@ -3,7 +3,11 @@ import LinksList from "./LinksList"
 
 const Navigation = () => {
   return (
-    <LinksList />
+    <nav className="Navigation">
+
+
+      <LinksList />
+    </nav>
   )
 }
 
