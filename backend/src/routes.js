@@ -26,8 +26,8 @@ routes.get('/dashboard', DashboardController.getAllEvents)
 routes.get('/event/:eventId', DashboardController.getEventById)
 
 //Events Routes
-routes.post('/event', upload.single("thumbnail"), EventController.createEvent)
-routes.delete('/event/:eventId', EventController.delete)
+routes.post('/event', upload.single("thumbnail"),authentication, EventController.createEvent)
+routes.delete('/event/:eventId',authentication, EventController.delete)
 routes.patch("/event/:eventId" ,authentication, EventController.updateEvent)
 
 

@@ -4,7 +4,10 @@ const User = require('../models/User');
 module.exports = {
     async createEvent(req, res) {
         const { title, description, price , eventCategory } = req.body;
-        const { user_id } = req.headers;
+        // here i changed the user ID to be token from the cookie ...
+        // const { user_id } = req.headers;
+        const { user_id } = res.user.userId;
+
         /* const { filename } = req.file; */
 
         const user = await User.findById(user_id)
@@ -28,9 +31,16 @@ module.exports = {
 
     async delete(req, res) {
         const { eventId } = req.params;
+        const userId = res.user.userId
         try {
-            await Event.findByIdAndDelete(eventId)
-            return res.status(204).send()
+            const currentEvent = await Event.findById(eventId);
+            if (userId === currentEvent.user.toString()) {
+
+                await Event.findByIdAndDelete(eventId)
+                return res.status(204).end("event deleted")
+            } else {
+                res.status(403).send("you are not authorized to delete this event")
+            }
 
         } catch (error) {
             return res.status(400).json({ message: 'We do not have any event with the ID' })
@@ -44,8 +54,9 @@ module.exports = {
         const userId = res.user.userId
         try {
             const currentEvent = await Event.findById(eventId);
+
             if (userId === currentEvent.user.toString()) {
-                const updatedEvent = await Event.findOneAndUpdate(eventId , req.body)
+                const updatedEvent = await Event.findOneAndUpdate({_id:eventId} , req.body , {new: true}); // new => will return the updated info not just update database
                 const newEvent = await updatedEvent.save();
                 res.status(200).json(newEvent)
             } else {
