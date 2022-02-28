@@ -29,3 +29,8 @@ footer {
   color: white;
   height:10vh;
 }
+
+.events {
+  border: 1px solid black;
+  border-radius: 5px;
+}
