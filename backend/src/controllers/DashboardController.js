@@ -15,10 +15,10 @@ module.exports = {
     },
     async getAllEvents(req, res) {
         const { eventCategory } = req.params;
-        const query = { eventCategory } || {}
-
+        const query = { eventCategory } || "";
+        // I deleted query from Event.find => its is the only way to show all events
         try {
-            const events = await Event.find(query)
+            const events = await Event.find()
 
             if (events) {
                 return res.json(events)

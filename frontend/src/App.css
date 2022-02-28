@@ -4,7 +4,7 @@
 
 
 header {
-  background-color: rgb(53, 38, 38);
+  background-color: rgba(48, 126, 190, 0.897);
   color: white;
   display: flex;
   align-items: center;
@@ -25,7 +25,7 @@ section {
 }
 
 footer {
-  background-color: red;
+  background-color:rgba(48, 126, 190, 0.897);
   color: white;
   height:10vh;
 }
