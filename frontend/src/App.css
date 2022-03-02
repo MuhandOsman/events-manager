@@ -29,8 +29,15 @@ footer {
   color: white;
   height:10vh;
 }
-
+                     /* to be deleted */
 .events {
   border: 1px solid black;
   border-radius: 5px;
 }
+
+.loginForm {
+  width: 80%;
+  margin: 0 auto;
+}
+
+

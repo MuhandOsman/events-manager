@@ -29,10 +29,9 @@ const MyProvider = (props) => {
         },
         body: JSON.stringify(data)
         })
-        return response.json()
-      }
-
-
+        return response
+    }
+    
 
   return (
     <MyContext.Provider value={{events, postForm}}>
