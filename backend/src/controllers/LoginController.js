@@ -8,12 +8,12 @@ module.exports = {
             const { email, password } = req.body;
 
             if (!email || !password) {
-                return res.status(401).send("Required field missing!" )
+                return res.status(200).json( {message :"Required field missing!"} )
             }
 
             const user = await User.findOne({ email });
             if (!user) {
-                return res.status(401).json("incorrect infos")
+                return res.status(200).json( {message :"incorrect infos"})
             }
 
             /* if (user && await bcrypt.compare(password, user.password)) {
@@ -30,7 +30,7 @@ module.exports = {
         */
             const passwordCompare = await bcrypt.compare(password, user.password)
             if (!passwordCompare) {
-                return res.status(401).json("could not login!")
+                return res.status(200).json("could not login!")
             } else {
 
                 const payload = {email : user.email , userId : user._id};

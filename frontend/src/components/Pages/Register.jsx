@@ -18,7 +18,7 @@ const Register = () => {
             postForm("http://localhost:8000/user/register" , register)
             .then( data => console.log(data))
         } catch (error) {
-            console.error(error)
+            console.error(error.message)
         }
     }
 

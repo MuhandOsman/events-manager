@@ -23,7 +23,9 @@ const Users = () => {
     try {
       postForm("http://localhost:8000/login", form)
       .then(data => { 
-        data.status === 204 && setLogin(true) })
+        data.status === 204 && setLogin(true) 
+      console.log(data)
+      console.log(login)})
     } catch (error) {
       console.log(error.message);  
     }
@@ -33,7 +35,8 @@ const Users = () => {
       <Form inline className="loginForm">
       <h2 >login to your account </h2>
     <FormGroup floating>
-      <Input bsSize= "sm"
+      <Input 
+        required = {true}
         id="Email"
         name="email"
         placeholder="Email"
@@ -48,6 +51,7 @@ const Users = () => {
     {'can we use this line? '}
     <FormGroup floating>
       <Input
+        required = {true}
         id="Password"
         name="password"
         placeholder="Password"
@@ -60,7 +64,7 @@ const Users = () => {
       </Label>
     </FormGroup>
     {' '}
-    <Button onClick={() => handleSubmit()}>
+    <Button color="primary" onClick={() => handleSubmit()}>
       Submit
     </Button>
   <div>
@@ -75,7 +79,7 @@ const Users = () => {
     
   >
     <ModalHeader toggle={() => setOpen(false)}>
-      Modal title
+      Registration form
     </ModalHeader>
     <ModalBody>
    {/* start of Register form in modalBody */}
@@ -84,14 +88,11 @@ const Users = () => {
    {/* end of Register form in modalBody */}
     </ModalBody>
     <ModalFooter>
-      <Button
-        color="primary"
-        onClick={function noRefCheck(){}}
-      >
-        Do Something
-      </Button>
+      
       {' '}
-      <Button onClick={function noRefCheck(){}}>
+      <Button 
+      color="danger"
+      onClick={() => setOpen(false)}>
         Cancel
       </Button>
     </ModalFooter>

@@ -23,13 +23,18 @@ const MyProvider = (props) => {
     },[])
 
     const postForm = async (url = '', data = {}) => {
-        const response = await fetch(url , {method:"POST" , 
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-        })
-        return response
+        try {
+            const response = await fetch(url , {method:"POST" , 
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+            })
+            const info = await response.json()
+            return info 
+        } catch (error) {
+            console.error(error.message)
+        }
     }
     
 

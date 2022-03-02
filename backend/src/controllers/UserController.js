@@ -5,6 +5,9 @@ module.exports = {
 	async createUser(req, res) {
 		try {
 			const { email, firstName, lastName, password } = req.body
+			if (!email || !password || !firstName || !lastName) {
+                return res.status(200).json( {message :"Required field missing!"} )
+            }
 			const existentUser = await User.findOne({ email })
 
 			if (!existentUser) {
