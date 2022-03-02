@@ -25,6 +25,9 @@ section {
 }
 
 footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   background-color:rgba(48, 126, 190, 0.897);
   color: white;
   height:10vh;
@@ -33,4 +36,12 @@ footer {
 .events {
   border: 1px solid black;
   border-radius: 5px;
+}
+
+footer-icons{
+ 
+ 
+ 
+  
+
 }
