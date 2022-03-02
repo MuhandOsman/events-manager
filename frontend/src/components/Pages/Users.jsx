@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import {useNavigate} from "react-router-dom";
 import { Button, Form, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import MyContext from '../../context/MyContext';
+import Register from './Register';
 
 const Users = () => {
   const navigate = useNavigate()
@@ -11,87 +12,96 @@ const Users = () => {
 
   const [login ,setLogin] =useState(false);
   const [form ,setForm] =useState({email:"" , password: ""});
+  const [open , setOpen] =useState(false);
 
-  const handleChange = (e) => {
+  const handleFormChange = (e) => {
     setForm({...form, [e.target.name]: e.target.value})
   }
   const handleSubmit = (e) => {
     /* e.preventDefault() */
     //setForm({email:"" , password: ""})
-    postForm("http://localhost:8000/login", form)
-    .then(data => { 
-      console.log(data)})
-    setLogin(true);    
+    try {
+      postForm("http://localhost:8000/login", form)
+      .then(data => { 
+        data.status === 204 && setLogin(true) 
+      console.log(data)
+      console.log(login)})
+    } catch (error) {
+      console.log(error.message);  
+    }
   }
   return (
     <section>
-      <h2>Please Login </h2>
-      <Form inline>
+      <Form inline className="loginForm">
+      <h2 >login to your account </h2>
     <FormGroup floating>
-      <Input
+      <Input 
+        required = {true}
         id="Email"
         name="email"
         placeholder="Email"
         value={form.email}
         type="email"
-        onChange={handleChange}
+        onChange={handleFormChange}
       />
-      <Label for="exampleEmail">
+      <Label for="Email">
         Email
       </Label>
     </FormGroup>
     {'can we use this line? '}
     <FormGroup floating>
       <Input
+        required = {true}
         id="Password"
         name="password"
         placeholder="Password"
         value={form.password}
         type="password"
-        onChange={ handleChange}
+        onChange={ handleFormChange}
       />
       <Label for="examplePassword">
         Password
       </Label>
     </FormGroup>
     {' '}
-    <Button onClick={() => handleSubmit()}>
+    <Button color="primary" onClick={() => handleSubmit()}>
       Submit
     </Button>
-  </Form>
-
-  {/* <div>
-  <Button
+  <div>
+    <Label>new to Event-manager?</Label>
+  <Button 
     color="danger"
-    onClick={function noRefCheck(){}}
+    onClick={() => { setOpen(true)}}
   >
-    Click Me
+    Register
   </Button>
-  <Modal
-    toggle={function noRefCheck(){}}
+  <Modal isOpen={open} 
+    
   >
-    <ModalHeader toggle={function noRefCheck(){}}>
-      Modal title
+    <ModalHeader toggle={() => setOpen(false)}>
+      Registration form
     </ModalHeader>
     <ModalBody>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+   {/* start of Register form in modalBody */}
+
+    <Register />
+   {/* end of Register form in modalBody */}
     </ModalBody>
     <ModalFooter>
-      <Button
-        color="primary"
-        onClick={function noRefCheck(){}}
-      >
-        Do Something
-      </Button>
+      
       {' '}
-      <Button onClick={function noRefCheck(){}}>
+      <Button 
+      color="danger"
+      onClick={() => setOpen(false)}>
         Cancel
       </Button>
     </ModalFooter>
   </Modal>
-</div> */}
+</div>
+  </Form>
 
-  {login && navigate ("../" , {replace:true})}
+
+  {login && <button className="to-shop" onClick={()=>(navigate("../", {replace: true}))}>home</button>}
     </section>
   )
 }
