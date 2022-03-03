@@ -4,12 +4,12 @@
 
 
 header {
-  background-color: rgba(48, 126, 190, 0.897);
+  
   color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 10vh;
+  height: 5vh;
   
 }
 
@@ -20,7 +20,7 @@ header ul li {
 
 
 section {
-  min-height:80vh;
+  min-height:85vh;
 
 }
 
