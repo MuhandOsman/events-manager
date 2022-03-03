@@ -31,13 +31,11 @@ const Users = () => {
     /* e.preventDefault() */
     //setForm({email:"" , password: ""})
     try {
-      postForm("http://localhost:8000/login", form).then((data) => {
-        data.status === 204 && setLogin(true);
-        console.log(data);
-        console.log(login);
-      });
+      postForm("http://localhost:8000/login", form)
+      .then(data => console.log(data))
+      setLogin(true)
     } catch (error) {
-      console.log(error.message);
+      console.log(error.message)
     }
   };
   return (
@@ -102,14 +100,8 @@ const Users = () => {
         </div>
       </Form>
 
-      {login && (
-        <button
-          className="to-shop"
-          onClick={() => navigate("../", { replace: true })}
-        >
-          home
-        </button>
-      )}
+
+  {login && <button className="to-home" onClick={()=>(navigate("../", {replace: true}))}>to main page</button>}
     </section>
   );
 };
