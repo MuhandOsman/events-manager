@@ -23,7 +23,7 @@ const Register = () => {
     }
 
   return (
-    <Form inline>
+    <Form inline className="loginForm">
     <FormGroup floating>
       <Input
         id="firstName"
@@ -34,7 +34,7 @@ const Register = () => {
         onChange={handleRegChange}
       />
       <Label for="firstName">
-      first Name
+      First Name
       </Label>
     </FormGroup>
     {' '}
@@ -48,7 +48,7 @@ const Register = () => {
         onChange={handleRegChange}
       />
       <Label for="lastName">
-      lastName
+      Last Name
       </Label>
     </FormGroup>
     {' '}
@@ -75,7 +75,7 @@ const Register = () => {
         onChange={handleRegChange}
       />
       <Label for="password">
-      password
+      Password
       </Label>
     </FormGroup>
     <Button onClick={handleRegisterSubmit}>
