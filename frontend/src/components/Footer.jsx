@@ -5,12 +5,12 @@ import { AiOutlineInstagram } from "react-icons/ai";
 const Footer = () => {
   return (
     <footer>
-      <div className="copyright">Made by @The Events Team 21.02.22</div>
 
       <div className="footer-icons">
         <AiFillGithub />
         <AiOutlineInstagram />
       </div>
+      <div className="copyright">Written with React by Event Team ©2022</div>
     </footer>
   );
 }

@@ -46,6 +46,9 @@ const NavBar = () => {
                   <DropdownItem>Reset</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
+              <NavItem>
+                <NavLink href="/create-event/">Create Event</NavLink>
+              </NavItem>
             </Nav>
           </Collapse>
         </Navbar>

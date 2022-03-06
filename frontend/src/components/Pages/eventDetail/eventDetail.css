@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+.event-container {
+    max-width: 80%;
+    margin: 0 auto;
+    
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.event-details {
+    width:50%;
+    padding: 10px;
+}
+
+.event-img{
+    width:50%;
+    
+}
+
+.event-img img {
+    width: 100%;
+}
+
+@media (max-width:1000px) {
+    .event-img {
+       
+        width: 100%;
+    }
+    .event-container {
+       flex-direction:column-reverse;
+    }
+    .event-details {
+        width: 100%;
+    }
+}
