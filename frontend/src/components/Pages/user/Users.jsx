@@ -11,8 +11,8 @@ import {
   ModalFooter,
   ModalHeader,
 } from "reactstrap";
-import MyContext from "../../context/MyContext";
-import Register from "./Register";
+import MyContext from "../../../context/MyContext";
+import Register from "../register/Register";
 
 const Users = () => {
   const navigate = useNavigate();
@@ -54,7 +54,7 @@ const Users = () => {
           />
           <Label for="Email">Email</Label>
         </FormGroup>
-        {"can we use this line? "}
+        {""}
         <FormGroup floating>
           <Input
             required={true}

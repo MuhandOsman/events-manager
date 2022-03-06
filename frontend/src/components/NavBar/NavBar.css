@@ -1,5 +1,6 @@
 .navbar {
-    background-color: rgba(48, 126, 190, 0.897);;
+    background-color: rgba(48, 126, 190, 0.897);
+    border-bottom: 2px solid black;
 }
 
 a:visited {

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap'
-import MyContext from "../../context/MyContext"
+import MyContext from "../../../context/MyContext"
 
 const Register = () => {
     const context = useContext(MyContext)

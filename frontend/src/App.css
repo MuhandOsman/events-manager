@@ -1,26 +1,11 @@
-/* *{
-  background-color: rgb(180, 180, 30);
-} */
-
-
 header {
-  
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 5vh;
+
+  height: 6vh;
   
 }
-
-header ul li {
-  margin-left: 10px;
-
-}
-
 
 section {
-  min-height:85vh;
+  min-height:84vh;
 
 }
 
@@ -32,12 +17,6 @@ footer {
   color: white;
   height:10vh;
 }
-                     /* to be deleted */
-.events {
-  border: 1px solid black;
-  border-radius: 5px;
-}
-
 
 .loginForm {
   width:80%;
