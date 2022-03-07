@@ -11,7 +11,7 @@ const MyProvider = (props) => {
         // we can use axios here instead of fetch
         try {
             const getEvents = async () => {
-                const response = await fetch("http://localhost:8000/dashboard");
+                const response = await fetch("/api/dashboard");
                 const data = await response.json();
                 setEvents(data);
                 console.log(data);
@@ -25,7 +25,9 @@ const MyProvider = (props) => {
     const postForm = async (url = '', data = {}) => {
         try {
             const sendReq = await fetch(url , {method:"POST" , 
+            credentials: "same-origin",
             headers: {
+              //'Content-Type': 'multipart/form-data'
               'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)

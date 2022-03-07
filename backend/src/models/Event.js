@@ -3,10 +3,11 @@ const mongoose = require('mongoose')
 const EventSchema = new mongoose.Schema({
     title: String,
     description: String,
-    price: Number,
+    price: String,
     thumbnail: String,
-    eventCategory: String,
+    category: String,
     date: Date,
+    time: String,
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"

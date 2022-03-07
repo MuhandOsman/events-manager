@@ -15,7 +15,7 @@ const Register = () => {
     const handleRegisterSubmit = (e) => {
         try {
             e.preventDefault();
-            postForm("http://localhost:8000/user/register" , register)
+            postForm("/api/user/register" , register)
             .then( data => console.log(data))
         } catch (error) {
             console.error(error.message)

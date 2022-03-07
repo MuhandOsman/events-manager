@@ -3,27 +3,30 @@ const User = require('../models/User');
 
 module.exports = {
     async createEvent(req, res) {
-        const { title, description, price , eventCategory } = req.body;
+        const { title, description, price , category, date, time } = req.body;
         // here i changed the user ID to be token from the cookie ...
         // const { user_id } = req.headers;
         const { user_id } = res.user.userId;
 
-        /* const { filename } = req.file; */
+        const { filename } = req.file;
 
-        const user = await User.findById(user_id)
+       /*  const user = await User.findById(user_id)
 
         if (!user) {
             return res.status(400).json({ message: 'User does not exist ! ' })
-        }
+        } */
 
         const event = await Event.create({
             title,
             description,
-            eventCategory,
-            price: parseFloat(price),
+            category,
+            /* price: parseFloat(price) */
+            price,
+            date,
+            time,
             user: user_id,
             // filename will have the original filename that have been uploaded to the server but we rename it over config/upload.js and will be used to store the image in the database
-            /* thumbnail: filename */
+            thumbnail: filename
         })
 
         return res.json(event);

@@ -16,7 +16,7 @@ app.use(makeCookieParser());
 app.use(express.json());
 
 app.use(require('./middlewares/logger'))
-app.use("/" , routes)
+app.use("/api" , routes)
 
 
 

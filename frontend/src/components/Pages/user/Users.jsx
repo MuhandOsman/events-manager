@@ -31,7 +31,7 @@ const Users = () => {
     /* e.preventDefault() */
     //setForm({email:"" , password: ""})
     try {
-      postForm("http://localhost:8000/login", form)
+      postForm("/api/login", form)
       .then(data => console.log(data))
       setLogin(true)
     } catch (error) {
