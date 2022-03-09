@@ -7,7 +7,7 @@ const EventSchema = new mongoose.Schema({
     thumbnail: String,
     category: String,
     date: Date,
-    time: String,
+    location:String,
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"

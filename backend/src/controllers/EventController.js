@@ -4,7 +4,7 @@ const User = require('../models/User');
 module.exports = {
     async createEvent(req, res) {
         const parsedForm = JSON.parse(req.body.eventForm)
-        const { title, description, price , category, date, time } = parsedForm;
+        const { title, description, price , category, date, time,location } = parsedForm;
         
         // here i changed the user ID to be token from the cookie ...
         // const { user_id } = req.headers;
@@ -28,7 +28,8 @@ module.exports = {
             time,
             user: user_id,
             // filename will have the original filename that have been uploaded to the server but we rename it over config/upload.js and will be used to store the image in the database
-            thumbnail: filename
+            thumbnail: filename,
+            location
         })
 
         return res.json(event);
