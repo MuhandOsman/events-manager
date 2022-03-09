@@ -26,7 +26,7 @@ const Home = () => {
     <CardBody>
       <CardTitle tag="h5" >
         {item.title} <br />
-        <small>{item.date}</small>
+        <small>{item.date.split(".").slice(0,1).join("").split("T").join(" ")}</small>
       </CardTitle>
       <CardSubtitle
         className="mb-2 text-muted"
