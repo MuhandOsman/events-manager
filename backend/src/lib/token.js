@@ -3,7 +3,7 @@ const jwtSecret = process.env.jwtSecret;
 
 const options = { 
     algorithm: "HS256",
-    expiresIn: '1h',
+    
 };
 
 const signToken = (payload) => {

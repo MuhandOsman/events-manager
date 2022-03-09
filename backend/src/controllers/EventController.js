@@ -3,11 +3,13 @@ const User = require('../models/User');
 
 module.exports = {
     async createEvent(req, res) {
-        const { title, description, price , category, date, time } = req.body;
+        const parsedForm = JSON.parse(req.body.eventForm)
+        const { title, description, price , category, date, time } = parsedForm;
+        
         // here i changed the user ID to be token from the cookie ...
         // const { user_id } = req.headers;
         const { user_id } = res.user.userId;
-
+        console.log("req body in:" , title);
         const { filename } = req.file;
 
        /*  const user = await User.findById(user_id)
@@ -17,7 +19,7 @@ module.exports = {
         } */
 
         const event = await Event.create({
-            title,
+            title : title,
             description,
             category,
             /* price: parseFloat(price) */

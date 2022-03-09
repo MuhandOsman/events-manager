@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, {  useState } from "react";
+import axios from "axios";
 import { Button, Form, FormGroup, FormText, Input, Label } from "reactstrap";
 import "./newEvent.css";
 
-import MyContext from "../../../context/MyContext";
 
 const NewEvent = () => {
-    const shop = useContext(MyContext);
-    const {postForm} = shop;
+    
+    const [file , setFile] = useState({})
 
     const [eventForm, setEventForm] = useState({title:"" , category:"", price:"", date:"", time:"", description:"" })
 
@@ -15,11 +15,16 @@ const NewEvent = () => {
     };
 
     const handleSubmit = (e) => {
-        //e.preventDefault();
-        //setEventForm({title:"" , category:"", price:"", date:"", time:"", description:"" });
+      const str = JSON.stringify(eventForm)
+        const data = new FormData();
+        data.append("eventForm", str);
+        data.append("thumbnail", file);
+        console.log("form :",eventForm);
         try {
-            postForm("/api/event" , eventForm)
-            .then( data => console.log(data))
+            axios.post("/api/event", data , {
+              headers: { "Content-Type": "multipart/form-data"}
+            })
+            .then(what => console.log(what) )
         } catch (error) {
             console.error(error)
         }
@@ -86,7 +91,10 @@ const NewEvent = () => {
           </FormGroup>
           <FormGroup>
             <Label for="exampleFile">Image</Label>
-            <Input id="exampleFile" name="filename" type="file" />
+            <Input id="exampleFile" name="thumbnail" type="file" onChange={ (e)=> { 
+              const file = e.target.files[0]
+              console.log("img", file );
+              setFile(file)}} />
             <FormText>upload an image (jpeg,jpg,png,gif)</FormText>
           </FormGroup>
           <Button onClick={() => handleSubmit()}>Submit</Button>
