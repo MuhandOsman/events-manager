@@ -83,7 +83,7 @@ const NewEvent = () => {
               value={eventForm.location}
               onChange={handleEventForm}
             />
-            <Label for="exampleTime">Time</Label>
+            <Label for="location">Loctaion</Label>
           </FormGroup>
           <FormGroup >
             <Label for="exampleText">add description</Label>
