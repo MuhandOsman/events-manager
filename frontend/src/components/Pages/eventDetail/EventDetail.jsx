@@ -16,11 +16,11 @@ const EventDetail = () => {
                 <p>from (organizer)</p>
                 <p>Ticket price:{item.price} €</p>
                 <h4> about this event: {item.description} </h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, autem nam. Sint a atque quisquam unde dolore tenetur ratione consectetur reiciendis. Veritatis provident omnis quod enim deleniti cupiditate optio, corporis quaerat, aliquam iusto ut nulla odio vel dolores. Unde autem a qui provident nesciunt deleniti quibusdam numquam. Amet perferendis quasi optio quam iusto eveniet voluptates totam, neque minima suscipit dolor ipsum sequi repellendus porro aut maiores vitae unde eligendi nemo provident id delectus qui. Vero consectetur ipsam, fugiat facere non harum reiciendis, deleniti in labore et architecto asperiores expedita ex incidunt sint ut. Neque nostrum totam fugiat accusantium repellat voluptatem?</p>
+                
 
             </div>
             <div className="event-img">
-                <img src="https://picsum.photos/318/180" alt="" />
+                <img src={item.thumbnail} alt="" />
             </div>
         </div>
 

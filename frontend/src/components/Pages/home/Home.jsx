@@ -19,22 +19,24 @@ const Home = () => {
     <Link to= "/event-detail" state={item} >
     <CardImg
       alt="Card image cap"
-      src="https://picsum.photos/318/180"
+      src={`${item.thumbnail}`}
       top
       width="100%"
     />
     <CardBody>
       <CardTitle tag="h5" >
-        {item.title}
+        {item.title} <br />
+        <small>{item.date}</small>
       </CardTitle>
       <CardSubtitle
         className="mb-2 text-muted"
         tag="h6"
       >
-        {item.eventCategory}
+        {item.category}
       </CardSubtitle>
       <CardText>
-        {item.description}
+       {item.description}
+       {/* Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem accusantium laboriosam itaque error delectus maxime architecto nihil, officiis aspernatur quam, praesentium eveniet alias neque ea consectetur repellat blanditiis provident quibusdam. */}
       </CardText>
       <Button>
         Button

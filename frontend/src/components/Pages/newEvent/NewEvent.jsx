@@ -8,7 +8,7 @@ const NewEvent = () => {
     
     const [file , setFile] = useState({})
 
-    const [eventForm, setEventForm] = useState({title:"" , category:"", price:"", date:"", time:"", description:"" })
+    const [eventForm, setEventForm] = useState({title:"" , category:"", price:"", date:"", description:"" })
 
     const handleEventForm = (e) => {
         setEventForm({ ...eventForm, [e.target.name]: e.target.value });
@@ -68,13 +68,13 @@ const NewEvent = () => {
               id="exampleDate"
               name="date"
               placeholder="date placeholder"
-              type="date"
+              type="datetime-local"
               value={eventForm.date}
               onChange={handleEventForm}
             />
             <Label for="exampleDate">Date</Label>
           </FormGroup>
-          <FormGroup floating>
+          {/* <FormGroup floating>
             <Input
               id="exampleTime"
               name="time"
@@ -84,7 +84,7 @@ const NewEvent = () => {
               onChange={handleEventForm}
             />
             <Label for="exampleTime">Time</Label>
-          </FormGroup>
+          </FormGroup> */}
           <FormGroup >
             <Label for="exampleText">add description</Label>
             <Input id="exampleText" name="description" type="textarea" value={eventForm.description} onChange={handleEventForm} />
