@@ -5,7 +5,8 @@ const MyProvider = (props) => {
     // note my thought ... 
     // we need for start at least these var(state): users , events ...
     const [events, setEvents]= useState([]);
-    //const [users, setUsers]= useState([]);
+    const storedId =JSON.parse(localStorage.getItem("user-id"))
+    
 
     useEffect(()=> {
         // we can use axios here instead of fetch
@@ -41,7 +42,7 @@ const MyProvider = (props) => {
     
 
   return (
-    <MyContext.Provider value={{events, postForm}}>
+    <MyContext.Provider value={{events, postForm,storedId}}>
         {props.children}
     </MyContext.Provider>
   )

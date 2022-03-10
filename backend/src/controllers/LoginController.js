@@ -36,7 +36,7 @@ module.exports = {
                 const payload = {email : user.email , userId : user._id};
                 const token = signToken(payload);
                 res.cookie("jwt",token);
-                return res.status(200).json(token)
+                return res.status(200).send(payload)
                 // return res.status(204).end()
             }
 

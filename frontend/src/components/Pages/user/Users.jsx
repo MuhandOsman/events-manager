@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+
 import {
   Button,
   Form,
@@ -19,7 +20,7 @@ const Users = () => {
 
   const context = useContext(MyContext);
   const { postForm } = context;
-
+  
   const [login, setLogin] = useState(false);
   const [form, setForm] = useState({ email: "", password: "" });
   const [open, setOpen] = useState(false);
@@ -32,8 +33,10 @@ const Users = () => {
     //setForm({email:"" , password: ""})
     try {
       postForm("/api/login", form)
-      .then(data => console.log(data))
-      setLogin(true)
+      .then(data => {
+        localStorage.setItem("user-id", JSON.stringify(data))})
+        
+        setLogin(true)
     } catch (error) {
       console.log(error.message)
     }
@@ -95,6 +98,7 @@ const Users = () => {
               <Button color="danger" onClick={() => setOpen(false)}>
                 Cancel
               </Button>
+              
             </ModalFooter>
           </Modal>
         </div>

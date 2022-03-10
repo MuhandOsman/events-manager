@@ -1,0 +1,8 @@
+.card-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.event-card {
+    min-width: 400px;
+}

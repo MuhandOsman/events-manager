@@ -8,8 +8,8 @@ module.exports = {
         
         // here i changed the user ID to be token from the cookie ...
         // const { user_id } = req.headers;
-        const { user_id } = res.user.userId;
-        
+        const { userId } = res.user;
+            
         const { filename } = req.file;
 
        /*  const user = await User.findById(user_id)
@@ -25,7 +25,7 @@ module.exports = {
             /* price: parseFloat(price) */
             price,
             date,
-            user: user_id,
+            user: userId,
             // filename will have the original filename that have been uploaded to the server but we rename it over config/upload.js and will be used to store the image in the database
             thumbnail: filename,
             location
