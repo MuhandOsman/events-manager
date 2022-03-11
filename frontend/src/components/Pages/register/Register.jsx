@@ -2,11 +2,13 @@ import React, { useContext, useState } from 'react'
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap'
 import MyContext from "../../../context/MyContext"
 
-const Register = ({open,setOpen}) => {
+const Register = ({setLogin,setOpen,error, setError}) => {
     const context = useContext(MyContext)
     const {postForm} = context
 
     const [register , setRegister] = useState({firstName:"", lastName:"",email:"" , password: ""})
+
+    
 
     const handleRegChange = (e) => {
         setRegister({...register, [e.target.name]: e.target.value})
@@ -17,11 +19,26 @@ const Register = ({open,setOpen}) => {
             e.preventDefault();
             setOpen(false)
             postForm("/api/user/register" , register)
-            .then( data => console.log(data))
+            .then((resp) => { 
+              console.log(resp._id);
+              if (!resp._id) {
+                setLogin(false);
+                throw new Error(resp.message);
+              } else {
+                
+                localStorage.setItem("user-id", JSON.stringify(resp._id));
+                setLogin(true);
+                setError(null)
+              }
+            })
+            .catch((error) => {
+              
+              setError(error.message);
+            });
         } catch (error) {
-            console.error(error.message)
+          console.error(error.message);
         }
-    }
+      };
 
   return (
     <Form inline className="loginForm">
@@ -82,6 +99,7 @@ const Register = ({open,setOpen}) => {
     <Button onClick={handleRegisterSubmit}>
       Submit
     </Button >
+    {error && <div className="show-error">{error}</div> }
   </Form>
   )
 }

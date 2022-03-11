@@ -104,7 +104,7 @@ const Users = () => {
             <ModalBody>
               {/* start of Register form in modalBody */}
 
-              <Register open={open} setOpen={setOpen} />
+              <Register setLogin={setLogin} setOpen={setOpen} error={error} setError={setError} />
               {/* end of Register form in modalBody */}
             </ModalBody>
             <ModalFooter>

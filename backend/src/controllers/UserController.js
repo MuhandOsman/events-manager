@@ -6,13 +6,13 @@ module.exports = {
 		try {
 			const { email, firstName, lastName, password } = req.body
 			if (!email || !password || !firstName || !lastName) {
-                return res.status(200).json( {message :"Required field missing!"} )
+                return res.status(405).json( {message :"Required field missing!"} )
             }
 			const existentUser = await User.findOne({ email })
 
 			if (!existentUser) {
 				const hashedPassword = await bcrypt.hash(password, 10)
-				console.log(hashedPassword);
+				
 				const user = await User.create({
 					email,
 					firstName,
