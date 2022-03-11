@@ -41,12 +41,14 @@ const Home = () => {
         </CardSubtitle>
         <CardText className="text-light">
           {item.description}
-          {/* Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem accusantium laboriosam itaque error delectus maxime architecto nihil, officiis aspernatur quam, praesentium eveniet alias neque ea consectetur repellat blanditiis provident quibusdam. */}
         </CardText>
-        <Button>
-        Button
-        </Button>
-          {item.user === storedId.userId && <RiDeleteBinFill size={32} style={{ fill: 'red' }}/>}
+        
+          {item.user === storedId.userId && <div className="flex">
+            <Button>
+              update your Event
+            </Button>
+            <RiDeleteBinFill size={32} style={{ fill: 'red' }}/>
+          </div> }
           
       </CardBody>
     

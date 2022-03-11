@@ -5,7 +5,7 @@ const MyProvider = (props) => {
     // note my thought ... 
     // we need for start at least these var(state): users , events ...
     const [events, setEvents]= useState([]);
-    const storedId =JSON.parse(localStorage.getItem("user-id"))
+    const storedId =JSON.parse(localStorage.getItem("user-id")) || "";
     
 
     useEffect(()=> {
@@ -36,7 +36,7 @@ const MyProvider = (props) => {
             const info = await sendReq.json()
             return info 
         } catch (error) {
-            console.error(error)
+            console.error(error.message)
         }
     }
     

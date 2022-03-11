@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap'
 import MyContext from "../../../context/MyContext"
 
-const Register = () => {
+const Register = ({open,setOpen}) => {
     const context = useContext(MyContext)
     const {postForm} = context
 
@@ -15,6 +15,7 @@ const Register = () => {
     const handleRegisterSubmit = (e) => {
         try {
             e.preventDefault();
+            setOpen(false)
             postForm("/api/user/register" , register)
             .then( data => console.log(data))
         } catch (error) {

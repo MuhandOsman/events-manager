@@ -20,25 +20,39 @@ const Users = () => {
 
   const context = useContext(MyContext);
   const { postForm } = context;
-  
+
   const [login, setLogin] = useState(false);
   const [form, setForm] = useState({ email: "", password: "" });
   const [open, setOpen] = useState(false);
 
+  const [error, setError] = useState(null);
+
   const handleFormChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
+
   const handleSubmit = (e) => {
-    /* e.preventDefault() */
-    //setForm({email:"" , password: ""})
+    /* e.preventDefault()
+    setForm({email:"" , password: ""}) */
     try {
       postForm("/api/login", form)
-      .then(data => {
-        localStorage.setItem("user-id", JSON.stringify(data))})
-        
-        setLogin(true)
+        .then((resp) => { 
+          if (!resp.ok) {
+            setLogin(false);
+            throw new Error(resp.message);
+          } else {
+            
+            localStorage.setItem("user-id", JSON.stringify(resp));
+            setLogin(true);
+            setError(null)
+          }
+        })
+        .catch((error) => {
+          
+          setError(error.message);
+        });
     } catch (error) {
-      console.log(error.message)
+      console.error(error.message);
     }
   };
   return (
@@ -90,7 +104,7 @@ const Users = () => {
             <ModalBody>
               {/* start of Register form in modalBody */}
 
-              <Register />
+              <Register open={open} setOpen={setOpen} />
               {/* end of Register form in modalBody */}
             </ModalBody>
             <ModalFooter>
@@ -98,14 +112,20 @@ const Users = () => {
               <Button color="danger" onClick={() => setOpen(false)}>
                 Cancel
               </Button>
-              
             </ModalFooter>
           </Modal>
         </div>
       </Form>
 
-
-  {login && <button className="to-home" onClick={()=>(navigate("../", {replace: true}))}>to main page</button>}
+      {error && <div className="show-error">{error}</div>}
+      {login && (
+        <button
+          className="to-home"
+          onClick={() => navigate("../", { replace: true })}
+        >
+          to main page
+        </button>
+      )}
     </section>
   );
 };

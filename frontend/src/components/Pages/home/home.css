@@ -5,4 +5,10 @@
 
 .event-card {
     min-width: 400px;
+    max-width: 32%;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
 }
