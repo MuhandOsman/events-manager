@@ -1,13 +1,18 @@
 import "./home.css"
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import { Link } from 'react-router-dom'
 import {RiDeleteBinFill} from "react-icons/ri";
 import { Button, Card, CardBody, CardGroup, CardImg, CardSubtitle, CardText, CardTitle } from 'reactstrap'
-import MyContext from "../../../context/MyContext"
+
+import MyContext from "../../../context/MyContext";
+import DeleteModal from "../modals/DeleteModal";
+import UpdateModal from "../modals/UpdateModal";
 
 const Home = () => {
   const context = useContext(MyContext)
   const {events,storedId} = context;
+
+  const [openDeleteModal , setOpenDeleteModal] = useState(false)
   
   return (
     <section>
@@ -43,12 +48,16 @@ const Home = () => {
           {item.description}
         </CardText>
         
-          {item.user === storedId.userId && <div className="flex">
+        {item.user === storedId.userId && <div className="flex">
             <Button>
               update your Event
             </Button>
-            <RiDeleteBinFill size={32} style={{ fill: 'red' }}/>
+            <RiDeleteBinFill size={32} style={{ fill: 'red' }} onClick={()=> setOpenDeleteModal(true)}/>
           </div> }
+      {/* delete modale start here */}
+      <div>
+          <DeleteModal setOpenDeleteModal={setOpenDeleteModal} openDeleteModal={openDeleteModal} />
+      </div>  
           
       </CardBody>
     

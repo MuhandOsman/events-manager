@@ -20,7 +20,7 @@ const Register = ({setLogin,setOpen,error, setError}) => {
             setOpen(false)
             postForm("/api/user/register" , register)
             .then((resp) => { 
-              console.log(resp._id);
+              
               if (!resp._id) {
                 setLogin(false);
                 throw new Error(resp.message);
