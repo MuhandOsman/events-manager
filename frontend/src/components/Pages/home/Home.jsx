@@ -2,7 +2,7 @@ import "./home.css"
 import React, {useContext, useState} from 'react'
 import { Link } from 'react-router-dom'
 import {RiDeleteBinFill} from "react-icons/ri";
-import { Button, Card, CardBody, CardGroup, CardImg, CardSubtitle, CardText, CardTitle } from 'reactstrap'
+import { Button, Card, CardBody, CardGroup, CardImg, CardSubtitle, CardText, CardTitle,  Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap'
 
 import MyContext from "../../../context/MyContext";
 import DeleteModal from "../modals/DeleteModal";
@@ -13,6 +13,7 @@ const Home = () => {
   const {events,storedId} = context;
 
   const [openDeleteModal , setOpenDeleteModal] = useState(false)
+  const [openUpdateModal , setOpenUpdateModal] = useState(false)
   
   return (
     <section>
@@ -49,15 +50,40 @@ const Home = () => {
         </CardText>
         
         {item.user === storedId.userId && <div className="flex">
-            <Button>
+            <Button onClick={() => {
+              setOpenDeleteModal(false);
+              setOpenUpdateModal(true)}}>
               update your Event
             </Button>
-            <RiDeleteBinFill size={32} style={{ fill: 'red' }} onClick={()=> setOpenDeleteModal(true)}/>
+            <RiDeleteBinFill size={32} style={{ fill: 'red' }} onClick={()=> {
+              setOpenUpdateModal(false);
+              setOpenDeleteModal(true)}}/>
           </div> }
-      {/* delete modale start here */}
-      <div>
-          <DeleteModal setOpenDeleteModal={setOpenDeleteModal} openDeleteModal={openDeleteModal} />
-      </div>  
+      {/* delete & update modal start here */}
+      <div><DeleteModal setOpenDeleteModal={setOpenDeleteModal} openDeleteModal={openDeleteModal} /></div>
+      {/* <div><UpdateModal setOpenUpdateModal={setOpenUpdateModal} openUpdateModal={openUpdateModal}/></div> */}
+      <Modal
+        isOpen={openUpdateModal}
+        centered
+        
+        toggle={()=>setOpenUpdateModal(false)}
+        size="md"
+      >
+        <ModalHeader toggle={()=>setOpenUpdateModal(false)}>
+          Update Event
+        </ModalHeader>
+        <ModalBody>
+          <UpdateModal setOpenUpdateModal={setOpenUpdateModal} openUpdateModal={openUpdateModal}/>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={function noRefCheck() {}}>
+            send changes
+          </Button>{" "}
+          <Button onClick={() => setOpenUpdateModal(false)}>Cancel</Button>
+        </ModalFooter>
+      </Modal> 
+          
+        
           
       </CardBody>
     

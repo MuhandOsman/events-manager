@@ -16,17 +16,23 @@ const DeleteModal = ({openDeleteModal,setOpenDeleteModal}) => {
       Delete Event
     </ModalHeader>
     <ModalBody>
-      somthing like (are you sure you want to delete this Event? you can update it instead!!)
+      Are you sure you want to delete this Event? you can update it instead!!
     </ModalBody>
     <ModalFooter>
+      <Button
+        color="danger"
+        onClick={function noRefCheck(){}}
+      >
+        DELETE EVENT
+      </Button>
       <Button
         color="primary"
         onClick={function noRefCheck(){}}
       >
-        Do Something
+        Update Event
       </Button>
       {' '}
-      <Button onClick={function noRefCheck(){}}>
+      <Button onClick={() => setOpenDeleteModal(false)}>
         Cancel
       </Button>
     </ModalFooter>
