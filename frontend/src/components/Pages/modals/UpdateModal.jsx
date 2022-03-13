@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import {
   Button,
   Form,
@@ -6,20 +7,59 @@ import {
   FormText,
   Input,
   Label,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
  
 } from "reactstrap";
 
-const UpdateModal = () => {
+const UpdateModal = ({openUpdateModal,setOpenUpdateModal,item}) => {
+  
+  const [updateEvent,setUpdateEvent] = useState({title:item.title , category:item.category, price:item.price, date:item.date, description:item.description,location:item.location })
+  const [updatedFile,setUpdatedFile] = useState({})
+
+  const handleUpdate = (e) => {
+    setUpdateEvent({...updateEvent,[e.target.name]: e.target.value})
+  }
+
+  const handleSubmit = (e) => {
+    const str = JSON.stringify(updateEvent)
+      const data = new FormData();
+      data.append("updateEvent", str);
+      data.append("thumbnail", updatedFile);
+      console.log("form :",updateEvent);
+      try {
+          axios.patch(`/api/event/${item.id}`, data , {
+            headers: { "Content-Type": "multipart/form-data"}
+          })
+          .then(what => console.log(what) )
+      } catch (error) {
+          console.error(error)
+      }
+  }
+
   return (
-    <div>
-      <div className="container">
-            <Form inline>
+    
+    <div className="container">
+        <Modal
+        isOpen={openUpdateModal}
+        centered
+        
+        toggle={()=>setOpenUpdateModal(false)}
+        size="md"
+      >
+        <ModalHeader toggle={()=>setOpenUpdateModal(false)}>
+          Update Event
+        </ModalHeader>
+        <ModalBody>
+        <Form inline>
               <FormGroup floating>
                 <Input
                   id="title"
                   name="title"
                   placeholder="Title"
-                  type="text" /* value={eventForm.title} onChange={handleEventForm} */
+                  type="text" value={updateEvent.title} onChange={handleUpdate}
                 />
                 <Label for="title">Title</Label>
               </FormGroup>{" "}
@@ -29,8 +69,8 @@ const UpdateModal = () => {
                   name="category"
                   placeholder="category"
                   type="text"
-                  /* value={eventForm.category}
-              onChange={handleEventForm} */
+                  value={updateEvent.category}
+                  onChange={handleUpdate}
                 />
                 <Label for="category">category</Label>
               </FormGroup>{" "}
@@ -39,7 +79,7 @@ const UpdateModal = () => {
                   id="price"
                   name="price"
                   placeholder="price"
-                  type="price" /* value={eventForm.price} onChange={handleEventForm} */
+                  type="price" value={updateEvent.price} onChange={handleUpdate}
                 />
                 <Label for="price">Price</Label>
               </FormGroup>
@@ -50,7 +90,7 @@ const UpdateModal = () => {
                   placeholder="date placeholder"
                   type="datetime-local"
 
-                  /* onChange={handleEventForm} */
+                  onChange={handleUpdate}
                 />
                 <Label for="exampleDate">Date</Label>
               </FormGroup>
@@ -60,8 +100,8 @@ const UpdateModal = () => {
                   name="location"
                   placeholder="location"
                   type="text"
-                  /* value={eventForm.location}
-              onChange={handleEventForm} */
+                  value={updateEvent.location}
+                  onChange={handleUpdate}
                 />
                 <Label for="location">Location</Label>
               </FormGroup>
@@ -70,7 +110,7 @@ const UpdateModal = () => {
                 <Input
                   id="exampleText"
                   name="description"
-                  type="textarea" /* value={eventForm.description} onChange={handleEventForm} */
+                  type="textarea" value={updateEvent.description} onChange={handleUpdate}
                 />
               </FormGroup>
               <FormGroup>
@@ -79,18 +119,26 @@ const UpdateModal = () => {
                   id="exampleFile"
                   name="thumbnail"
                   type="file"
-                  /* onChange={(e) => {
+                  onChange={(e) => {
                   const file = e.target.files[0];
                   console.log("img", file);
-                  setFile(file)
-                }} */
+                  setUpdatedFile(file)
+                }}
                 />
                 <FormText>upload an image (jpeg,jpg,png,gif)</FormText>
               </FormGroup>
-              <Button /* onClick={() => handleSubmit()} */>Submit</Button>
+              
             </Form>
-          </div>
+        </ModalBody>
+        <ModalFooter>
+        <Button color="success" onClick={() => handleSubmit()}>
+            send changes
+          </Button>{" "}
+          <Button onClick={() => setOpenUpdateModal(false)}>Cancel</Button>
+        </ModalFooter>
+      </Modal>     
     </div>
+    
   );
 };
 

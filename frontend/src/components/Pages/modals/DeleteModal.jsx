@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap'
 
-const DeleteModal = ({openDeleteModal,setOpenDeleteModal}) => {
+const DeleteModal = ({openDeleteModal,setOpenDeleteModal,setOpenUpdateModal}) => {
 
   return (
     <div>
@@ -27,7 +27,9 @@ const DeleteModal = ({openDeleteModal,setOpenDeleteModal}) => {
       </Button>
       <Button
         color="primary"
-        onClick={function noRefCheck(){}}
+        onClick={()=>{
+          setOpenDeleteModal(false)
+          setOpenUpdateModal(true) }}
       >
         Update Event
       </Button>

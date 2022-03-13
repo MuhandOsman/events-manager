@@ -55,13 +55,17 @@ module.exports = {
     // with the help of (auth) middleware any user send a request we have his Id under (res.user) 
     // now with auth we can allow update event only to the user who create the event ...
     async updateEvent (req, res) {
+        const parsedForm = JSON.parse(req.body.updateEvent)
+        //const { title, description, price , category, date,location } = parsedForm; => we may not need that to update onle a part
         const { eventId} = req.params;
         const userId = res.user.userId
         try {
             const currentEvent = await Event.findById(eventId);
+            console.log(currentEvent.user.toString());
+            console.log(userId);
 
             if (userId === currentEvent.user.toString()) {
-                const updatedEvent = await Event.findOneAndUpdate({_id:eventId} , req.body , {new: true}); // new => will return the updated info not just update database
+                const updatedEvent = await Event.findOneAndUpdate({_id:eventId} , parsedForm , {new: true}); // new => will return the updated info not just update database
                 const newEvent = await updatedEvent.save();
                 res.status(200).json(newEvent)
             } else {

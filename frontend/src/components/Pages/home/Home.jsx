@@ -2,7 +2,7 @@ import "./home.css"
 import React, {useContext, useState} from 'react'
 import { Link } from 'react-router-dom'
 import {RiDeleteBinFill} from "react-icons/ri";
-import { Button, Card, CardBody, CardGroup, CardImg, CardSubtitle, CardText, CardTitle,  Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap'
+import { Button, Card, CardBody, CardGroup, CardImg, CardSubtitle, CardText, CardTitle} from 'reactstrap'
 
 import MyContext from "../../../context/MyContext";
 import DeleteModal from "../modals/DeleteModal";
@@ -15,6 +15,7 @@ const Home = () => {
   const [openDeleteModal , setOpenDeleteModal] = useState(false)
   const [openUpdateModal , setOpenUpdateModal] = useState(false)
   
+
   return (
     <section>
       <h1 >Events on Fire</h1>
@@ -60,28 +61,9 @@ const Home = () => {
               setOpenDeleteModal(true)}}/>
           </div> }
       {/* delete & update modal start here */}
-      <div><DeleteModal setOpenDeleteModal={setOpenDeleteModal} openDeleteModal={openDeleteModal} /></div>
-      {/* <div><UpdateModal setOpenUpdateModal={setOpenUpdateModal} openUpdateModal={openUpdateModal}/></div> */}
-      <Modal
-        isOpen={openUpdateModal}
-        centered
-        
-        toggle={()=>setOpenUpdateModal(false)}
-        size="md"
-      >
-        <ModalHeader toggle={()=>setOpenUpdateModal(false)}>
-          Update Event
-        </ModalHeader>
-        <ModalBody>
-          <UpdateModal setOpenUpdateModal={setOpenUpdateModal} openUpdateModal={openUpdateModal}/>
-        </ModalBody>
-        <ModalFooter>
-          <Button color="primary" onClick={function noRefCheck() {}}>
-            send changes
-          </Button>{" "}
-          <Button onClick={() => setOpenUpdateModal(false)}>Cancel</Button>
-        </ModalFooter>
-      </Modal> 
+      <div><DeleteModal setOpenDeleteModal={setOpenDeleteModal} openDeleteModal={openDeleteModal} setOpenUpdateModal={setOpenUpdateModal}/></div>
+      <div><UpdateModal setOpenUpdateModal={setOpenUpdateModal} openUpdateModal={openUpdateModal} item={item}/></div>
+       
           
         
           
