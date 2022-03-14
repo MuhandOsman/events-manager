@@ -4,7 +4,9 @@ import {useState, useEffect} from "react";
 const MyProvider = (props) => {
     // note my thought ... 
     // we need for start at least these var(state): users , events ...
+    const [eventId, setEventId] = useState("")
     const [events, setEvents]= useState([]);
+    const [openDeleteModal, setOpenDeleteModal] = useState(false);
     const storedId =JSON.parse(localStorage.getItem("user-id")) || "";
     
 
@@ -39,10 +41,15 @@ const MyProvider = (props) => {
             console.error(error.message)
         }
     }
+
+    const openModal = (id) => {
+        setOpenDeleteModal(true);
+        setEventId(id)
+    }
     
 
   return (
-    <MyContext.Provider value={{events, postForm,storedId}}>
+    <MyContext.Provider value={{events, postForm,storedId , eventId, setEventId,openDeleteModal, setOpenDeleteModal,openModal}}>
         {props.children}
     </MyContext.Provider>
   )

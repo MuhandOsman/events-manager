@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import  { useState } from "react";
 import axios from "axios";
 import {
@@ -12,7 +12,8 @@ import {
  
 } from "reactstrap";
 
-const UpdateModal = ({openUpdateModal,setOpenUpdateModal}) => {
+const UpdateModal = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const item = location.state;
   
@@ -36,7 +37,7 @@ const UpdateModal = ({openUpdateModal,setOpenUpdateModal}) => {
         )
         .then(resp => {
           console.log(resp)
-          
+          navigate("/",{ replace: true }) 
         } )
       } catch (error) {
           console.error(error)

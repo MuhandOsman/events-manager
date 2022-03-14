@@ -1,5 +1,5 @@
 import "./home.css";
-import React, { useContext, useState } from "react";
+import React, { useContext} from "react";
 import { Link } from "react-router-dom";
 import { RiDeleteBinFill } from "react-icons/ri";
 import {
@@ -18,9 +18,9 @@ import DeleteModal from "../modals/DeleteModal";
 
 const Home = () => {
   const context = useContext(MyContext);
-  const { events, storedId } = context;
+  const { events, storedId,openDeleteModal, setOpenDeleteModal,openModal } = context;
 
-  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  
 
   return (
     <section>
@@ -70,20 +70,21 @@ const Home = () => {
                         size={32}
                         style={{ fill: "red" }}
                         onClick={() => {
-                          setOpenDeleteModal(true);
+                          openModal(item.id)
                         }}
                       />
+                      <div>
+                        <DeleteModal
+                          setOpenDeleteModal={setOpenDeleteModal}
+                          openDeleteModal={openDeleteModal}
+                          
+                        />
+                      </div>
                     </div>
                   )}
                 </CardBody>
               </Card>
             ))}
-          <div>
-            <DeleteModal
-              setOpenDeleteModal={setOpenDeleteModal}
-              openDeleteModal={openDeleteModal}
-            />
-          </div>
         </CardGroup>
       </div>
     </section>
