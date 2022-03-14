@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
+import  { useState } from "react";
 import axios from "axios";
 import {
   Button,
@@ -6,15 +7,14 @@ import {
   FormGroup,
   FormText,
   Input,
-  Label,
-  Modal,
-  ModalBody,
-  ModalFooter,
-  ModalHeader,
+  Label
+  
  
 } from "reactstrap";
 
-const UpdateModal = ({openUpdateModal,setOpenUpdateModal,item}) => {
+const UpdateModal = ({openUpdateModal,setOpenUpdateModal}) => {
+  const location = useLocation();
+  const item = location.state;
   
   const [updateEvent,setUpdateEvent] = useState({title:item.title , category:item.category, price:item.price, date:item.date, description:item.description,location:item.location })
   const [updatedFile,setUpdatedFile] = useState({})
@@ -28,12 +28,16 @@ const UpdateModal = ({openUpdateModal,setOpenUpdateModal,item}) => {
       const data = new FormData();
       data.append("updateEvent", str);
       data.append("thumbnail", updatedFile);
-      console.log("form :",updateEvent);
+      // console.log("form :",updateEvent);
       try {
-          axios.patch(`/api/event/${item.id}`, data , {
-            headers: { "Content-Type": "multipart/form-data"}
-          })
-          .then(what => console.log(what) )
+        axios.patch(`/api/event/${item.id}`, data , {
+          headers: { "Content-Type": "multipart/form-data"}
+        }
+        )
+        .then(resp => {
+          console.log(resp)
+          
+        } )
       } catch (error) {
           console.error(error)
       }
@@ -42,17 +46,7 @@ const UpdateModal = ({openUpdateModal,setOpenUpdateModal,item}) => {
   return (
     
     <div className="container">
-        <Modal
-        isOpen={openUpdateModal}
-        centered
         
-        toggle={()=>setOpenUpdateModal(false)}
-        size="md"
-      >
-        <ModalHeader toggle={()=>setOpenUpdateModal(false)}>
-          Update Event
-        </ModalHeader>
-        <ModalBody>
         <Form inline>
               <FormGroup floating>
                 <Input
@@ -128,15 +122,10 @@ const UpdateModal = ({openUpdateModal,setOpenUpdateModal,item}) => {
                 <FormText>upload an image (jpeg,jpg,png,gif)</FormText>
               </FormGroup>
               
+            <Button color="success" onClick={() => handleSubmit()}>send changes
+          </Button>
             </Form>
-        </ModalBody>
-        <ModalFooter>
-        <Button color="success" onClick={() => handleSubmit()}>
-            send changes
-          </Button>{" "}
-          <Button onClick={() => setOpenUpdateModal(false)}>Cancel</Button>
-        </ModalFooter>
-      </Modal>     
+       
     </div>
     
   );

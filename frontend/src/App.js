@@ -8,6 +8,7 @@ import About from './components/Pages/about/About';
 import Home from './components/Pages/home/Home';
 import EventDetail from "./components/Pages/eventDetail/EventDetail"
 import NewEvent from "./components/Pages/newEvent/NewEvent"
+import UpdateModal from "./components/Pages/modals/UpdateModal"
 import NotFound from './components/Pages/NotFound'
 import Footer from './components/Footer';
 import Header from "./components/Header";
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/event-detail" element={<EventDetail/>} />
+        <Route path="/update-event" element={<UpdateModal/>} />
         <Route path="/form" element={<Users />} />
         <Route path="/create-event" element={<NewEvent/>} />
         <Route path="/about" element={<About/>} />

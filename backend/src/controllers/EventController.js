@@ -37,6 +37,7 @@ module.exports = {
     async delete(req, res) {
         const { eventId } = req.params;
         const userId = res.user.userId
+        
         try {
             const currentEvent = await Event.findById(eventId);
             if (userId === currentEvent.user.toString()) {
@@ -59,10 +60,17 @@ module.exports = {
         //const { title, description, price , category, date,location } = parsedForm; => we may not need that to update onle a part
         const { eventId} = req.params;
         const userId = res.user.userId
+        /* const { filename } = req.file;
+        parsedForm.thumbnail = filename */
+        
         try {
             const currentEvent = await Event.findById(eventId);
-            console.log(currentEvent.user.toString());
-            console.log(userId);
+            if(req.file) {
+                const { filename } = req.file;
+                parsedForm.thumbnail = filename
+            }
+            console.log( "userid",userId);
+            console.log("eventid",currentEvent.user.toString());
 
             if (userId === currentEvent.user.toString()) {
                 const updatedEvent = await Event.findOneAndUpdate({_id:eventId} , parsedForm , {new: true}); // new => will return the updated info not just update database

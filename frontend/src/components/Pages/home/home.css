@@ -1,14 +1,23 @@
-.card-group {
+/* .card-group {
     display: flex;
     flex-wrap: wrap;
-}
+} */
 
 .event-card {
-    min-width: 400px;
-    max-width: 32%;
+    min-width: 300px;
+    max-width: 400px;
+    margin: 20px;
+    border-radius: 10px;
 }
 
 .flex {
     display: flex;
     justify-content: space-between;
+}
+
+.container-lg {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around
 }

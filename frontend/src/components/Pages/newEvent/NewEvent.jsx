@@ -69,7 +69,7 @@ const NewEvent = () => {
               name="date"
               placeholder="date placeholder"
               type="datetime-local"
-              /* value={eventForm.date} */
+              value={eventForm.date}
               onChange={handleEventForm}
             />
             <Label for="exampleDate">Date</Label>
