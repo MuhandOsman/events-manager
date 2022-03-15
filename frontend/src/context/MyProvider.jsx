@@ -5,8 +5,10 @@ const MyProvider = (props) => {
     // note my thought ... 
     // we need for start at least these var(state): users , events ...
     const [eventId, setEventId] = useState("")
+    const [eventToUpdate, setEventToUpdate] = useState({})
     const [events, setEvents]= useState([]);
     const [openDeleteModal, setOpenDeleteModal] = useState(false);
+    const [openUpdateModal, setOpenUpdateModal] = useState(false);
     const storedId =JSON.parse(localStorage.getItem("user-id")) || "";
     
 
@@ -46,10 +48,14 @@ const MyProvider = (props) => {
         setOpenDeleteModal(true);
         setEventId(id)
     }
+    const openUpdate = (item) => {
+        setOpenUpdateModal(true);
+        setEventToUpdate(item)
+    }
     
 
   return (
-    <MyContext.Provider value={{events, postForm,storedId , eventId, setEventId,openDeleteModal, setOpenDeleteModal,openModal}}>
+    <MyContext.Provider value={{events, postForm,storedId , eventId, setEventId,openDeleteModal, setOpenDeleteModal,openModal,openUpdateModal, setOpenUpdateModal,openUpdate,eventToUpdate, setEventToUpdate}}>
         {props.children}
     </MyContext.Provider>
   )

@@ -35,7 +35,7 @@ module.exports = {
     },
 
     async delete(req, res) {
-        const { eventId } = req.params;
+        const { eventId} = req.params;
         const userId = res.user.userId
         
         try {
@@ -57,7 +57,7 @@ module.exports = {
     // now with auth we can allow update event only to the user who create the event ...
     async updateEvent (req, res) {
         const parsedForm = JSON.parse(req.body.updateEvent)
-        //const { title, description, price , category, date,location } = parsedForm; => we may not need that to update onle a part
+        //const { title, description, price , category, date,location } = parsedForm; => we may not need that to update only a part
         const { eventId} = req.params;
         const userId = res.user.userId
         /* const { filename } = req.file;

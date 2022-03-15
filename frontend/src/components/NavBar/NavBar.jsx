@@ -29,19 +29,22 @@ const NavBar = () => {
           />
           <Collapse navbar isOpen={open}>
             <Nav className="me-auto flex-nav" navbar>
-              <NavItem>
-                <NavLink href="/form/">Login/Register</NavLink>
+            <NavItem>
+                <NavLink href="/">Main Page</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/about/">About us</NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink href="/form/">Login/Register</NavLink>
+              </NavItem>
               <UncontrolledDropdown inNavbar nav>
                 <DropdownToggle caret nav>
-                  Options
+                  Login/Register
                 </DropdownToggle>
                 <DropdownMenu>
-                  <DropdownItem>Option 1</DropdownItem>
-                  <DropdownItem>Option 2</DropdownItem>
+                  <DropdownItem>Login</DropdownItem>
+                  <DropdownItem>Register</DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>Reset</DropdownItem>
                 </DropdownMenu>

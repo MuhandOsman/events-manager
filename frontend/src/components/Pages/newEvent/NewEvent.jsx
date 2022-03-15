@@ -1,10 +1,12 @@
 import React, {  useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button, Form, FormGroup, FormText, Input, Label } from "reactstrap";
 import "./newEvent.css";
 
 
 const NewEvent = () => {
+  const navigate = useNavigate();
     
     const [file , setFile] = useState({})
 
@@ -24,7 +26,12 @@ const NewEvent = () => {
             axios.post("/api/event", data , {
               headers: { "Content-Type": "multipart/form-data"}
             })
-            .then(what => console.log(what) )
+            .then(resp => {
+              console.log(resp) 
+              if (resp.data)
+                  navigate("/", { replace: true})
+                  window.location.reload()
+            })
         } catch (error) {
             console.error(error)
         }
@@ -54,15 +61,7 @@ const NewEvent = () => {
             <Input id="price" name="price" placeholder="price" type="price" value={eventForm.price} onChange={handleEventForm} />
             <Label for="price">Price</Label>
           </FormGroup>
-          {/* <FormGroup floating>
-            <Input
-              id="exampleEmail"
-              name="email"
-              placeholder="Email"
-              type="email"
-            />
-            <Label for="exampleEmail">Email</Label>
-          </FormGroup> */}
+          
           <FormGroup floating>
             <Input
               id="exampleDate"
@@ -83,7 +82,7 @@ const NewEvent = () => {
               value={eventForm.location}
               onChange={handleEventForm}
             />
-            <Label for="location">Loctaion</Label>
+            <Label for="location">Location</Label>
           </FormGroup>
           <FormGroup >
             <Label for="exampleText">add description</Label>

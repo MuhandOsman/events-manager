@@ -1,8 +1,12 @@
 import React, { useContext, useState } from 'react'
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap'
+import { useNavigate } from "react-router-dom";
+
 import MyContext from "../../../context/MyContext"
 
 const Register = ({setLogin,setOpen,error, setError}) => {
+
+  const navigate = useNavigate();
     const context = useContext(MyContext)
     const {postForm} = context
 
@@ -28,7 +32,8 @@ const Register = ({setLogin,setOpen,error, setError}) => {
                 
                 localStorage.setItem("user-id", JSON.stringify(resp._id));
                 setLogin(true);
-                setError(null)
+                setError(null);
+                navigate("/", { replace: true })
               }
             })
             .catch((error) => {

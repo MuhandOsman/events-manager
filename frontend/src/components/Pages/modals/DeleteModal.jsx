@@ -5,7 +5,8 @@ import MyContext from "../../../context/MyContext";
 
 const DeleteModal = () => {
   const store = useContext(MyContext)
-  const {openDeleteModal, setOpenDeleteModal,eventId} = store
+  const {openDeleteModal, setOpenDeleteModal,eventId} = store;
+
   const deleteEvent = () => {
     console.log(eventId);
     axios.delete(`/api/event/${eventId}`).then(resp => {
@@ -17,6 +18,7 @@ const DeleteModal = () => {
   return (
     <div>
       <Modal
+        size="md"
         isOpen={openDeleteModal}
         centered
         scrollable
@@ -26,13 +28,15 @@ const DeleteModal = () => {
           Delete Event
         </ModalHeader>
         <ModalBody>
-          Are you sure you want to delete this Event? you can update it
-          instead!!
+          Are you sure you want to delete this Event? you can update it!!
         </ModalBody>
         <ModalFooter>
+        <Button color="success" onClick={deleteEvent}>
+            Update Event
+          </Button>
           <Button color="danger" onClick={deleteEvent}>
             DELETE EVENT
-          </Button>{" "}
+          </Button>
           <Button onClick={() => setOpenDeleteModal(false)}>Cancel</Button>
         </ModalFooter>
       </Modal>

@@ -21,7 +21,7 @@ const Users = () => {
   const context = useContext(MyContext);
   const { postForm } = context;
 
-  const [login, setLogin] = useState(false);
+  // const [login, setLogin] = useState(false);
   const [form, setForm] = useState({ email: "", password: "" });
   const [open, setOpen] = useState(false);
 
@@ -38,13 +38,14 @@ const Users = () => {
       postForm("/api/login", form)
         .then((resp) => { 
           if (!resp.ok) {
-            setLogin(false);
+            /* setLogin(false); */
             throw new Error(resp.message);
           } else {
             
             localStorage.setItem("user-id", JSON.stringify(resp));
-            setLogin(true);
+            // setLogin(true);
             setError(null)
+            navigate("/", { replace: true })
           }
         })
         .catch((error) => {
@@ -104,7 +105,7 @@ const Users = () => {
             <ModalBody>
               {/* start of Register form in modalBody */}
 
-              <Register setLogin={setLogin} setOpen={setOpen} error={error} setError={setError} />
+              <Register  setOpen={setOpen} error={error} setError={setError} />
               {/* end of Register form in modalBody */}
             </ModalBody>
             <ModalFooter>
@@ -118,14 +119,7 @@ const Users = () => {
       </Form>
 
       {error && <div className="show-error">{error}</div>}
-      {login && (
-        <button
-          className="to-home"
-          onClick={() => navigate("../", { replace: true })}
-        >
-          to main page
-        </button>
-      )}
+      
     </section>
   );
 };

@@ -4,6 +4,8 @@
 } */
 
 .event-card {
+    /* display: flex; */
+    /* flex-direction: row-reverse; */
     min-width: 300px;
     max-width: 400px;
     margin: 20px;
@@ -15,9 +17,15 @@
     justify-content: space-between;
 }
 
-.container-lg {
+/* .container-lg {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around
+} */
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

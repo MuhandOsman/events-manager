@@ -15,10 +15,11 @@ import {
 
 import MyContext from "../../../context/MyContext";
 import DeleteModal from "../modals/DeleteModal";
+import UpdateModal from "../modals/UpdateModal"
 
 const Home = () => {
   const context = useContext(MyContext);
-  const { events, storedId,openDeleteModal, setOpenDeleteModal,openModal } = context;
+  const { events, storedId,openModal,openUpdate } = context;
 
   
 
@@ -41,7 +42,7 @@ const Home = () => {
                     width="100%"
                   />
                 </Link>
-                <CardBody>
+                <CardBody className="card-body">
                   <CardTitle tag="h5" className="text-light">
                     {item.title} <br />
                     <small>
@@ -62,11 +63,8 @@ const Home = () => {
 
                   {item.user === storedId.userId && (
                     <div className="flex">
-                      <Link to="/update-event" state={item}>
-                        <Button color="primary">update your Event</Button>
-                      </Link>
-
-                      <RiDeleteBinFill
+                        <Button color="primary" onClick={() =>{openUpdate(item)} }>update your Event</Button>
+                        <RiDeleteBinFill
                         size={32}
                         style={{ fill: "red" }}
                         onClick={() => {
@@ -74,11 +72,8 @@ const Home = () => {
                         }}
                       />
                       <div>
-                        <DeleteModal
-                          setOpenDeleteModal={setOpenDeleteModal}
-                          openDeleteModal={openDeleteModal}
-                          
-                        />
+                        <DeleteModal />
+                        <UpdateModal />
                       </div>
                     </div>
                   )}
