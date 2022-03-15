@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useContext } from "react";
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import MyContext from "../../../context/MyContext";
@@ -5,8 +6,12 @@ import MyContext from "../../../context/MyContext";
 const DeleteModal = () => {
   const store = useContext(MyContext)
   const {openDeleteModal, setOpenDeleteModal,eventId} = store
-  const deleteEvent = (eventId) => {
-    // now here the logic of delete event
+  const deleteEvent = () => {
+    console.log(eventId);
+    axios.delete(`/api/event/${eventId}`).then(resp => {
+      console.log(resp)
+      setOpenDeleteModal(false)});
+      window.location.reload();
     
   }
   return (
