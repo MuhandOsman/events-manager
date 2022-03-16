@@ -2,6 +2,7 @@ import "./home.css";
 import React, { useContext} from "react";
 import { Link } from "react-router-dom";
 import { RiDeleteBinFill } from "react-icons/ri";
+import { ImSpinner } from "react-icons/im";
 import {
   Button,
   Card,
@@ -11,6 +12,7 @@ import {
   CardSubtitle,
   CardText,
   CardTitle,
+  
 } from "reactstrap";
 
 import MyContext from "../../../context/MyContext";
@@ -29,7 +31,7 @@ const Home = () => {
       <div className="filter">
         <p>Filter here</p>
       </div>
-      <div className="container-xl">
+      { events ? <div className="container-xl">
         <CardGroup className="card-group">
           {events &&
             events.map((item) => (
@@ -81,7 +83,7 @@ const Home = () => {
               </Card>
             ))}
         </CardGroup>
-      </div>
+      </div> : <ImSpinner size={50} style={{ fill: "red" }}/>}
     </section>
   );
 };

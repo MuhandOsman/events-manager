@@ -89,7 +89,7 @@ const Users = () => {
           Submit
         </Button>
         <div>
-          <Label>new to Event-manager?</Label>
+          <Label>new user?</Label>
           <Button
             color="danger"
             onClick={() => {

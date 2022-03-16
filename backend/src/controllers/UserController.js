@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt')
 const User = require('../models/User')
+const {signToken} = require("../lib/token")
 
 module.exports = {
 	async createUser(req, res) {
@@ -19,6 +20,9 @@ module.exports = {
 					lastName,
 					password: hashedPassword,
 				})
+				const payload = {email : user.email , userId : user._id ,ok: true};
+                const token = signToken(payload);
+                res.cookie("jwt",token);
 				return res.json(user)
 			}
 			return res.status(400).json({

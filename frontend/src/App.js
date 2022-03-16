@@ -3,7 +3,7 @@ import './App.css';
 import {BrowserRouter as Router,Routes, Route} from 'react-router-dom'
 import MyProvider from "./context/MyProvider"
 
-import Users from './components/Pages/user/Users';
+import Login from './components/Pages/login/Login';
 import About from './components/Pages/about/About';
 import Home from './components/Pages/home/Home';
 import EventDetail from "./components/Pages/eventDetail/EventDetail"
@@ -20,7 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/event-detail" element={<EventDetail/>} />
-        <Route path="/form" element={<Users />} />
+        <Route path="/form" element={<Login />} />
         <Route path="/create-event" element={<NewEvent/>} />
         <Route path="/about" element={<About/>} />
         <Route path="/pageNotFound" element={<NotFound/>} />

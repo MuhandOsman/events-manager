@@ -41,7 +41,7 @@ const UpdateModal = () => {
         .then(resp => {
           console.log(resp)
           setOpenUpdateModal(false);
-          /* window.location.reload(); */ 
+          window.location.reload(); 
         } )
       } catch (error) {
           console.error(error)
