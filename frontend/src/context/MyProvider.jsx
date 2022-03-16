@@ -4,6 +4,7 @@ import {useState, useEffect} from "react";
 const MyProvider = (props) => {
     // note my thought ... 
     // we need for start at least these var(state): users , events ...
+    const [login, setLogin] = useState(false);
     const [eventId, setEventId] = useState("")
     const [eventToUpdate, setEventToUpdate] = useState({})
     const [events, setEvents]= useState([]);
@@ -25,7 +26,7 @@ const MyProvider = (props) => {
         } catch (error) {
             console.error(error);
         }
-    },[])
+    },[login])
 
     const postForm = async (url = '', data = {}) => {
         try {
@@ -55,7 +56,7 @@ const MyProvider = (props) => {
     
 
   return (
-    <MyContext.Provider value={{events, postForm,storedId , eventId, setEventId,openDeleteModal, setOpenDeleteModal,openModal,openUpdateModal, setOpenUpdateModal,openUpdate,eventToUpdate, setEventToUpdate}}>
+    <MyContext.Provider value={{events, postForm,storedId , eventId, setEventId,openDeleteModal, setOpenDeleteModal,openModal,openUpdateModal, setOpenUpdateModal,openUpdate,eventToUpdate, setEventToUpdate,login, setLogin}}>
         {props.children}
     </MyContext.Provider>
   )

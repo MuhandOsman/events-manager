@@ -2,7 +2,7 @@
 import './App.css';
 import {BrowserRouter as Router,Routes, Route} from 'react-router-dom'
 import MyProvider from "./context/MyProvider"
-
+import User from "./components/Pages/user/User"
 import Login from './components/Pages/login/Login';
 import About from './components/Pages/about/About';
 import Home from './components/Pages/home/Home';
@@ -21,6 +21,7 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/event-detail" element={<EventDetail/>} />
         <Route path="/form" element={<Login />} />
+        <Route path="/user" element={<User />} />
         <Route path="/create-event" element={<NewEvent/>} />
         <Route path="/about" element={<About/>} />
         <Route path="/pageNotFound" element={<NotFound/>} />

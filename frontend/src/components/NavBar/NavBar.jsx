@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   Collapse,
   Nav,
@@ -10,15 +10,21 @@ import {
   NavLink,
 } from "reactstrap";
 
+import MyContext from "../../context/MyContext"
 import "./NavBar.css";
 
 const NavBar = () => {
+
+  const store = useContext(MyContext);
+  const {storedId,setLogin} = store;
 
   const [open, setOpen] = useState(false);
 
   const signout = ()=> {
     localStorage.removeItem("user-id")
-    axios.delete("/api/signout").then(response => {console.log(response);})
+    axios.delete("/api/signout").then(response => {console.log(response)
+    setLogin(false)
+    })
   };
 
   return (
@@ -34,7 +40,7 @@ const NavBar = () => {
           <Collapse navbar isOpen={open}>
             <Nav className="me-auto flex-nav" navbar>
               <NavItem>
-                <NavLink href="/">Main Page</NavLink>
+                <NavLink href="/">Events Page</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/about/">About us</NavLink>
@@ -55,14 +61,17 @@ const NavBar = () => {
                   <DropdownItem>Reset</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown> */}
-              <NavItem>
+              {storedId && <NavItem>
                 <NavLink href="/create-event/">Create Event</NavLink>
-              </NavItem>
+              </NavItem>}
+              {storedId &&<NavItem>
+                <NavLink href="/user/">My Profile</NavLink>
+              </NavItem>}
             </Nav>
 
-            <NavLink className="signout"  onClick={signout}>
+            {storedId && <NavLink className="signout"  onClick={signout}>
               Sign out
-            </NavLink>
+            </NavLink>}
           </Collapse>
         </Navbar>
       </div>

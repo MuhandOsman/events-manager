@@ -5,7 +5,7 @@ import MyContext from "../../../context/MyContext";
 
 const DeleteModal = () => {
   const store = useContext(MyContext)
-  const {openDeleteModal, setOpenDeleteModal,eventId} = store;
+  const {openDeleteModal, setOpenDeleteModal,setOpenUpdateModal,eventId} = store;
 
   const deleteEvent = () => {
     console.log(eventId);
@@ -31,9 +31,7 @@ const DeleteModal = () => {
           Are you sure you want to delete this Event? you can update it!!
         </ModalBody>
         <ModalFooter>
-        <Button color="success" onClick={deleteEvent}>
-            Update Event
-          </Button>
+        
           <Button color="danger" onClick={deleteEvent}>
             DELETE EVENT
           </Button>

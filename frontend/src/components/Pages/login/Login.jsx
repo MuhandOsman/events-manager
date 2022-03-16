@@ -19,9 +19,9 @@ const Users = () => {
   const navigate = useNavigate();
 
   const context = useContext(MyContext);
-  const { postForm } = context;
+  const { postForm,setLogin } = context;
 
-  // const [login, setLogin] = useState(false);
+  
   const [form, setForm] = useState({ email: "", password: "" });
   const [open, setOpen] = useState(false);
 
@@ -41,7 +41,7 @@ const Users = () => {
             /* setLogin(false); */
             throw new Error(resp.message);
           } else {
-            
+            setLogin(true);
             localStorage.setItem("user-id", JSON.stringify(resp));
             // setLogin(true);
             setError(null)
