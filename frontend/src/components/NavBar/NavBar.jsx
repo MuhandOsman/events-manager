@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Collapse,
   Nav,
@@ -14,6 +15,7 @@ import MyContext from "../../context/MyContext"
 import "./NavBar.css";
 
 const NavBar = () => {
+  const navigate = useNavigate();
 
   const store = useContext(MyContext);
   const {storedId,setLogin} = store;
@@ -22,8 +24,9 @@ const NavBar = () => {
 
   const signout = ()=> {
     localStorage.removeItem("user-id")
-    axios.delete("/api/signout").then(response => {console.log(response)
-    setLogin(false)
+    axios.delete("/api/signout").then(response => {setLogin(false)
+      navigate("/", { replace: true })
+      window.location.reload()
     })
   };
 

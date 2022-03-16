@@ -12,7 +12,7 @@ a {
 } 
 
 .signout {
-    color: deeppink ;
+    color: rgb(177, 190, 188) ;
     font-weight:700;
     padding-left:0 ;
     cursor: pointer;

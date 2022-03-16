@@ -18,7 +18,7 @@ const upload = multer(uploadConfig);
 
 //Login Routes
 routes.post('/login', LoginController.store)
-routes.delete("/signout" , LoginController.signout)                   // need to be Done
+routes.delete("/signout" , LoginController.signout)                   // need to be Done(done)
 
 //Dashboard Routes
 routes.get('/dashboard/:sport', DashboardController.getAllEvents)      // if we gonna search by category

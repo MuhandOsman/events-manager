@@ -1,15 +1,35 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import MyContext from '../../../context/MyContext';
 import "./user.css";
 
 const User = () => {
+
+    const store = useContext(MyContext);
+    const {storedId,loading, setLoading} = store;
+
+    const [user, setUser,] = useState("");
+
+    useEffect(()=>{
+        const getUser = async() => {
+            const response = await fetch(`/api/user/${storedId.userId}`)
+            const userData = await response.json();
+            setUser(userData);
+            setLoading(false);
+        }
+        getUser()
+        
+    } , [])
+
+    if (loading) return ( "loading...")
+
   return (
-    <section>
-        <h3 className="title">welcome $ \user\ </h3>
+    <section className="profile">
+        <h3 className="title">welcome {user.firstName}</h3>
         <div className="avatar">
             <div className="userImg"></div>
             <div className="userInfo">
-                <p>full name</p>
-                <p>Email</p>    
+                <p>{`${user.firstName} ${user.lastName}`}</p>
+                <p>{user.email}</p>    
             </div>    
         </div>
         <div className="eventContainer">

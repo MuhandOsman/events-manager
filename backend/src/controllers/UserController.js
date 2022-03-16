@@ -36,9 +36,9 @@ module.exports = {
 	async getUserById(req , res) {
 		//const userId = req.params.userId
 		const {userId} = req.params
-		console.log(userId);
+		// console.log("user from backend", userId);
 		try {
-			const user = await User.findOne({ userId })
+			const user = await User.findById(userId)   //changed from findOne
 			 res.json(user)
 		} catch (error) {
 			return res.status(400).json({

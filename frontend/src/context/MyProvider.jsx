@@ -5,6 +5,7 @@ const MyProvider = (props) => {
     // note my thought ... 
     // we need for start at least these var(state): users , events ...
     const [login, setLogin] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [eventId, setEventId] = useState("")
     const [eventToUpdate, setEventToUpdate] = useState({})
     const [events, setEvents]= useState([]);
@@ -20,6 +21,7 @@ const MyProvider = (props) => {
                 const response = await fetch("/api/dashboard");
                 const data = await response.json();
                 setEvents(data);
+                setLoading(false)
                 console.log(data);
             }
             getEvents();
@@ -54,9 +56,9 @@ const MyProvider = (props) => {
         setEventToUpdate(item)
     }
     
-
+    if (loading) return ( "loading...")
   return (
-    <MyContext.Provider value={{events, postForm,storedId , eventId, setEventId,openDeleteModal, setOpenDeleteModal,openModal,openUpdateModal, setOpenUpdateModal,openUpdate,eventToUpdate, setEventToUpdate,login, setLogin}}>
+    <MyContext.Provider value={{events, postForm,storedId , eventId, setEventId,openDeleteModal, setOpenDeleteModal,openModal,openUpdateModal, setOpenUpdateModal,openUpdate,eventToUpdate, setEventToUpdate,login, setLogin,loading, setLoading}}>
         {props.children}
     </MyContext.Provider>
   )
