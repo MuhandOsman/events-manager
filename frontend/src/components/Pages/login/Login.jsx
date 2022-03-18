@@ -19,13 +19,13 @@ const Users = () => {
   const navigate = useNavigate();
 
   const context = useContext(MyContext);
-  const { postForm,setLogin } = context;
+  const { postForm,setLogin,error, setError } = context;
 
   
   const [form, setForm] = useState({ email: "", password: "" });
   const [open, setOpen] = useState(false);
 
-  const [error, setError] = useState(null);
+  
 
   const handleFormChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -43,7 +43,6 @@ const Users = () => {
           } else {
             setLogin(true);
             localStorage.setItem("user-id", JSON.stringify(resp));
-            // setLogin(true);
             setError(null)
             navigate("/", { replace: true })
           }

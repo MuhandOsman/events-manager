@@ -32,10 +32,11 @@ routes.patch("/event/:eventId" ,upload.single("thumbnail"),authentication, Event
 
 
 //Subscription-Registration Routes
-routes.post('/registration/:eventId', RegistrationController.create)
+routes.post('/registration/:eventId',authentication, EventController.addSubscriber)
+//routes.post('/registration/:eventId', RegistrationController.create)
 routes.get('/registration/:registration_id', RegistrationController.getRegistration)
-routes.post('/registration/:registration_id/approvals', ApprovalController.approval)
-routes.post('/registration/:registration_id/rejections', RejectionController.rejection)
+/* routes.post('/registration/:registration_id/approvals', ApprovalController.approval)
+routes.post('/registration/:registration_id/rejections', RejectionController.rejection) */
 
 //User Routes
 routes.post('/user/register', UserController.createUser)     // to register new user

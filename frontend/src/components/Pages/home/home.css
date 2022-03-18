@@ -1,7 +1,4 @@
-/* .card-group {
-    display: flex;
-    flex-wrap: wrap;
-} */
+
 
 .event-card {
     /* display: flex; */
@@ -29,3 +26,39 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+.loading {
+    animation: 1s loadSpinner infinite linear;
+
+}
+@keyframes loadSpinner {
+    0% { transform: rotateZ(0)}
+    100% {transform: rotateZ(360deg)}
+}
+
+.check-item {
+    position: absolute;
+    right: 10px;
+    bottom: 20px;
+}
+.subscribe {
+    position: relative;
+    border-radius: 10px;
+}
+
+.subscribe:hover {
+    box-shadow: 0 0 15px #fff;
+}
+/* .subscribe:hover::after {
+    display:block;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    content: "";
+    height:16px;
+    width:16px;
+    color:white;
+    z-index: 1;
+    background-color: #fff;
+    text-align: center;
+} */

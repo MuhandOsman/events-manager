@@ -83,5 +83,28 @@ module.exports = {
         } catch (error) {
             console.error(error);
         }
+    } ,
+    async addSubscriber (req, res) {
+        
+        const { eventId} = req.params;
+        //const userId = req.headers.user_id
+        try {
+            
+            const currentEvent = await Event.findById(eventId);
+            const userId = res.user.userId
+            if (!userId ) { 
+                res.status(400).json("please log in");
+            } 
+            if ( !currentEvent) { 
+            res.status(404).json("Event not found ")
+            }  
+
+            currentEvent.subscribers.push(userId);  
+            const newEvent = await currentEvent.save();
+            res.status(200).json(newEvent)
+
+        } catch (error) {
+            console.error(error.message);
+        }
     }
 }
