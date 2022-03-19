@@ -60,9 +60,18 @@ const MyProvider = (props) => {
     const subscribe = (item) => {
         try {
             axios.post(`/api/registration/${item.id}`)
-            .then(response => console.log(response) )
+            .then(resp => {  
+                console.log(resp);
+                }
+            )
+            .catch(error => {
+                if(error.response)
+                setError(error.response.data.message) // access the error message error.response.data.message
+            })
+                  
         } catch (error) {
             
+            console.log(error.message);
         }
     }
     

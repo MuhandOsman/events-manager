@@ -91,17 +91,22 @@ module.exports = {
         try {
             
             const currentEvent = await Event.findById(eventId);
-            const userId = res.user.userId
-            if (!userId ) { 
-                res.status(400).json("please log in");
-            } 
             if ( !currentEvent) { 
             res.status(404).json("Event not found ")
-            }  
+            }
+
+            const userId = res.user.userId
+            if (!userId ) { 
+               return res.status(400).json("please log in");
+            } 
+            if (currentEvent.subscribers.includes(userId)) { // I want here to stop user from registering twice ...
+               return res.status(400).json({ message : "you are already registered !"})
+            }
+            
 
             currentEvent.subscribers.push(userId);  
             const newEvent = await currentEvent.save();
-            res.status(200).json(newEvent)
+            return res.status(200).json(newEvent)
 
         } catch (error) {
             console.error(error.message);

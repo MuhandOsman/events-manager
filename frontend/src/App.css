@@ -6,6 +6,7 @@ header {
 
 section {
   min-height:84vh;
+  position: relative;
 
 }
 
@@ -24,11 +25,21 @@ footer {
 
 }
 .show-error {
-  width:60%;
-  margin: 10px auto;
+  position: absolute;
+  left:50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  
+ 
+  
+  z-index: 1;
+  width:50%;
+  /* margin: 10px auto; */
   text-align:center;
   color:red;
+  background-color: rgba(65, 49, 49, 0.438);
   font-size:2em;
   border: 2px solid gray;
   border-radius: 20px;
 }
+

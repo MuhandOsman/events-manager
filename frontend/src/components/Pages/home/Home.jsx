@@ -23,7 +23,7 @@ import UpdateModal from "../modals/UpdateModal"
 
 const Home = () => {
   const context = useContext(MyContext);
-  const { events, storedId,openModal,openUpdate,loading,subscribe} = context;
+  const { events, storedId,openModal,openUpdate,loading,subscribe,error, setError} = context;
 
   if(loading) return (<ImSpinner className="loading" size={50} style={{ fill: "red" }}/>)
 
@@ -92,8 +92,10 @@ const Home = () => {
                         style={{ fill: "lightgreen" }} />
                 </div>
               </Card>
-            ))}
+            )
+            )}
         </CardGroup>
+            {error && <div className="show-error">{error}</div> }
       </div>  
     </section>
   );
