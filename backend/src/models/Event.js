@@ -11,7 +11,8 @@ const EventSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
-    }
+    },
+    subscribers: Array,
 }, {
     toJSON: {
         virtuals: true

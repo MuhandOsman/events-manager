@@ -11,14 +11,19 @@ const User = () => {
 
     useEffect(()=>{
         const getUser = async() => {
-            const response = await fetch(`/api/user/${storedId.userId}`)
+            try {
+                const response = await fetch(`/api/user/${storedId.userId}`)
             const userData = await response.json();
             setUser(userData);
             setLoading(false);
+
+            } catch (error) {
+                console.log(error);
+            }
         }
         getUser()
         
-    } , [])
+    } , [storedId,setLoading])
 
     if (loading) return ( "loading...")
 

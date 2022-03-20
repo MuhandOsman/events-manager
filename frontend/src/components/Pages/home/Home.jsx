@@ -1,8 +1,10 @@
 import "./home.css";
-import React, { useContext} from "react";
+import { useContext} from "react";
 import { Link } from "react-router-dom";
 import { RiDeleteBinFill } from "react-icons/ri";
 import { ImSpinner } from "react-icons/im";
+import {BsPersonCheck} from "react-icons/bs"
+import {GiGlassHeart} from "react-icons/gi"
 import {
   Button,
   Card,
@@ -21,23 +23,42 @@ import UpdateModal from "../modals/UpdateModal"
 
 const Home = () => {
   const context = useContext(MyContext);
-  const { events, storedId,openModal,openUpdate } = context;
-
+  const { events, storedId,openModal,openUpdate,loading,subscribe,error,category , setCategory} = context;
   
+  
+  const filterCategories = (e) => {
+    const select = e.target.value
+    select !== "All" ? setCategory(events.filter(event=> event.category === select))
+    : setCategory(events)
+  }
+  const rendered = category || events;
+  
+  
+  
+  if(loading) return (<ImSpinner className="loading" size={50} style={{ fill: "red" }}/>)
 
   return (
     <section>
-      <h1>Events on Fire</h1>
+      
+      <h1>LET'S PARTY</h1>
+      <div className="container-xl">
       <div className="filter">
-        <p>Filter here</p>
+          <span>filter</span>
+          <input type="text" name="category" className="filter-input" />
+          <select name="category" id="name" onChange={(e)=>filterCategories(e)}>
+            <option value="All">All</option>
+            <option value="Music">Music</option>
+            <option value="sport">sport</option>
+            <option value="Family">Family</option>
+          </select>
+
       </div>
-      { events ? <div className="container-xl">
         <CardGroup className="card-group">
           {events &&
-            events.map((item) => (
+            rendered.map((item) => (
               <Card key={item.id} color="dark" className="event-card ">
                 <Link to="/event-detail" state={item}>
-                  <CardImg
+                  <CardImg title="click for details"
                     alt="Card image cap"
                     src={`${item.thumbnail}`}
                     top
@@ -48,7 +69,7 @@ const Home = () => {
                   <CardTitle tag="h5" className="text-light">
                     {item.title} <br />
                     <small>
-                      {item.date
+                      {item.date.slice(0,16)
                         .split(".")
                         .slice(0, 1)
                         .join("")
@@ -63,10 +84,11 @@ const Home = () => {
                     Entry price :{item.price}
                   </CardText>
 
-                  {item.user === storedId.userId && (
+                  {item.user === storedId.userId ? (
                     <div className="flex">
-                        <Button color="primary" onClick={() =>{openUpdate(item)} }>update your Event</Button>
-                        <RiDeleteBinFill
+                        <Button color="primary" onClick={() =>{openUpdate(item)} }>Update Event</Button>
+                        <RiDeleteBinFill title="Delete Event"
+                        className="delete-icon"
                         size={32}
                         style={{ fill: "red" }}
                         onClick={() => {
@@ -78,12 +100,22 @@ const Home = () => {
                         <UpdateModal />
                       </div>
                     </div>
-                  )}
+                  ) :
+                  <GiGlassHeart size={32} title="Subscribe" className="subscribe" onClick={()=>subscribe(item)}
+                    style={{ fill: "lightgreen" }}/>
+                }
                 </CardBody>
+                <div className="check-item">
+                  <span style={{ color: "lightgreen" ,fontSize:"16px" }}>{item.subscribers.length +5}</span>
+                  <BsPersonCheck size={32} title="Subscribers"
+                        style={{ fill: "lightgreen" }} />
+                </div>
               </Card>
-            ))}
+            )
+            )}
         </CardGroup>
-      </div> : <ImSpinner size={50} style={{ fill: "red" }}/>}
+            {error && <div className="show-error">{error}</div> }
+      </div>  
     </section>
   );
 };

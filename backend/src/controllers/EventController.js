@@ -83,5 +83,33 @@ module.exports = {
         } catch (error) {
             console.error(error);
         }
+    } ,
+    async addSubscriber (req, res) {
+        
+        const { eventId} = req.params;
+        //const userId = req.headers.user_id
+        try {
+            
+            const currentEvent = await Event.findById(eventId);
+            if ( !currentEvent) { 
+            res.status(404).json("Event not found ")
+            }
+
+            const userId = res.user.userId
+            if (!userId ) { 
+               return res.status(400).json("please log in");
+            } 
+            if (currentEvent.subscribers.includes(userId)) { // I want here to stop user from registering twice ...
+               return res.status(400).json({ message : "you are already registered !"})
+            }
+            
+
+            currentEvent.subscribers.push(userId);  
+            const newEvent = await currentEvent.save();
+            return res.status(200).json(newEvent)
+
+        } catch (error) {
+            console.error(error.message);
+        }
     }
 }

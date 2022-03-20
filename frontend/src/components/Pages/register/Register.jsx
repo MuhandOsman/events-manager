@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 import MyContext from "../../../context/MyContext"
 
-const Register = ({setOpen,error, setError}) => {
+const Register = ({setOpen}) => {
 
   const navigate = useNavigate();
     const context = useContext(MyContext)
-    const { postForm, setLogin } = context;
+    const {postForm,error, setError,setLogin} = context
 
     const [register , setRegister] = useState({firstName:"", lastName:"",email:"" , password: ""})
 

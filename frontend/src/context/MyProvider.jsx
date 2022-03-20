@@ -1,14 +1,17 @@
 import MyContext from "./MyContext"
 import {useState, useEffect} from "react";
+import axios from "axios";
+
 
 const MyProvider = (props) => {
-    // note my thought ... 
-    // we need for start at least these var(state): users , events ...
+    
+    const [error, setError] = useState(null);
     const [login, setLogin] = useState(false);
     const [loading, setLoading] = useState(true);
     const [eventId, setEventId] = useState("")
     const [eventToUpdate, setEventToUpdate] = useState({})
     const [events, setEvents]= useState([]);
+    const [category , setCategory] = useState(null)
     const [openDeleteModal, setOpenDeleteModal] = useState(false);
     const [openUpdateModal, setOpenUpdateModal] = useState(false);
     const storedId =JSON.parse(localStorage.getItem("user-id")) || "";
@@ -22,8 +25,7 @@ const MyProvider = (props) => {
                 const data = await response.json();
                 setEvents(data);
                 setLoading(false)
-                console.log(data);
-            }
+                }
             getEvents();
         } catch (error) {
             console.error(error);
@@ -55,10 +57,27 @@ const MyProvider = (props) => {
         setOpenUpdateModal(true);
         setEventToUpdate(item)
     }
+    const subscribe = (item) => {
+        try {
+            axios.post(`/api/registration/${item.id}`)
+            .then(resp => {  
+                console.log(resp);
+                }
+            )
+            .catch(error => {
+                if(error.response)
+                setError(error.response.data.message) // access the error message error.response.data.message
+            })
+                  
+        } catch (error) {
+            
+            console.log(error.message);
+        }
+    }
     
     if (loading) return ( "loading...")
   return (
-    <MyContext.Provider value={{events, postForm,storedId , eventId, setEventId,openDeleteModal, setOpenDeleteModal,openModal,openUpdateModal, setOpenUpdateModal,openUpdate,eventToUpdate, setEventToUpdate,login, setLogin,loading, setLoading}}>
+    <MyContext.Provider value={{events, postForm,storedId , eventId, setEventId,openDeleteModal, setOpenDeleteModal,openModal,openUpdateModal, setOpenUpdateModal,openUpdate,eventToUpdate, setEventToUpdate,login, setLogin,loading, setLoading,error, setError,subscribe,category , setCategory}}>
         {props.children}
     </MyContext.Provider>
   )

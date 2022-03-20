@@ -1,6 +1,10 @@
 .navbar {
+    background-image:  url(../backGroundImages/crowd-concert-27664953.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
     background-color: rgba(48, 126, 190, 0.897);
     border-bottom: 2px solid black;
+    height:100px
 }
 
 a:visited {
@@ -9,8 +13,10 @@ a:visited {
  
 a {
     text-decoration: none;
+   background-color: aliceblue;
+   
 } 
-
+/* trying to change the color of navbar links */
 .signout {
     color: rgb(177, 190, 188) ;
     font-weight:700;

@@ -11,7 +11,7 @@ module.exports = {
             event: eventId,
             date
         })
-        
+        // populate does not work this way but kan be done as an array ... ( example line 28)
         /* await registration
             .populate('event')
             .populate('user', '-password')
@@ -29,7 +29,6 @@ module.exports = {
                 .populate(['event',{path:"user" , 
                     select: "-password"
             }])
-              
 
             return res.json(registration)
         } catch (error) {
