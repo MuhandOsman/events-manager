@@ -11,6 +11,7 @@ const MyProvider = (props) => {
     const [eventId, setEventId] = useState("")
     const [eventToUpdate, setEventToUpdate] = useState({})
     const [events, setEvents]= useState([]);
+    const [category , setCategory] = useState(null)
     const [openDeleteModal, setOpenDeleteModal] = useState(false);
     const [openUpdateModal, setOpenUpdateModal] = useState(false);
     const storedId =JSON.parse(localStorage.getItem("user-id")) || "";
@@ -24,8 +25,7 @@ const MyProvider = (props) => {
                 const data = await response.json();
                 setEvents(data);
                 setLoading(false)
-                console.log(data);
-            }
+                }
             getEvents();
         } catch (error) {
             console.error(error);
@@ -77,7 +77,7 @@ const MyProvider = (props) => {
     
     if (loading) return ( "loading...")
   return (
-    <MyContext.Provider value={{events, postForm,storedId , eventId, setEventId,openDeleteModal, setOpenDeleteModal,openModal,openUpdateModal, setOpenUpdateModal,openUpdate,eventToUpdate, setEventToUpdate,login, setLogin,loading, setLoading,error, setError,subscribe}}>
+    <MyContext.Provider value={{events, postForm,storedId , eventId, setEventId,openDeleteModal, setOpenDeleteModal,openModal,openUpdateModal, setOpenUpdateModal,openUpdate,eventToUpdate, setEventToUpdate,login, setLogin,loading, setLoading,error, setError,subscribe,category , setCategory}}>
         {props.children}
     </MyContext.Provider>
   )

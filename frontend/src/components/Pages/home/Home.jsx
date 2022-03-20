@@ -1,5 +1,5 @@
 import "./home.css";
-import React, { useContext} from "react";
+import { useContext} from "react";
 import { Link } from "react-router-dom";
 import { RiDeleteBinFill } from "react-icons/ri";
 import { ImSpinner } from "react-icons/im";
@@ -23,21 +23,39 @@ import UpdateModal from "../modals/UpdateModal"
 
 const Home = () => {
   const context = useContext(MyContext);
-  const { events, storedId,openModal,openUpdate,loading,subscribe,error, setError} = context;
-
+  const { events, storedId,openModal,openUpdate,loading,subscribe,error,category , setCategory} = context;
+  
+  
+  const filterCategories = (e) => {
+    const select = e.target.value
+    select !== "All" ? setCategory(events.filter(event=> event.category === select))
+    : setCategory(events)
+  }
+  const rendered = category || events;
+  
+  
+  
   if(loading) return (<ImSpinner className="loading" size={50} style={{ fill: "red" }}/>)
 
   return (
     <section>
       
-      <h1>Events on Fire</h1>
-      <div className="filter">
-        <div>Filter here</div>
-      </div>
+      <h1>LET'S PARTY</h1>
       <div className="container-xl">
+      <div className="filter">
+          <span>filter</span>
+          <input type="text" name="category" className="filter-input" />
+          <select name="category" id="name" onChange={(e)=>filterCategories(e)}>
+            <option value="All">All</option>
+            <option value="Music">Music</option>
+            <option value="sport">sport</option>
+            <option value="Family">Family</option>
+          </select>
+
+      </div>
         <CardGroup className="card-group">
           {events &&
-            events.map((item) => (
+            rendered.map((item) => (
               <Card key={item.id} color="dark" className="event-card ">
                 <Link to="/event-detail" state={item}>
                   <CardImg title="click for details"
@@ -70,6 +88,7 @@ const Home = () => {
                     <div className="flex">
                         <Button color="primary" onClick={() =>{openUpdate(item)} }>Update Event</Button>
                         <RiDeleteBinFill title="Delete Event"
+                        className="delete-icon"
                         size={32}
                         style={{ fill: "red" }}
                         onClick={() => {

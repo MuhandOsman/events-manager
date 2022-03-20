@@ -23,7 +23,7 @@ const User = () => {
         }
         getUser()
         
-    } , [storedId])
+    } , [storedId,setLoading])
 
     if (loading) return ( "loading...")
 
