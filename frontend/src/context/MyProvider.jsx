@@ -77,7 +77,7 @@ const MyProvider = (props) => {
     
     if (loading) return ( "loading...")
   return (
-    <MyContext.Provider value={{events, postForm,storedId , eventId, setEventId,openDeleteModal, setOpenDeleteModal,openModal,openUpdateModal, setOpenUpdateModal,openUpdate,eventToUpdate, setEventToUpdate,login, setLogin,loading, setLoading,error, setError,subscribe,category , setCategory}}>
+    <MyContext.Provider value={{events, postForm,storedId , eventId, setEventId,openDeleteModal, setOpenDeleteModal,openModal,openUpdateModal, setOpenUpdateModal,openUpdate,eventToUpdate, setEventToUpdate,login, setLogin,loading, setLoading,error, setError,subscribe}}>
         {props.children}
     </MyContext.Provider>
   )

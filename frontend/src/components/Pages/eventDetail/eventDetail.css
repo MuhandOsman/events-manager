@@ -4,6 +4,7 @@
 .event-container {
     max-width: 80%;
     margin: 0 auto;
+    padding: 16px;
     
 
     display: flex;
@@ -24,6 +25,12 @@
     width: 100%;
 }
 
+.date-location {
+    display: flex;
+    justify-content: space-around;
+    color: rgb(151, 34, 89);
+}
+
 @media (max-width:1000px) {
     .event-img {
        
@@ -35,4 +42,7 @@
     .event-details {
         width: 100%;
     }
+}
+h3 {
+    text-align: left;
 }

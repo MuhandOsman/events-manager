@@ -1,12 +1,17 @@
-
+.container-xl {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
 
 .event-card {
-    /* display: flex; */
-    /* flex-direction: row-reverse; */
-    min-width: 300px;
-    max-width: 400px;
-    margin: 20px 20px 20px 0;
-    border-radius: 10px;
+
+    min-width: 200px;
+    width: 400px;
+    margin:10px 2px;
+    padding: 20px;
+    padding-bottom: 0;
 }
 
 .flex {
@@ -14,12 +19,13 @@
     justify-content: space-between;
 }
 
-/* .container-lg {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around
-} */
+.filter-input {
+    border-radius: 10px;
+    width: 20%;
+    display: inline-block;
+}
+
+
 
 .card-body {
     display: flex;
@@ -43,7 +49,7 @@
 }
 .subscribe {
     position: relative;
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 .subscribe:hover {
@@ -71,5 +77,6 @@
 
 .filter{
     margin: 0 auto;
+    width: 100%;
     
 }
