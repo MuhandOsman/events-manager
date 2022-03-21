@@ -1,3 +1,5 @@
+
+
 header {
 
   height: 100px;
@@ -11,10 +13,11 @@ section {
 }
 
 footer {
+  
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color:rgba(48, 126, 190, 0.897);
+background-color: black;
   color: white;
   height:10vh;
 }
@@ -43,3 +46,6 @@ footer {
   border-radius: 20px;
 }
 
+.footer-icons {
+ font-size:40px;
+}

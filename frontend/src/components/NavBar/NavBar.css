@@ -1,17 +1,28 @@
 .navbar {
-    background-image:  url(../backGroundImages/crowd-concert-27664953.jpeg);
+    /* background-image:  url(../backGroundImages/crowd-concert-27664953.jpeg);
     background-repeat: no-repeat;
-    background-size: cover;
-    /* background-color: rgba(48, 126, 190, 0.897); */
+    background-size: cover; */
+    background-color: rgba(0, 0, 0, 0.897);
     border-bottom: 2px solid black;
     height:100px;
 }
+
+
+
+.nav-link {
+    font-weight:700;
+
+
+}
+
 
 a:visited {
     color: aliceblue;
 }
  
+
 a {
+    
     text-decoration: none;
    
    
@@ -30,3 +41,5 @@ a {
     right:50px;
     
 }
+
+
