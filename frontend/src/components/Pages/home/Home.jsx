@@ -87,6 +87,8 @@ const Home = () => {
             <option value="music">Music</option>
             <option value="sport">Sport</option>
             <option value="family">Family</option>
+            <option value="culture">Culture</option>
+            <option value="commerce">Commerce</option>
           </Input>
           <Button onClick={filterByKeyWords}>search</Button>
         </div>

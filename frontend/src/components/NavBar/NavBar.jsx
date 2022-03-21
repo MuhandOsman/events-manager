@@ -28,13 +28,14 @@ const NavBar = () => {
     axios.delete("/api/signout").then(response => {setLogin(false)
       navigate("/", { replace: true })
       window.location.reload()
+      console.log(response);
     })
   };
 
   return (
     <>
       <div>
-        <Navbar className="navbar" expand="md" fixed="top" dark>
+        <Navbar className="navbar" expand="md" fixed="top" >
           <NavbarBrand href="">
             <img src={img} alt="" />
           </NavbarBrand>
@@ -45,13 +46,13 @@ const NavBar = () => {
           />
           <Collapse navbar isOpen={open}>
             <Nav className="me-auto flex-nav" navbar>
-              <NavItem>
+              <NavItem className="nav-element">
                 <NavLink href="/">Events Page</NavLink>
               </NavItem>
-              <NavItem>
+              <NavItem className="nav-element">
                 <NavLink href="/about/">About us</NavLink>
               </NavItem>
-              <NavItem>
+              <NavItem className="nav-element">
                 <NavLink href="/form/">Login/Register</NavLink>
               </NavItem>
               {/* <UncontrolledDropdown inNavbar nav>
@@ -67,10 +68,10 @@ const NavBar = () => {
                   <DropdownItem>Reset</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown> */}
-              {storedId && <NavItem>
+              {storedId && <NavItem className="nav-element">
                 <NavLink href="/create-event/">Create Event</NavLink>
               </NavItem>}
-              {storedId &&<NavItem>
+              {storedId &&<NavItem className="nav-element">
                 <NavLink href="/user/">My Profile</NavLink>
               </NavItem>}
             </Nav>

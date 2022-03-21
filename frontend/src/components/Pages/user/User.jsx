@@ -11,8 +11,6 @@ const User = () => {
     const [created, setCreated] = useState([]);
     const [subscribed, setSubscribed] = useState([]);
 
-    console.log(created);
-
     useEffect(()=>{
         const getUser = async() => {
             try {
@@ -20,12 +18,6 @@ const User = () => {
             const userData = await response.json();
             setUser(userData);
             setLoading(false);
-
-            const response2 = await fetch(`/api/eventbyuserid/${storedId.userId}`)
-            const createdEvents = await response2.json();
-            setCreated(createdEvents)
-
-
             } catch (error) {
                 console.log(error);
             }
@@ -34,7 +26,23 @@ const User = () => {
         
     } , [storedId,setLoading])
 
+    useEffect(()=> {
+       const getCreated = async() => {
+        const response2 = await fetch(`/api/eventbyuserid/${storedId.userId}`)
+        const createdEvents = await response2.json();
+        setCreated(createdEvents)
+       }
+       getCreated()
+    },[storedId.userId])
 
+    useEffect(()=> {
+        const getSubscribed = async() => {
+            const response3 = await fetch(`/api/subscribeByuserid/${storedId.userId}`)
+            const subscribedEvents = await response3.json();    
+            setSubscribed(subscribedEvents)
+        }
+        getSubscribed()
+    },[storedId.userId])
 
 
 
@@ -51,15 +59,17 @@ const User = () => {
             </div>    
         </div>
         <div className="eventContainer">
-            <div className="subscribed">
+            {subscribed.length > 0 &&  <div className="subscribed">
                 <h4>Events you subscribed to</h4>
                 <ul>
-                 <li>1</li>
-                 <li>2</li>
-                 <li>3</li>
-                 <li>4</li>    
+                 {subscribed.map(element => 
+                    <li key={element.title}>
+                        <p>{element.title}</p>
+                        <p >{element.price}</p>
+                        {/* <img src={`${element.thumbnail}`}alt="" /> */}
+                    </li> ) }    
                 </ul>    
-            </div>
+            </div>}
             { created.length > 0 && <div className="created">
                 <h4>Events you created</h4>  
                 <ul>

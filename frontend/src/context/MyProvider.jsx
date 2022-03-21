@@ -11,10 +11,14 @@ const MyProvider = (props) => {
     const [eventId, setEventId] = useState("")
     const [eventToUpdate, setEventToUpdate] = useState({})
     const [events, setEvents]= useState([]);
-    const [category , setCategory] = useState(null)
     const [openDeleteModal, setOpenDeleteModal] = useState(false);
     const [openUpdateModal, setOpenUpdateModal] = useState(false);
     const storedId =JSON.parse(localStorage.getItem("user-id")) || "";
+
+    /* // user profile states
+    const [user, setUser] = useState("");
+    const [created, setCreated] = useState([]);
+    const [subscribed, setSubscribed] = useState([]); */
     
 
     useEffect(()=> {
@@ -31,6 +35,7 @@ const MyProvider = (props) => {
             console.error(error);
         }
     },[login])
+    console.log(events);
 
     const postForm = async (url = '', data = {}) => {
         try {
@@ -77,7 +82,7 @@ const MyProvider = (props) => {
     
     if (loading) return ( "loading...")
   return (
-    <MyContext.Provider value={{events, postForm,storedId , eventId, setEventId,openDeleteModal, setOpenDeleteModal,openModal,openUpdateModal, setOpenUpdateModal,openUpdate,eventToUpdate, setEventToUpdate,login, setLogin,loading, setLoading,error, setError,subscribe}}>
+    <MyContext.Provider value={{events, postForm,storedId , eventId, setEventId,openDeleteModal, setOpenDeleteModal,openModal,openUpdateModal, setOpenUpdateModal,openUpdate,eventToUpdate, setEventToUpdate,login, setLogin,loading, setLoading,error, setError,subscribe,}}>
         {props.children}
     </MyContext.Provider>
   )

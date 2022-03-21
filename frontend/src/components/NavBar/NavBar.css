@@ -12,10 +12,13 @@ a:visited {
 }
  
 a {
-    text-decoration: none;
-   
-   
+    text-decoration: none; 
 } 
+.nav-element {
+    color: #fff;
+    font-weight:700;
+    font-size:1.2em;
+}
 /* trying to change the color of navbar links */
 .signout {
     color: rgb(243, 118, 87) ;
