@@ -9,6 +9,7 @@ const User = () => {
 
     const [user, setUser] = useState("");
     const [created, setCreated] = useState([]);
+    const [subscribed, setSubscribed] = useState([]);
 
     console.log(created);
 

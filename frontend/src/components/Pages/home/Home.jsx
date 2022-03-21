@@ -61,7 +61,7 @@ const Home = () => {
 
   return (
     <section>
-      <h1>LET'S PARTY</h1>
+      <h1>EVENTLIT</h1>
 
 
       <div className="container-xl">
