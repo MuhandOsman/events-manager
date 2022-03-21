@@ -12,6 +12,8 @@ import {
 } from "reactstrap";
 import img from "../../assets/EVENTS_small.png"
 
+import {ImFire} from "react-icons/im"
+
 import MyContext from "../../context/MyContext"
 import "./NavBar.css";
 
@@ -37,7 +39,7 @@ const NavBar = () => {
       <div>
         <Navbar className="navbar" expand="md" fixed="top" >
           <NavbarBrand href="">
-            <img src={img} alt="" />
+            <ImFire size="50" color="red"/>
           </NavbarBrand>
           <NavbarToggler
             onClick={function toggler() {
@@ -46,14 +48,14 @@ const NavBar = () => {
           />
           <Collapse navbar isOpen={open}>
             <Nav className="me-auto flex-nav" navbar>
-              <NavItem className="nav-element">
-                <NavLink href="/">Events Page</NavLink>
+              <NavItem>
+                <NavLink  href="/">Events Page</NavLink>
               </NavItem>
-              <NavItem className="nav-element">
-                <NavLink href="/about/">About us</NavLink>
+              <NavItem>
+                <NavLink  href="/about/">About us</NavLink>
               </NavItem>
-              <NavItem className="nav-element">
-                <NavLink href="/form/">Login/Register</NavLink>
+              <NavItem>
+                <NavLink  href="/form/">Login/Register</NavLink>
               </NavItem>
               {/* <UncontrolledDropdown inNavbar nav>
                 <DropdownToggle caret nav>
