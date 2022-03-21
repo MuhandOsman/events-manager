@@ -4,7 +4,7 @@
     background-size: cover;
     background-color: rgba(48, 126, 190, 0.897);
     border-bottom: 2px solid black;
-    height:100px
+    height:100px;
 }
 
 a:visited {
@@ -13,12 +13,12 @@ a:visited {
  
 a {
     text-decoration: none;
-   background-color: aliceblue;
+   
    
 } 
 /* trying to change the color of navbar links */
 .signout {
-    color: rgb(177, 190, 188) ;
+    color: rgb(243, 118, 87) ;
     font-weight:700;
     padding-left:0 ;
     cursor: pointer;

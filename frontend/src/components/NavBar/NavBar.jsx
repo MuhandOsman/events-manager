@@ -33,7 +33,7 @@ const NavBar = () => {
   return (
     <>
       <div>
-        <Navbar className="navbar" expand="md" fixed="top" light>
+        <Navbar className="navbar" expand="md" fixed="top" dark>
           <NavbarBrand href="/">LOGO</NavbarBrand>
           <NavbarToggler
             onClick={function toggler() {
