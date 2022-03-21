@@ -2,7 +2,7 @@
     background-image:  url(../backGroundImages/crowd-concert-27664953.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: rgba(48, 126, 190, 0.897);
+    /* background-color: rgba(48, 126, 190, 0.897); */
     border-bottom: 2px solid black;
     height:100px;
 }

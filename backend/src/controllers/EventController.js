@@ -69,8 +69,7 @@ module.exports = {
                 const { filename } = req.file;
                 parsedForm.thumbnail = filename
             }
-            console.log( "userid",userId);
-            console.log("eventid",currentEvent.user.toString());
+            
 
             if (userId === currentEvent.user.toString()) {
                 const updatedEvent = await Event.findOneAndUpdate({_id:eventId} , parsedForm , {new: true}); // new => will return the updated info not just update database
@@ -111,5 +110,27 @@ module.exports = {
         } catch (error) {
             console.error(error.message);
         }
+    } ,
+    async getEventByUserId(req, res) {
+        try {
+            const {userId} = req.params
+            //const userId = req.user.userId;
+        const createdEvents = await Event.find({user :userId})
+        res.send(createdEvents)
+        } catch (error) {
+            console.log(error);
+        }
+        
+    },
+    async getRegistrationUserId(req, res) {
+        try {
+            const {userId} = req.params
+            //const userId = req.user.userId;
+        const createdEvents = await Event.find({subscribers:{$elemMatch :{$eq:userId}}})
+        res.send(createdEvents)
+        } catch (error) {
+            console.log(error);
+        }
+        
     }
 }

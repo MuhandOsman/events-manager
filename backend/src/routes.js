@@ -29,6 +29,8 @@ routes.get('/event/:eventId', DashboardController.getEventById)
 routes.post('/event', upload.single("thumbnail"),authentication , EventController.createEvent)    // to create event
 routes.delete('/event/:eventId',authentication, EventController.delete)                          // to delete   
 routes.patch("/event/:eventId" ,upload.single("thumbnail"),authentication, EventController.updateEvent)    //to update event
+routes.get("/eventbyuserid/:userId", EventController.getEventByUserId )
+routes.get("/subscribeByuserid/:userId", EventController.getRegistrationUserId)
 
 
 //Subscription-Registration Routes

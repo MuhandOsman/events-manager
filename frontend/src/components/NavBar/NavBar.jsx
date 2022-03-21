@@ -10,6 +10,7 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
+import img from "../../assets/EVENTS_small.png"
 
 import MyContext from "../../context/MyContext"
 import "./NavBar.css";
@@ -34,7 +35,9 @@ const NavBar = () => {
     <>
       <div>
         <Navbar className="navbar" expand="md" fixed="top" dark>
-          <NavbarBrand href="/">LOGO</NavbarBrand>
+          <NavbarBrand href="">
+            <img src={img} alt="" />
+          </NavbarBrand>
           <NavbarToggler
             onClick={function toggler() {
               setOpen(!open);

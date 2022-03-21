@@ -84,9 +84,9 @@ const Home = () => {
             onChange={(e) => setSelectInput(e.target.value)}
           >
             <option value="All">All</option>
-            <option value="Music">Music</option>
-            <option value="sport">sport</option>
-            <option value="Family">Family</option>
+            <option value="music">Music</option>
+            <option value="sport">Sport</option>
+            <option value="family">Family</option>
           </Input>
           <Button onClick={filterByKeyWords}>search</Button>
         </div>

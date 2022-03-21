@@ -7,7 +7,10 @@ const User = () => {
     const store = useContext(MyContext);
     const {storedId,loading, setLoading} = store;
 
-    const [user, setUser,] = useState("");
+    const [user, setUser] = useState("");
+    const [created, setCreated] = useState([]);
+
+    console.log(created);
 
     useEffect(()=>{
         const getUser = async() => {
@@ -17,6 +20,11 @@ const User = () => {
             setUser(userData);
             setLoading(false);
 
+            const response2 = await fetch(`/api/eventbyuserid/${storedId.userId}`)
+            const createdEvents = await response2.json();
+            setCreated(createdEvents)
+
+
             } catch (error) {
                 console.log(error);
             }
@@ -24,6 +32,10 @@ const User = () => {
         getUser()
         
     } , [storedId,setLoading])
+
+
+
+
 
     if (loading) return ( "loading...")
 
@@ -47,15 +59,14 @@ const User = () => {
                  <li>4</li>    
                 </ul>    
             </div>
-            <div className="created">
+            { created.length > 0 && <div className="created">
                 <h4>Events you created</h4>  
                 <ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>    
+                    {created.map(item => 
+                        <li key={item.title}>{item.title}</li>
+                    )}    
                 </ul>  
-            </div>    
+            </div> }   
         </div>
     </section>
   )
