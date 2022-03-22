@@ -6,13 +6,12 @@ import {
   Nav,
   Navbar,
   NavbarBrand,
-  NavbarToggler,
   NavItem,
   NavLink,
 } from "reactstrap";
-import img from "../../assets/EVENTS_small.png"
 
 import {ImFire} from "react-icons/im"
+import {CgMenuOreos} from "react-icons/cg"
 
 import MyContext from "../../context/MyContext"
 import "./NavBar.css";
@@ -38,23 +37,21 @@ const NavBar = () => {
     <>
       <div>
         <Navbar className="navbar" expand="md" fixed="top" >
-          <NavbarBrand href="">
+          <NavbarBrand href="/">
             <ImFire size="50" color="red"/>
           </NavbarBrand>
-          <NavbarToggler
-            onClick={function toggler() {
+          <span className="nav-toggler" onClick={function toggler() {
               setOpen(!open);
-            }}
-          />
-          <Collapse navbar isOpen={open}>
-            <Nav className="me-auto flex-nav" navbar>
-              <NavItem>
+            }}><CgMenuOreos size="40"/></span>
+          <Collapse navbar className="collapse" isOpen={open} >
+            <Nav className="me-auto flex-nav"  navbar >
+              <NavItem className="nav-element">
                 <NavLink  href="/">Events Page</NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink  href="/about/">About us</NavLink>
+              <NavItem >
+                <NavLink className="nav-element" href="/about/">About us</NavLink>
               </NavItem>
-              <NavItem>
+              <NavItem className="nav-element">
                 <NavLink  href="/form/">Login/Register</NavLink>
               </NavItem>
               {/* <UncontrolledDropdown inNavbar nav>

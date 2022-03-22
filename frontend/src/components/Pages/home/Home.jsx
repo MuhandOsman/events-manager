@@ -99,7 +99,8 @@ const Home = () => {
                   <CardImg
                     title="click for details"
                     alt="Card image cap"
-                    src={`${item.thumbnail}`}
+                    className="card-img"
+                    src={item.thumbnail}
                     top
                     width="100%"
                   />

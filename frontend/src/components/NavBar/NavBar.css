@@ -7,44 +7,49 @@
     height:100px;
 }
 
-
-
-.nav-link {
-    font-weight:700;
-
-
+.collapse {
+    background-color: rgba(168, 164, 164, 0.63);
 }
-
 
 a:visited {
     color: aliceblue;
 }
  
-
 a {
-    
     text-decoration: none;
-   
-   
 } 
 .nav-element {
     color: #fff;
-    font-weight:700;
-    font-size:1.2em;
+    font-weight:600;
+    font-size:1.1em;
 }
 /* trying to change the color of navbar links */
 .signout {
-    color: rgb(243, 118, 87) ;
+    color: rgb(243, 87, 87) ;
     font-weight:700;
+    font-size: 1.1em;
     padding-left:0 ;
     cursor: pointer;
 }
-
+.nav-toggler{
+    display:none;
+} 
 
 .flex-nav:last-child {
     position: absolute;
     right:50px;
     
+}
+.nav-toggler {
+    color: #fff;
+}
+@media (max-width:767px) {
+    .nav-toggler{
+        display:block;
+    }  
+    .nav-element , .signout{
+        text-align:center;
+    }
 }
 
 
