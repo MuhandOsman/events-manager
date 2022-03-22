@@ -35,7 +35,7 @@ const MyProvider = (props) => {
             console.error(error);
         }
     },[login])
-
+    console.log(events);
     const postForm = async (url = '', data = {}) => {
         try {
             const sendReq = await fetch(url , {method:"POST" , 

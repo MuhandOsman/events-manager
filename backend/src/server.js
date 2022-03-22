@@ -16,7 +16,7 @@ app.use(makeCookieParser());
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
-app.use(express.static("files"))
+app.use("/files",express.static("files"))
 app.use(require('./middlewares/logger'))
 app.use("/api" , routes)
 

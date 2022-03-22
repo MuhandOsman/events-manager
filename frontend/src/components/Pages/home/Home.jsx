@@ -5,6 +5,8 @@ import { RiDeleteBinFill } from "react-icons/ri";
 import { ImSpinner } from "react-icons/im";
 import { BsPersonCheck } from "react-icons/bs";
 import { GiGlassHeart } from "react-icons/gi";
+import { BsSearch } from "react-icons/bs";
+
 import {
   Button,
   Card,
@@ -61,13 +63,14 @@ const Home = () => {
 
   return (
     <section>
-      <h1>EVENTLIT</h1>
+      {/* <h1>EVENTLIT</h1> */}
 
 
       <div className="container-xl">
         <div className="filter">
-          <span>filter</span>
+          
           <Input
+            placeholder="Filter"
             bsSize="sm"
             type="text"
             name="category"
@@ -90,7 +93,8 @@ const Home = () => {
             <option value="culture">Culture</option>
             <option value="commerce">Commerce</option>
           </Input>
-          <Button onClick={filterByKeyWords}>search</Button>
+          <BsSearch size="28" className="search-lens" onClick={filterByKeyWords}/>
+          
         </div>
         {events &&
           rendered.map((item) => (

@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap');
+
+
 .navbar {
     /* background-image:  url(../backGroundImages/crowd-concert-27664953.jpeg);
     background-repeat: no-repeat;
@@ -8,7 +11,8 @@
 }
 
 .collapse {
-    background-color: rgba(168, 164, 164, 0.63);
+    
+    padding-left: 30px;
 }
 
 a:visited {
@@ -50,6 +54,15 @@ a {
     .nav-element , .signout{
         text-align:center;
     }
+    .collapse {
+        background-color: rgba(168, 164, 164, 0.63);
+    }
 }
 
-
+.logo-span {
+    position: absolute;
+    left: 5px;
+    top: 37px;
+    font-family: 'Bungee Inline', cursive;
+    font-size:0.9em;
+}

@@ -45,7 +45,7 @@ const User = () => {
     },[storedId.userId])
 
 
-
+    
     if (loading) return ( "loading...")
 
   return (
@@ -63,10 +63,11 @@ const User = () => {
                 <h4>Events you subscribed to</h4>
                 <ul>
                  {subscribed.map(element => 
+                    
                     <li key={element.title}>
                         <p>{element.title}</p>
                         <p >{element.price}</p>
-                        {/* <img src={`${element.thumbnail}`}alt="" /> */}
+                        <img src={element.thumbnail_url} alt="" />
                     </li> ) }    
                 </ul>    
             </div>}

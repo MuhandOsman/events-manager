@@ -38,7 +38,7 @@ const NavBar = () => {
       <div>
         <Navbar className="navbar" expand="md" fixed="top" >
           <NavbarBrand href="/">
-            <ImFire size="50" color="red"/>
+            <ImFire size="70" color="red"/> <span className="logo-span" >EVENTLIT</span>
           </NavbarBrand>
           <span className="nav-toggler" onClick={function toggler() {
               setOpen(!open);
