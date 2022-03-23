@@ -1,16 +1,38 @@
 import React, { useContext, useEffect, useState } from 'react'
 import MyContext from '../../../context/MyContext';
 import "./user.css";
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import { BsCloudUploadFill } from "react-icons/bs"
+import axios from 'axios';
 
-const User = () => {
+const UsersProfile = () => {
 
     const store = useContext(MyContext);
     const {storedId,loading, setLoading} = store;
 
+    const [photo,setPhoto ] = useState({})
     const [user, setUser] = useState("");
     const [created, setCreated] = useState([]);
     const [subscribed, setSubscribed] = useState([]);
+
+    useEffect(()=> {
+        const data = new FormData();
+        data.append("upload", photo);
+        try {
+            if (photo.name){axios.post("/api/userPhoto", data , {
+                headers: { "Content-Type": "multipart/form-data"}
+              })
+              .then(resp => {
+                console.log(resp)})}
+        } catch (error) {
+            console.log(error);
+        }
+       
+    }, [photo])
+
+
+
+
 
     useEffect(()=>{
         const getUser = async() => {
@@ -53,7 +75,13 @@ const User = () => {
     <section className="profile">
         <h3 className="title titles">welcome {user.firstName}</h3>
         <div className="avatar">
-            <div className="userImg"></div>
+            <div className="userImg">
+                <img src={user.avatar_url} alt="user-img" className="avatar-photo" />
+                <label htmlFor="upload-img"><BsCloudUploadFill size="32" color="white" /> <input type="file" name="upload" id="upload-img" onChange={ (e)=> { 
+              const file = e.target.files[0]
+              setPhoto(file)}} /></label>
+                
+            </div>
             <div className="userInfo">
                 <p>{`${user.firstName} ${user.lastName}`}</p>
                 <p>{user.email}</p>    
@@ -100,4 +128,4 @@ const User = () => {
   )
 }
 
-export default User
+export default UsersProfile

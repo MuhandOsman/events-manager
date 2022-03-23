@@ -9,7 +9,7 @@ const NewEvent = () => {
   const navigate = useNavigate();
     
     const [file , setFile] = useState({})
-
+    
     const [eventForm, setEventForm] = useState({title:"" , category:"", price:"", date:"", description:"",location:"" })
 
     const handleEventForm = (e) => {
@@ -21,7 +21,7 @@ const NewEvent = () => {
         const data = new FormData();
         data.append("eventForm", str);
         data.append("thumbnail", file);
-        console.log("form :",eventForm);
+        
         try {
             axios.post("/api/event", data , {
               headers: { "Content-Type": "multipart/form-data"}
@@ -92,7 +92,6 @@ const NewEvent = () => {
             <Label for="exampleFile">Image</Label>
             <Input id="exampleFile" name="thumbnail" type="file" onChange={ (e)=> { 
               const file = e.target.files[0]
-              console.log("img", file );
               setFile(file)}} />
             <FormText>upload an image (jpeg,jpg,png,gif)</FormText>
           </FormGroup>

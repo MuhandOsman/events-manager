@@ -25,11 +25,27 @@ h3 {
     width: 250px;
     grid-area: avatar;
 }
+.avatar-photo {
+    display:block;
+    width: 80%;
+    margin: 0 auto;
+    clip-path:ellipse(28% 40% at 50% 50%);
+}
 
 .userImg{
     height:250px;
-    clip-path:ellipse(28% 40% at 50% 50%);
-    background-image:  url('http://placekitten.com/200/300')
+    /* clip-path:ellipse(28% 40% at 50% 50%); */
+    position: relative;
+    background-image:  url('../../../../../backend/files/avatar.png');
+    background-size: contain;
+}
+.userImg label {
+    position: absolute;
+    bottom: 30px;
+    left: 45%;
+}
+.userImg label input {
+    display: none;
 }
 
 .userInfo{
@@ -103,7 +119,7 @@ h3 {
         height: auto;
     }
     .img-sub {
-        margin: 0 auto;
+        margin: 10px auto;
         height: 100px;
     }
 }

@@ -13,7 +13,7 @@ const signToken = (payload) => {
 const verifyToken = (token) => {
     if (!token) {
         let error = new Error('you need to login');
-        console.error('error: ', error.message);
+        
         return {valid: false, error: error};
     }
 

@@ -60,9 +60,7 @@ module.exports = {
         //const { title, description, price , category, date,location } = parsedForm; => we may not need that to update only a part
         const { eventId} = req.params;
         const userId = res.user.userId
-        /* const { filename } = req.file;
-        parsedForm.thumbnail = filename */
-        
+                
         try {
             const currentEvent = await Event.findById(eventId);
             if(req.file) {
@@ -86,17 +84,17 @@ module.exports = {
     async addSubscriber (req, res) {
         
         const { eventId} = req.params;
-        //const userId = req.headers.user_id
+        
         try {
             
             const currentEvent = await Event.findById(eventId);
             if ( !currentEvent) { 
             res.status(404).json("Event not found ")
             }
+            const userId = res.user.userId || null;
 
-            const userId = res.user.userId
             if (!userId ) { 
-               return res.status(400).json("please log in");
+                return res.status(400).json("please log in");
             } 
             if (currentEvent.subscribers.includes(userId)) { // I want here to stop user from registering twice ...
                return res.status(400).json({ message : "you are already registered !"})
@@ -125,6 +123,7 @@ module.exports = {
     async getRegistrationUserId(req, res) {
         try {
             const {userId} = req.params
+            
             //const userId = req.user.userId;
         const createdEvents = await Event.find({subscribers:{$elemMatch :{$eq:userId}}})
         res.send(createdEvents)

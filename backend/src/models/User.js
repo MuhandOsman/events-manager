@@ -19,7 +19,14 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    avatar: String,
+    
+},{
+    toJSON: {
+        virtuals: true
+    }
 })
+UserSchema.virtual("avatar_url").get(function () { return `http://localhost:8000/files/${this.avatar}` })
 
 module.exports=mongoose.model('User', UserSchema)
 

@@ -6,8 +6,8 @@ const EventController = require('./controllers/EventController')
 const DashboardController = require('./controllers/DashboardController')
 const LoginController = require('./controllers/LoginController')
 const RegistrationController = require('./controllers/RegistrationController')
-const ApprovalController = require('./controllers/ApprovalController')
-const RejectionController = require('./controllers/RejectionController')
+/* const ApprovalController = require('./controllers/ApprovalController')
+const RejectionController = require('./controllers/RejectionController') */
 const uploadConfig = require('./config/upload')
 
 const authentication = require('./middlewares/auth')
@@ -18,7 +18,7 @@ const upload = multer(uploadConfig);
 
 //Login Routes
 routes.post('/login', LoginController.store)
-routes.delete("/signout" , LoginController.signout)                   // need to be Done(done)
+routes.delete("/signout" , LoginController.signout)                   
 
 //Dashboard Routes
 routes.get('/dashboard/:sport', DashboardController.getAllEvents)      // if we gonna search by category
@@ -43,6 +43,7 @@ routes.post('/registration/:registration_id/rejections', RejectionController.rej
 //User Routes
 routes.post('/user/register', UserController.createUser)     // to register new user
 routes.get('/user/:userId', UserController.getUserById)
+routes.post("/userPhoto",upload.single("upload"),authentication, UserController.uploadPhoto )
 
 //API Check Route
 routes.get('/status', (req, res) => {

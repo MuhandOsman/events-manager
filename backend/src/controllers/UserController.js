@@ -46,6 +46,19 @@ module.exports = {
 				'User ID does not exist, do you want to register instead?',
 				}) 
 		}
+	},
+	async uploadPhoto(req, res) {
+		const { filename } = req.file;
+		const userId = res.user.userId
+		
+		try {
+			const updateUser = await User.findById(userId)
+			updateUser.avatar = filename
+			const newUser = await updateUser.save()
+			res.status(200).json(newUser)
+		} catch (error) {
+			console.error(error);	
+		}
 	}
 }
 

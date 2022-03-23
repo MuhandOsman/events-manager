@@ -26,6 +26,7 @@ const Home = () => {
   const context = useContext(MyContext);
   const {
     events,
+    login,
     storedId,
     openModal,
     openUpdate,
@@ -153,7 +154,7 @@ const Home = () => {
                         <UpdateModal />
                       </div>
                     </div>
-                  ) : (
+                  ) : ( login &&
                     <GiGlassHeart
                       size={32}
                       title="Subscribe"
