@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import MyContext from '../../../context/MyContext';
 import "./user.css";
+import {Link} from "react-router-dom"
 
 const User = () => {
 
@@ -50,7 +51,7 @@ const User = () => {
 
   return (
     <section className="profile">
-        <h3 className="title">welcome {user.firstName}</h3>
+        <h3 className="title titles">welcome {user.firstName}</h3>
         <div className="avatar">
             <div className="userImg"></div>
             <div className="userInfo">
@@ -60,24 +61,39 @@ const User = () => {
         </div>
         <div className="eventContainer">
             {subscribed.length > 0 &&  <div className="subscribed">
-                <h4>Events you subscribed to</h4>
-                <ul>
+                <h4 className="titles">Events you subscribed to</h4>
+                <div>
                  {subscribed.map(element => 
                     
-                    <li key={element.title}>
-                        <p>{element.title}</p>
-                        <p >{element.price}</p>
-                        <img src={element.thumbnail_url} alt="" />
-                    </li> ) }    
-                </ul>    
+                    <div key={element.title} className="sub-container" >
+                        
+                        <Link to="/event-detail" state={element}>
+                                <div className="img-sub" style={{backgroundImage:`url(${element.thumbnail_url})`}}></div>
+                            </Link>
+                        <div className="sub-data">
+                            <p >{element.title}</p>
+                            <p >Price: {element.price}</p>
+                        </div>
+                        
+                    </div> ) }    
+                </div>    
             </div>}
             { created.length > 0 && <div className="created">
-                <h4>Events you created</h4>  
-                <ul>
+                <h4 className="titles">Events you created</h4>  
+                <div>
                     {created.map(item => 
-                        <li key={item.title}>{item.title}</li>
+                        <div key={item.title} className="sub-container">
+                            <Link to="/event-detail" state={item}>
+                                <div className="img-sub" style={{backgroundImage:`url(${item.thumbnail_url})`}}></div>
+                            </Link>
+                            
+                            <div className="sub-data">
+                            <p >{item.title}</p>
+                            <p >Price: {item.price}</p>
+                        </div>
+                        </div>
                     )}    
-                </ul>  
+                </div>  
             </div> }   
         </div>
     </section>

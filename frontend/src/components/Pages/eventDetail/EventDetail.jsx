@@ -1,56 +1,77 @@
-import { useEffect, useState } from 'react'
-import {useLocation} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
-import "./eventDetail.css"
+import "./eventDetail.css";
 
 const EventDetail = () => {
-    const location = useLocation();
-    const item = location.state;
-    const [promoter , setPromoter] = useState("")
-    useEffect(()=>{
-      const getUser = async() => {
-          try {
-              const response = await fetch(`/api/user/${item.user}`)
-          const userData = await response.json();
-          setPromoter(userData);
-          
-
-          } catch (error) {
-              console.log(error);
-          }
+  const location = useLocation();
+  const item = location.state;
+  const [promoter, setPromoter] = useState("");
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const response = await fetch(`/api/user/${item.user}`);
+        const userData = await response.json();
+        setPromoter(userData);
+      } catch (error) {
+        console.log(error);
       }
-      getUser()
-      
-  } , [])
-  
-    
+    };
+    getUser();
+  }, [item.user]);
 
   return (
     <section>
-        <div className="event-container">
-            <div className="event-details">
-                <h3>{item.title} </h3>
-                <p>from {`${promoter.firstName} ${promoter.lastName}` }</p>
-                <p>Ticket price:{item.price} </p>
-                <h5> about this event: <br/>{item.description} 
-                </h5>
-                
+      <div className="event-container">
+        <div className="event-details">
+          <p className="date-location">
+            {" "}
+            <span>
+              {item.date
+                .slice(0, 16)
+                .split(".")
+                .slice(0, 1)
+                .join("")
+                .split("T")
+                .join(" ")}
+            </span>{" "}
+            <span>{item.location}</span>{" "}
+          </p>
 
-                <p className="date-location">  <span>{item.date
-                        .slice(0, 16)
-                        .split(".")
-                        .slice(0, 1)
-                        .join("")
-                        .split("T")
-                        .join(" ")}</span> <span>{item.location}</span> </p>
-            </div>
-            <div className="event-img">
-                <img src={item.thumbnail} alt="event-img" />
-            </div>
+          <h5>
+            {" "}
+            about this event: <br /> <br /> {item.description} <br /> This event
+            will be a phone-free experience. Use of cellphones, smart watches,
+            smart accessories, cameras or recording devices will not be
+            permitted in the performance space. Upon arrival at the venue, all
+            phones and smart watches will be secured in Your cases that will be
+            opened at the end of the event. Guests maintain possession of their
+            phones at all times, and can access their phones throughout the show
+            at designated Phone Use Areas in the venue. All phones will be
+            re-secured in Yondr cases before returning to the performance space.
+          </h5>
+
+          <p>
+            Ticket price:{item.price} <br />
+            subscribe now and reserve your place <br />
+            Tickets at the door
+          </p>
         </div>
-
+        <div className="event-right">
+          <div
+            className="event-img"
+            style={{ backgroundImage: `url(${item.thumbnail_url})` }}
+          ></div>
+          <div>
+            <h3>{item.title} </h3>
+            <p className="organizer">
+              from {`${promoter.firstName} ${promoter.lastName}`}
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
-  )
-}
+  );
+};
 
-export default EventDetail
+export default EventDetail;

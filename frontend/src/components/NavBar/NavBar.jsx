@@ -49,24 +49,11 @@ const NavBar = () => {
                 <NavLink  href="/">Events Page</NavLink>
               </NavItem>
               <NavItem >
-                <NavLink className="nav-element" href="/about/">About us</NavLink>
+                <NavLink className="nav-element" href="/about/">About</NavLink>
               </NavItem>
               <NavItem className="nav-element">
                 <NavLink  href="/form/">Login/Register</NavLink>
               </NavItem>
-              {/* <UncontrolledDropdown inNavbar nav>
-                <DropdownToggle caret nav>
-                  Login/Register
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem href="/form/">Login</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem onClick={() => {
-              setOpen(true);
-              }}>Register</DropdownItem>
-                  <DropdownItem>Reset</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown> */}
               {storedId && <NavItem className="nav-element">
                 <NavLink href="/create-event/">Create Event</NavLink>
               </NavItem>}

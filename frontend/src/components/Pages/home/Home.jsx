@@ -104,13 +104,13 @@ const Home = () => {
                     title="click for details"
                     alt="Card image cap"
                     className="card-img"
-                    src={item.thumbnail}
+                    src={item.thumbnail_url}
                     top
                     width="100%"
                   />
                 </Link>
-                <CardBody className="card-body">
-                  <CardTitle tag="h5" className="text-light">
+                <CardBody className="card-body" tag="div">
+                  <CardTitle tag="h4" className="text-light">
                     {item.title} <br />
                     <small>
                       {item.date
@@ -122,10 +122,10 @@ const Home = () => {
                         .join(" ")}
                     </small>
                   </CardTitle>
-                  <CardSubtitle className="mb-2 text-muted" tag="h6">
+                  <CardSubtitle className="mb-2 text-light" tag="h6"> Category: 
                     {item.category}
                   </CardSubtitle>
-                  <CardText className="text-light">
+                  <CardText className="text-light" tag="h6">
                     Entry price :{item.price}
                   </CardText>
 

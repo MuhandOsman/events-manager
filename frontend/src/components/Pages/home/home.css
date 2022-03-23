@@ -8,7 +8,8 @@
 .event-card {
     flex-direction:row;
     min-width: 250px;
-    width: 100%;
+    width: 90%;
+    justify-content: space-around;
     margin:10px 2px;
     padding: 20px;
     padding-bottom: none;
@@ -36,10 +37,14 @@
 
 
 .card-body {
-    display: flex;
-    flex-direction:column;
+    
+    display: flex; 
+    flex-direction:column; 
     justify-content: space-between;
     padding-bottom: 0;
+    max-width: 600px;
+    margin-left: auto;
+    
 }
 
 .loading {
@@ -106,5 +111,13 @@
     }
     .card-img {
         max-height:none;
+        
+    }
+    .event-card a {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .card-body {
+        width: 100%;
     }
 }
