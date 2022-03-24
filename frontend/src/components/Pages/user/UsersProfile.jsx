@@ -11,7 +11,8 @@ const UsersProfile = () => {
     const {storedId,loading, setLoading} = store;
 
     const [photo,setPhoto ] = useState({})
-    const [user, setUser] = useState("");
+    const [avatar,setAvatar ] = useState("")
+    const [user, setUser] = useState({});
     const [created, setCreated] = useState([]);
     const [subscribed, setSubscribed] = useState([]);
 
@@ -23,16 +24,12 @@ const UsersProfile = () => {
                 headers: { "Content-Type": "multipart/form-data"}
               })
               .then(resp => {
-                console.log(resp)})}
+                setAvatar(resp.data.avatar_url)})}
         } catch (error) {
             console.log(error);
         }
        
     }, [photo])
-
-
-
-
 
     useEffect(()=>{
         const getUser = async() => {
@@ -66,9 +63,7 @@ const UsersProfile = () => {
         }
         getSubscribed()
     },[storedId.userId])
-
-
-    
+      
     if (loading) return ( "loading...")
 
   return (
@@ -76,8 +71,8 @@ const UsersProfile = () => {
         <h3 className="title titles">welcome {user.firstName}</h3>
         <div className="avatar">
             <div className="userImg">
-                <img src={user.avatar_url} alt="user-img" className="avatar-photo" />
-                <label htmlFor="upload-img"><BsCloudUploadFill size="32" color="white" /> <input type="file" name="upload" id="upload-img" onChange={ (e)=> { 
+                <img src={avatar ||user.avatar_url} alt="user-img" className="avatar-photo" />
+                <label htmlFor="upload-img"><BsCloudUploadFill size="32"style={{color:"white", border:"2px grey solid", borderRadius:"20px"}} /><input type="file" name="upload" id="upload-img" onChange={ (e)=> { 
               const file = e.target.files[0]
               setPhoto(file)}} /></label>
                 
