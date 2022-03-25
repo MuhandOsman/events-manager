@@ -49,7 +49,10 @@
 
 .loading {
     animation: 1s loadSpinner infinite linear;
-
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 @keyframes loadSpinner {
     0% { transform: rotateZ(0)}

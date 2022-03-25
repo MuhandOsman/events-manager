@@ -1,14 +1,15 @@
-import React from 'react'
-import  {AiFillGithub}  from "react-icons/ai";
-import { AiOutlineInstagram } from "react-icons/ai";
+import  {AiOutlineMail}  from "react-icons/ai";
+import { AiFillLinkedin } from "react-icons/ai";
 
 const Footer = () => {
   return (
     <footer>
 
       <div className="footer-icons">
-        <AiFillGithub />
-        <AiOutlineInstagram />
+        <a  rel="noreferrer" href="https://linkedin.com/in/muhanadosman" target="_blank"  className="linked-in"><AiFillLinkedin /></a>
+        <a href="mailto:mo1981ot@gmail.com" className="mail"><AiOutlineMail color="white" /></a>
+        
+        
       </div>
       <div className="copyright">Written with React by Event Team ©2022</div>
     </footer>

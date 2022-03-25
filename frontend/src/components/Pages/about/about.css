@@ -2,4 +2,93 @@
     width: 1000px;
     margin: 0 auto;
     height: 50vh;
+    padding-top: 20px;
+    position: relative;
+}
+
+.joinUs {
+    color: red
+}
+
+@keyframes enter-bottom {
+    from {top:50% ; }
+    to {top:0; }
+}
+@keyframes enter-right {
+    from {right:50% ; }
+    to {right:0; }
+}
+@keyframes enter-left {
+    from {left:50%; }
+    to {left:0; }
+}
+
+@keyframes enter-top {
+    from {bottom:50% ; }
+    to {bottom:0; }
+}
+
+.ani-1{
+    animation: enter-bottom 2s ease-out 0.4s 1 normal ;
+    position: relative;
+}
+.ani-2 {
+    animation: enter-right 2s ease-out 0.4s 1 normal ;
+    position: relative;
+}
+.ani-3 {
+    animation: enter-left 2s ease-out 0.4s 1 normal ;
+    position: relative;
+}
+
+.ani-4 {
+    animation: enter-top 2s ease-out 0.4s 1 normal ;
+    position: relative;
+}
+
+.contact-me {
+    padding:20px;
+    padding-top:100px;
+    width: 80%;
+    margin:0 auto;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    animation: color-change 2s linear infinite both;
+}
+
+@keyframes upUp {
+    from {bottom :600px; transform:rotate(0deg)}
+    to {bottom:0; transform:rotate(360deg)}
+}
+@keyframes upLeft {
+    from {bottom :500px;right:1100px; transform:rotate(0deg)}
+    to {bottom:0;right:0; transform:rotate(360deg)}
+}
+@keyframes upRight {
+    from {bottom :500px;left:1100px; transform:rotate(0deg)}
+    to {bottom:0;left:0; transform:rotate(360deg)}
+}
+
+
+
+
+.contact1 {
+    animation: upRight 2s ease-in-out 0.4s 1 normal;
+    position: relative;
+}
+
+.contact2 {
+    animation: upUp 2s ease-in-out 0.4s 1 normal;
+    position: relative;
+}
+.contact3 {
+    animation: upLeft 2s ease-in-out 0.4s 1 normal;
+    position: relative;
+}
+
+@keyframes color-change {
+    0% {color:green}
+    50% {color:black}
+    100% {color:green}
 }

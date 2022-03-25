@@ -165,7 +165,7 @@ const Home = () => {
                       </div>
                     </div>
                   ) : (
-                    login && (
+                    /* login &&  */(
                       <GiGlassHeart
                         size={32}
                         title="Subscribe"
@@ -191,7 +191,7 @@ const Home = () => {
           {error && <div className="show-error">{error}</div>}
         </div>
       ) : (
-        <ImSpinner className="loading" size={50} style={{ fill: "red" }} />
+        <ImSpinner className="loading" size={80} style={{ fill: "red" }} />
       )}
     </section>
   );

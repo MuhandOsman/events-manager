@@ -26,7 +26,7 @@ const EventDetail = () => {
         <div className="event-details">
           <p className="date-location">
             {" "}
-            <span>
+            <span>Date: 
               {item.date
                 .slice(0, 16)
                 .split(".")
@@ -35,12 +35,12 @@ const EventDetail = () => {
                 .split("T")
                 .join(" ")}
             </span>{" "}
-            <span>{item.location}</span>{" "}
+            <span>Location: {item.location}</span>{" "}
           </p>
 
           <h5>
             {" "}
-            about this event: <br /> <br /> {item.description} <br /> This event
+            About this event: <br /> <br /> {item.description} <br /> This event
             will be a phone-free experience. Use of cellphones, smart watches,
             smart accessories, cameras or recording devices will not be
             permitted in the performance space. Upon arrival at the venue, all
