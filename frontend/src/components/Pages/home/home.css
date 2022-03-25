@@ -120,4 +120,7 @@
     .card-body {
         width: 100%;
     }
+    .filter-input {
+        width: 40%;
+    }
 }

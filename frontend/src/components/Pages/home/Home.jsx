@@ -33,72 +33,80 @@ const Home = () => {
     loading,
     subscribe,
     error,
+    setEvents,
   } = context;
 
-  const [selectInput, setSelectInput] = useState(null)
-  const [nameFilter, setNameFilter] = useState(null)
-  const [rendered , setRendered] = useState(events)
-  
+  const [selectInput, setSelectInput] = useState("All");
+  const [nameFilter, setNameFilter] = useState("");
+  const [rendered, setRendered] = useState([]);
 
-  const filterByKeyWords = (e) => {
-    
-    if(!nameFilter) { return(
-      selectInput !== "All"
-      ? setRendered(events.filter((event) => event.category === selectInput))
-      : setRendered(events))
-    }else if(selectInput=== "All" ) { return(
-      setRendered(events.filter(event => (event.description.includes(nameFilter) || event.title.includes(nameFilter))))
-      )
+  const filterByKeyWords = () => {
+    if (nameFilter === "") {
+      return selectInput !== "All"
+        ? setRendered(events.filter((event) => event.category === selectInput))
+        : setRendered(events);
+    } else if (selectInput === "All") {
+      return setRendered(
+        events.filter(
+          (event) =>
+            event.description.includes(nameFilter) ||
+            event.title.includes(nameFilter)
+        )
+      );
     } else {
-      const byCategory = events.filter((event) => event.category === selectInput)
-      const by2filters = byCategory.filter(event => (event.description.includes(nameFilter) || event.title.includes(nameFilter)))
-      setRendered(by2filters)
-      console.log("2filters",by2filters);
+      const byCategory = events.filter(
+        (event) => event.category === selectInput
+      );
+      const by2filters = byCategory.filter(
+        (event) =>
+          event.description.includes(nameFilter) ||
+          event.title.includes(nameFilter)
+      );
+      setEvents(by2filters);
+      console.log("2filters", by2filters);
     }
-    
   };
 
-
-  if (loading)
-    return <ImSpinner className="loading" size={50} style={{ fill: "red" }} />;
-
+  console.log("rendered", rendered);
   return (
     <section>
       {/* <h1>EVENTLIT</h1> */}
 
-
-      <div className="container-xl">
-        <div className="filter">
-          
-          <Input
-            placeholder="Filter"
-            bsSize="sm"
-            type="text"
-            name="category"
-            className="filter-input"
-            
-            onChange={(e) =>setNameFilter(e.target.value)}
-          />
-          <Input
-            className="filter-input select-input"
-            type="select"
-            bsSize="sm"
-            name="category"
-            id="name"
-            onChange={(e) => setSelectInput(e.target.value)}
-          >
-            <option value="All">All</option>
-            <option value="music">Music</option>
-            <option value="sport">Sport</option>
-            <option value="family">Family</option>
-            <option value="culture">Culture</option>
-            <option value="commerce">Commerce</option>
-          </Input>
-          <BsSearch size="28" className="search-lens" onClick={filterByKeyWords}/>
-          
-        </div>
-        {events &&
-          rendered.map((item) => (
+      {!loading ? (
+        <div className="container-xl">
+          <div className="filter">
+            <Input
+              placeholder="Filter"
+              bsSize="sm"
+              type="text"
+              name="category"
+              className="filter-input"
+              onChange={(e) => setNameFilter(e.target.value)}
+            />
+            <Input
+              className="filter-input select-input"
+              type="select"
+              bsSize="sm"
+              name="category"
+              id="name"
+              
+              onChange={(e) => setSelectInput(e.target.value)}
+            >
+              <option value="All">All</option>
+              <option value="music">Music</option>
+              <option value="sport">Sport</option>
+              <option value="family">Family</option>
+              <option value="culture">Culture</option>
+              <option value="commerce">Commerce</option>
+            </Input>
+            <BsSearch
+              size="28"
+              className="search-lens"
+              onClick={filterByKeyWords}
+            />
+          </div>
+          {((events.length > 0 && rendered.length===0) ? events : rendered)
+            .map((item) => (
               <Card key={item.id} color="dark" className="event-card ">
                 <Link to="/event-detail" state={item}>
                   <CardImg
@@ -123,7 +131,9 @@ const Home = () => {
                         .join(" ")}
                     </small>
                   </CardTitle>
-                  <CardSubtitle className="mb-2 text-light" tag="h6"> Category: 
+                  <CardSubtitle className="mb-2 text-light" tag="h6">
+                    {" "}
+                    Category:
                     {item.category}
                   </CardSubtitle>
                   <CardText className="text-light" tag="h6">
@@ -154,14 +164,16 @@ const Home = () => {
                         <UpdateModal />
                       </div>
                     </div>
-                  ) : ( login &&
-                    <GiGlassHeart
-                      size={32}
-                      title="Subscribe"
-                      className="subscribe"
-                      onClick={() => subscribe(item)}
-                      style={{ fill: "lightgreen" }}
-                    />
+                  ) : (
+                    login && (
+                      <GiGlassHeart
+                        size={32}
+                        title="Subscribe"
+                        className="subscribe"
+                        onClick={() => subscribe(item)}
+                        style={{ fill: "lightgreen" }}
+                      />
+                    )
                   )}
                 </CardBody>
                 <div className="check-item">
@@ -175,10 +187,12 @@ const Home = () => {
                   />
                 </div>
               </Card>
-            
-          ))}
-        {error && <div className="show-error">{error}</div>}
-      </div>
+            ))}
+          {error && <div className="show-error">{error}</div>}
+        </div>
+      ) : (
+        <ImSpinner className="loading" size={50} style={{ fill: "red" }} />
+      )}
     </section>
   );
 };

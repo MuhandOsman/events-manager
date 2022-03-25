@@ -20,7 +20,7 @@ const NavBar = () => {
   const navigate = useNavigate();
 
   const store = useContext(MyContext);
-  const {storedId,setLogin,avatar} = store;
+  const {storedId,setLogin} = store;
 
   const [open, setOpen] = useState(false);
 
@@ -58,7 +58,7 @@ const NavBar = () => {
                 <NavLink href="/create-event/">Create Event</NavLink>
               </NavItem>}
               {storedId &&<NavItem className="nav-element">
-                <NavLink className="nav-avatar" style={{backgroundImage:`url(${avatar})`}} href="/user/">My Profile</NavLink>
+                <NavLink  href="/user/">My Profile</NavLink>
               </NavItem>}
             </Nav>
 

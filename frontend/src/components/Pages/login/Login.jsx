@@ -87,8 +87,7 @@ const Users = () => {
         <Button color="primary" onClick={() => handleSubmit()}>
           Submit
         </Button>
-        <div>
-          <Label>new user?</Label>
+          <Label style={{margin: "0 10px 0 50px"}}>new user?</Label>
           <Button
             color="danger"
             onClick={() => {
@@ -97,6 +96,7 @@ const Users = () => {
           >
             Register
           </Button>
+        <div>
           <Modal isOpen={open}>
             <ModalHeader toggle={() => setOpen(false)}>
               Registration form
