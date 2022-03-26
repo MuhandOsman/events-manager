@@ -10,15 +10,15 @@ const About = () => {
       <h1>About this project</h1>
       <p className="ani-1">
         EVENTLIT help to connect Event's organizers/Promoters with people trough
-        their favorite local events.{" "}
+        their favorite local events.
       </p>
       <p className="ani-2">
-        Users will be able to attend the events and they will be able to see how
-        many attendings and tickets being sold on your event.
+        Users will be able to search for events, check description, see how
+        many attendings and tickets being sold, and by subscribing <br/> to an event you reserve your ticket which you reserve at location.
       </p>
       <p className="ani-3">
         Register a new profile and start immediately posting your events. Or
-        reserve a place in your favorite events{" "}
+        reserve a place in your favorite events.
       </p>
       <Link to="/form" className="ani-4">
         <p className="joinUs">Join our community now!</p>

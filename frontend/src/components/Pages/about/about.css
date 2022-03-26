@@ -1,8 +1,8 @@
 .about-container {
-    width: 1000px;
+    max-width: 1000px;
     margin: 0 auto;
     height: 50vh;
-    padding-top: 20px;
+    padding: 20px;
     position: relative;
 }
 
@@ -50,11 +50,11 @@
     padding:20px;
     padding-top:100px;
     width: 80%;
-    margin:0 auto;
+    /* margin:0 auto; */
     display: flex;
     justify-content: space-between;
     position: relative;
-    animation: color-change 2s linear infinite both;
+    animation: color-change 3s linear infinite both;
 }
 
 @keyframes upUp {
@@ -88,7 +88,7 @@
 }
 
 @keyframes color-change {
-    0% {color:green}
-    50% {color:black}
-    100% {color:green}
+    0% {color:black}
+    50% {color:grey}
+    100% {color:black}
 }
