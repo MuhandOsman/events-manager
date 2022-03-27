@@ -46,23 +46,23 @@ const NavBar = () => {
           <Collapse navbar className="collapse" isOpen={open} >
             <Nav className="me-auto flex-nav"  navbar >
               <NavItem className="nav-element">
-                <NavLink  href="/">Events Page</NavLink>
-              </NavItem>
-              <NavItem >
-                <NavLink className="nav-element" href="/about/">About</NavLink>
+                <NavLink href="/"><span className="nav-link">Events Page</span></NavLink>
               </NavItem>
               <NavItem className="nav-element">
-                <NavLink  href="/form/">Login/Register</NavLink>
+                <NavLink href="/about/"><span className="nav-link">About</span></NavLink>
+              </NavItem>
+              <NavItem className="nav-element">
+                <NavLink href="/form/"><span className="nav-link">Login/Register</span></NavLink>
               </NavItem>
               {storedId && <NavItem className="nav-element">
-                <NavLink href="/create-event/">Create Event</NavLink>
+                <NavLink  href="/create-event/"><span className="nav-link">Create Event</span></NavLink>
               </NavItem>}
               {storedId &&<NavItem className="nav-element">
-                <NavLink  href="/user/">My Profile</NavLink>
+                <NavLink  href="/user/"><span className="nav-link">My Profile</span></NavLink>
               </NavItem>}
             </Nav>
 
-            {storedId && <NavLink className="signout"  onClick={signout}>
+            {storedId && <NavLink  className="signout"  onClick={signout}>
               Sign out
             </NavLink>}
           </Collapse>

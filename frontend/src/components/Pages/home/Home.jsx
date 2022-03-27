@@ -45,7 +45,7 @@ const Home = () => {
       return selectInput !== "All"
         ? setRendered(events.filter((event) => event.category === selectInput))
         : setRendered(events);
-    } else if (selectInput === "All") {
+    } else if (selectInput === "All" && nameFilter !== "") {
       return setRendered(
         events.filter(
           (event) =>

@@ -72,10 +72,11 @@ const MyProvider = (props) => {
           console.log(resp);
         })
         .catch((error) => {
-          if (error.response) setError(error.response.data.message); // access the error message error.response.data.message
+          if (error.response) setError(error.response.data); // access the error message error.response.data.message
+          console.log(error.response.data);
         });
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
   };
 

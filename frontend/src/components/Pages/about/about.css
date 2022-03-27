@@ -4,6 +4,7 @@
     height: 50vh;
     padding: 20px;
     position: relative;
+    box-shadow: inset -2px -2px black ,inset -4px -4px white , inset -6px -6px black , inset -8px -8px white ,inset -10px -10px black ;
 }
 
 .joinUs {
@@ -29,20 +30,20 @@
 }
 
 .ani-1{
-    animation: enter-bottom 2s ease-out 0.4s 1 normal ;
+    animation: enter-bottom 2s ease-out 0.2s 1 normal ;
     position: relative;
 }
 .ani-2 {
-    animation: enter-right 2s ease-out 0.4s 1 normal ;
+    animation: enter-right 2s ease-out 0.2s 1 normal ;
     position: relative;
 }
 .ani-3 {
-    animation: enter-left 2s ease-out 0.4s 1 normal ;
+    animation: enter-left 2s ease-out 0.2s 1 normal ;
     position: relative;
 }
 
 .ani-4 {
-    animation: enter-top 2s ease-out 0.4s 1 normal ;
+    animation: enter-top 2s ease-out 0.2s 1 normal ;
     position: relative;
 }
 
@@ -74,16 +75,16 @@
 
 
 .contact1 {
-    animation: upRight 2s ease-in-out 0.4s 1 normal;
+    animation: upRight 2s ease-in-out 0.2s 1 normal;
     position: relative;
 }
 
 .contact2 {
-    animation: upUp 2s ease-in-out 0.4s 1 normal;
+    animation: upUp 2s ease-in-out 0.2s 1 normal;
     position: relative;
 }
 .contact3 {
-    animation: upLeft 2s ease-in-out 0.4s 1 normal;
+    animation: upLeft 2s ease-in-out 0.2s 1 normal;
     position: relative;
 }
 

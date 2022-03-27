@@ -7,6 +7,7 @@ const EventDetail = () => {
   const location = useLocation();
   const item = location.state;
   const [promoter, setPromoter] = useState("");
+  
   useEffect(() => {
     const getUser = async () => {
       try {
