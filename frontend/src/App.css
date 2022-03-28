@@ -17,6 +17,9 @@ section {
   position: relative;
   background-color: black;
 }
+label, input {
+  color: #292e33;
+}
 
 footer {
   

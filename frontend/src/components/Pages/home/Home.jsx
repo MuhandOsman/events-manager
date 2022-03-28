@@ -27,7 +27,7 @@ const Home = () => {
   const {
     events,
     login,
-    storedId,
+    // storedId,
     openModal,
     openUpdate,
     loading,
@@ -66,9 +66,8 @@ const Home = () => {
       console.log("2filters", by2filters);
     }
   };
-  console.log(Number.isNaN("22"));
+  const storedId = JSON.parse(localStorage.getItem("user-id")) || "";
   
-  console.log("rendered", rendered);
   return (
     <section>
       {/* <h1>EVENTLIT</h1> */}
@@ -140,7 +139,7 @@ const Home = () => {
                     {item.category}
                   </CardSubtitle>
                   <CardText className="text-light" tag="h6">
-                    Entry price :{item.price}{typeof(item.price) === "number" && <span>€</span>}
+                    Entry price : {item.price}{!isNaN(item.price)  && <span> €</span>}
                   </CardText>
 
                   {item.user === storedId.userId ? (
@@ -162,21 +161,15 @@ const Home = () => {
                           openModal(item.id);
                         }}
                       />
-                      <div>
-                        <DeleteModal />
-                        <UpdateModal />
-                      </div>
                     </div>
                   ) : (
-                    /* login &&  */(
+                     /* login && */  (
                       <div className="attend" onClick={() => subscribe(item)}>
                         <span className="text">  Follow Event  </span>
                       <GiGlassHeart
                       size={32}
                         title="Subscribe"
-                        className="subscribe"
-                      
-                        
+                        className="subscribe" 
                       /></div>
                     )
                   )}
@@ -192,6 +185,10 @@ const Home = () => {
                     style={{ fill: "white" }}
                   />
                 </div>
+                      <div>
+                        <DeleteModal />
+                        <UpdateModal />
+                      </div>
               </Card>
             ))}
           {error && <div className="show-error">{error}</div>}

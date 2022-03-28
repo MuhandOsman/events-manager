@@ -20,18 +20,20 @@ const NavBar = () => {
   const navigate = useNavigate();
 
   const store = useContext(MyContext);
-  const {storedId,setLogin} = store;
+  const {setLogin} = store;
 
   const [open, setOpen] = useState(false);
 
-  const signout = ()=> {
+  const signOut = ()=> {
     localStorage.removeItem("user-id")
+    
     axios.delete("/api/signout").then(response => {setLogin(false)
       navigate("/", { replace: true })
       window.location.reload()
       console.log(response);
     })
   };
+  const storedId =JSON.parse(localStorage.getItem("user-id")) || "";
 
   return (
     <>
@@ -62,7 +64,7 @@ const NavBar = () => {
               </NavItem>}
             </Nav>
 
-            {storedId && <NavLink  className="signout"  onClick={signout}>
+            {storedId && <NavLink  className="signOut"  onClick={signOut}>
               Sign out
             </NavLink>}
           </Collapse>

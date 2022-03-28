@@ -12,7 +12,7 @@ const MyProvider = (props) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openUpdateModal, setOpenUpdateModal] = useState(false);
   const storedId = JSON.parse(localStorage.getItem("user-id")) || "";
-
+  
   /* // user profile states
     const [user, setUser] = useState("");
     const [created, setCreated] = useState([]);
@@ -104,6 +104,7 @@ const MyProvider = (props) => {
         error,
         setError,
         subscribe,
+        
       }}
     >
       {props.children}

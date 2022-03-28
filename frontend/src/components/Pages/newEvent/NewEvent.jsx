@@ -85,15 +85,15 @@ const NewEvent = () => {
             <Label for="location">Location</Label>
           </FormGroup>
           <FormGroup >
-            <Label for="exampleText">add description</Label>
+            <Label style={{color:"floralwhite"}} for="exampleText">add description</Label>
             <Input id="exampleText" name="description" type="textarea" value={eventForm.description} onChange={handleEventForm} />
           </FormGroup>
           <FormGroup>
-            <Label for="exampleFile">Image</Label>
+            <Label style={{color:"floralwhite"}} for="exampleFile">Image</Label>
             <Input id="exampleFile" name="thumbnail" type="file" onChange={ (e)=> { 
               const file = e.target.files[0]
               setFile(file)}} />
-            <FormText>upload an image (jpeg,jpg,png,gif)</FormText>
+            <FormText color="light">upload an image (jpeg,jpg,png,gif)</FormText>
           </FormGroup>
           <Button onClick={() => handleSubmit()}>Submit</Button>
         </Form>

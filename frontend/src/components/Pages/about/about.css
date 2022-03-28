@@ -4,9 +4,10 @@
     height: 50vh;
     padding: 20px;
     position: relative;
-    /* box-shadow: inset -2px -2px black ,inset -4px -4px white , inset -6px -6px black , inset -8px -8px white ,inset -10px -10px black ; */
 }
-
+.about-container h1 {
+    margin-bottom: 30px;
+}
 .joinUs {
     color: red
 }
@@ -49,7 +50,7 @@
 
 .contact-me {
     padding:20px;
-    padding-top:100px;
+    padding-top:5vw;
     width: 80%;
     /* margin:0 auto; */
     display: flex;
@@ -89,8 +90,8 @@
 }
 
 @keyframes color-change {
-    0% {color:black}
-    75% {color:grey}
-    100% {color:black}
+    0% {color:rgb(100, 100, 100)}
+    75% {color:lightgrey}
+    100% {color:rgb(100, 100, 100)}
     
 }

@@ -22,7 +22,7 @@ const Users = () => {
   const { postForm,setLogin,error, setError } = context;
 
   
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [form, setForm] = useState({ email: "peter@gmail.com", password: "12345" });
   const [open, setOpen] = useState(false);
 
   
@@ -38,15 +38,15 @@ const Users = () => {
       postForm("/api/login", form)
         .then((resp) => { 
           if (!resp.ok) {
-            /* setLogin(false); */
+            setLogin(false);
             throw new Error(resp.message);
           } else {
             setLogin(true);
             localStorage.setItem("user-id", JSON.stringify(resp));
             setError(null)
-            navigate("/", { replace: true })
+            
           }
-        })
+        }).then((resp) => navigate("/", { replace: true }))
         .catch((error) => {
           
           setError(error.message);
@@ -59,7 +59,7 @@ const Users = () => {
     <section>
       <Form inline className="loginForm">
         <h1>Login to your account </h1>
-        <FormGroup floating>
+        <FormGroup color="black" floating>
           <Input
             required={true}
             id="Email"

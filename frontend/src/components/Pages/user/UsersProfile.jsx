@@ -9,6 +9,7 @@ const UsersProfile = () => {
 
     const store = useContext(MyContext);
     const {storedId,loading, setLoading} = store;
+    
 
     const [photo,setPhoto ] = useState({})
     const [avatar,setAvatar ] = useState("")
