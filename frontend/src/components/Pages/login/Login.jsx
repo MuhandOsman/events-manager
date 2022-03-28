@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
+import "./login.css"
 import {
   Button,
   Form,
@@ -58,7 +58,7 @@ const Users = () => {
   return (
     <section>
       <Form inline className="loginForm">
-        <h2>login to your account </h2>
+        <h1>Login to your account </h1>
         <FormGroup floating>
           <Input
             required={true}
@@ -84,7 +84,7 @@ const Users = () => {
           />
           <Label for="examplePassword">Password</Label>
         </FormGroup>{" "}
-        <Button color="primary" onClick={() => handleSubmit()}>
+        <Button color="warning" onClick={() => handleSubmit()}>
           Submit
         </Button>
           <Label style={{margin: "0 10px 0 50px"}}>new user?</Label>

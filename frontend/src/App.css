@@ -27,11 +27,8 @@ background-color: black;
   height:10vh;
 }
 
-.loginForm {
-  width:80%;
-  margin: 20px auto;
 
-}
+
 .show-error {
   position: absolute;
   left:50%;
@@ -45,7 +42,7 @@ background-color: black;
   /* margin: 10px auto; */
   text-align:center;
   color:red;
-  background-color: rgba(65, 49, 49, 0.438);
+  background-color: rgba(0, 0, 0, 0.924);
   font-size:2em;
   border: 2px solid gray;
   border-radius: 20px;

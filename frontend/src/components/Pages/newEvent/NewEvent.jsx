@@ -40,7 +40,7 @@ const NewEvent = () => {
   return (
     <section>
       <div className="container">
-        <h2>Add your Event </h2>
+        <h1>Create your Event </h1>
         <Form inline>
           <FormGroup floating>
             <Input id="title" name="title" placeholder="Title" type="text" value={eventForm.title} onChange={handleEventForm} />
