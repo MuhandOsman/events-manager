@@ -171,7 +171,9 @@ const Home = () => {
                         title="Subscribe"
                         className="subscribe"
                         onClick={() => subscribe(item)}
-                        style={{ fill: "lightgreen" }}
+                        style={{ fill: "red",cursor: 'pointer',
+                         }}
+
                       />
                     )
                   )}

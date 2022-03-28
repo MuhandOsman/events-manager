@@ -44,7 +44,7 @@ a {
     /* left:45%; */
     width:40px;
     height:220px;
-    background: linear-gradient(#00ccff,#d400d4);
+    background: linear-gradient(#d2e70e,#d44300);
     animation: border-move 4s linear infinite;
     z-index: -2;
 }
@@ -61,6 +61,10 @@ a {
     z-index: 20;
     color: white;
 }
+.nav-link:hover{
+    color: #d2e70e;
+}
+
 .nav-element:hover::before, .nav-element:hover::after {
     display:block;
 }
@@ -75,7 +79,8 @@ a {
 
 
 .signout {
-    color: rgb(243, 87, 87) ;
+    /* color: rgb(243, 87, 87) ; */
+    color: #fff;
     font-weight:700;
     font-size: 1.1em;
     padding-left:0 ;
