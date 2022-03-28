@@ -4,7 +4,7 @@
     height: 50vh;
     padding: 20px;
     position: relative;
-    box-shadow: inset -2px -2px black ,inset -4px -4px white , inset -6px -6px black , inset -8px -8px white ,inset -10px -10px black ;
+    /* box-shadow: inset -2px -2px black ,inset -4px -4px white , inset -6px -6px black , inset -8px -8px white ,inset -10px -10px black ; */
 }
 
 .joinUs {

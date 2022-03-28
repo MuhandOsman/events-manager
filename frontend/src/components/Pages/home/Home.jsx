@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { RiDeleteBinFill } from "react-icons/ri";
 import { ImSpinner } from "react-icons/im";
-import { BsPersonCheck } from "react-icons/bs";
+import { MdPersonAdd } from "react-icons/md";
 import { GiGlassHeart } from "react-icons/gi";
 import { BsSearch } from "react-icons/bs";
 
@@ -120,8 +120,9 @@ const Home = () => {
                   />
                 </Link>
                 <CardBody className="card-body" tag="div">
-                  <CardTitle tag="h4" className="text-light">
-                    {item.title} <br />
+                 <Link to="/event-detail" state={item}>
+                  <CardTitle className="text-light title-event">
+                   <h4 className="title-event">{item.title} <br /></h4>
                     <small>
                       {item.date
                         .slice(0, 16)
@@ -132,13 +133,14 @@ const Home = () => {
                         .join(" ")}
                     </small>
                   </CardTitle>
+                  </Link>
                   <CardSubtitle className="mb-2 text-light" tag="h6">
                     {" "}
                     Category:
                     {item.category}
                   </CardSubtitle>
                   <CardText className="text-light" tag="h6">
-                    Entry price :{item.price}
+                    Entry price :{item.price}{typeof(item.price) === "number" && <span>€</span>}
                   </CardText>
 
                   {item.user === storedId.userId ? (
@@ -167,26 +169,27 @@ const Home = () => {
                     </div>
                   ) : (
                     /* login &&  */(
+                      <div className="attend" onClick={() => subscribe(item)}>
+                        <span className="text">  Follow Event  </span>
                       <GiGlassHeart
-                        size={32}
+                      size={32}
                         title="Subscribe"
                         className="subscribe"
-                        onClick={() => subscribe(item)}
-                        style={{ fill: "red",cursor: 'pointer',
-                         }}
-
-                      />
+                      
+                        
+                      /></div>
                     )
                   )}
                 </CardBody>
                 <div className="check-item">
-                  <span style={{ color: "lightgreen", fontSize: "16px" }}>
-                    {item.subscribers.length + 5}
+                
+                  <span style={{ color: "white", fontSize: "16px" }}>
+                  Attending  {item.subscribers.length + 5} 
                   </span>
-                  <BsPersonCheck
+                  <MdPersonAdd
                     size={32}
                     title="Subscribers"
-                    style={{ fill: "lightgreen" }}
+                    style={{ fill: "white" }}
                   />
                 </div>
               </Card>

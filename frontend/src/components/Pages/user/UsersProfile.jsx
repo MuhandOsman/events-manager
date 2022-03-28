@@ -68,7 +68,7 @@ const UsersProfile = () => {
 
   return (
     <section className="profile">
-        <h3 className="title titles">welcome {user.firstName}</h3>
+        <h3 className="title titles">Welcome to your profile  {user.firstName}</h3>
         <div className="avatar">
             <div className="userImg">
                 <img src={avatar ||user.avatar_url} alt="user-img" className="avatar-photo" />

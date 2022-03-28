@@ -1,4 +1,5 @@
 .container-xl {
+
     width: 90%;
     display: flex;
     flex-wrap: wrap;
@@ -6,14 +7,16 @@
 }
 
 .event-card {
+
+    border-radius:15px;
     flex-direction:row;
     min-width: 250px;
-    width: 90%;
+    width: 100%;
     justify-content: space-around;
     margin:10px 2px;
     padding: 20px;
     padding-bottom: none;
-    box-shadow: 10px 10px 10px gray;
+    /* box-shadow: 10px 10px 10px gray; */
 }
 
 .flex {
@@ -42,7 +45,7 @@
     flex-direction:column; 
     justify-content: space-between;
     padding-bottom: 0;
-    max-width: 600px;
+    max-width: 850px;
     margin-left: auto;
     
 }
@@ -59,19 +62,60 @@
     100% {transform: rotateZ(360deg)}
 }
 
-.check-item {
-    position: absolute;
-    right: 10px;
-    bottom: 20px;
-}
-.subscribe {
-    position: relative;
-    border-radius: 15px;
+.title-event {
+    margin: 0;
+    padding: 0;
 }
 
-.subscribe:hover {
-    box-shadow: 0 0 15px #fff;
+.title-event:hover {
+    color:  #ff0000;
+    cursor: pointer;
 }
+
+.check-item:hover {
+    box-shadow: 0px 0px 15px;
+    cursor: pointer;
+    
+}
+
+.check-item {
+   
+
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    color: white;
+    padding: 5px 20px;
+    color: white;
+    border: 1px solid;
+    border-radius: 20px
+}
+
+
+
+.subscribe {
+    position: relative;
+    border-radius: 20px;
+    color: white;
+}
+
+.attend:hover {
+    box-shadow: 0px 0px 20px;
+    cursor: pointer;
+}
+.attend {
+    width: 134px;
+    padding: 5px 2px;
+    color: rgb(255, 255, 255);
+    border: 1px solid;
+    border-radius: 20px
+
+}
+
+.text{
+    padding: 5px
+}
+
 /* .subscribe:hover::after {
     display:block;
     position: absolute;
