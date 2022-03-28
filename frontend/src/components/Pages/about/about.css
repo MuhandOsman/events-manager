@@ -90,6 +90,7 @@
 
 @keyframes color-change {
     0% {color:black}
-    50% {color:grey}
+    75% {color:grey}
     100% {color:black}
+    
 }

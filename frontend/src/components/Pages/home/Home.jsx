@@ -66,7 +66,8 @@ const Home = () => {
       console.log("2filters", by2filters);
     }
   };
-
+  console.log(Number.isNaN("22"));
+  
   console.log("rendered", rendered);
   return (
     <section>
