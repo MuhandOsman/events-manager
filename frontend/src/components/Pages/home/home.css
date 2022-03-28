@@ -7,6 +7,8 @@
 }
 
 .event-card {
+
+    border-radius:15px;
     flex-direction:row;
     min-width: 250px;
     width: 100%;
@@ -14,7 +16,7 @@
     margin:10px 2px;
     padding: 20px;
     padding-bottom: none;
-    box-shadow: 10px 10px 10px gray;
+    /* box-shadow: 10px 10px 10px gray; */
 }
 
 .flex {

@@ -12,9 +12,10 @@ header {
 }
 
 section {
-  min-height:78vh;
+  color:white;
+  min-height:80vh;
   position: relative;
-
+  background-color: black;
 }
 
 footer {
