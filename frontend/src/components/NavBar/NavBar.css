@@ -80,7 +80,8 @@ a {
 
 
 .signout {
-    color: rgb(243, 87, 87) ;
+    /* color: rgb(243, 87, 87) ; */
+    color: #fff;
     font-weight:700;
     font-size: 1.1em;
     padding-left:0 ;
