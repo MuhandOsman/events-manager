@@ -38,7 +38,7 @@ h3 {
     height:250px;
     /* clip-path:ellipse(28% 40% at 50% 50%); */
     position: relative;
-    background-image:  url('../../../../../backend/files/avatar.png');
+    background-image:  url('../../../../../files/avatar.png');
     background-size: contain;
 }
 .userImg label {
