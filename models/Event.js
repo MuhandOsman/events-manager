@@ -20,6 +20,6 @@ const EventSchema = new mongoose.Schema({
 });
 
 // Virtuals are document properties that do not persist or get stored in the MongoDB database, they only exist logically and are not written to the document's collection.
-EventSchema.virtual("thumbnail_url").get(function () { return `http://localhost:8000/files/${this.thumbnail}` })
+EventSchema.virtual("thumbnail_url").get(function () { return `/files/${this.thumbnail}` })
 
 module.exports = mongoose.model('Event', EventSchema)

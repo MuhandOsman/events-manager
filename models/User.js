@@ -26,7 +26,7 @@ const UserSchema = new mongoose.Schema({
         virtuals: true
     }
 })
-UserSchema.virtual("avatar_url").get(function () { return `http://localhost:8000/files/${this.avatar}` })
+UserSchema.virtual("avatar_url").get(function () { return `/files/${this.avatar}` })
 
 module.exports=mongoose.model('User', UserSchema)
 
