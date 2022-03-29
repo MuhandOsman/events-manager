@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Collapse,
   Nav,
@@ -48,25 +48,25 @@ const NavBar = () => {
           <Collapse navbar className="collapse" isOpen={open} >
             <Nav className="me-auto flex-nav"  navbar >
               <NavItem className="nav-element">
-                <NavLink href="/"><span className="nav-link">Events</span></NavLink>
+                <Link to="/"><span className="nav-link">Events</span></Link>
               </NavItem>
               <NavItem className="nav-element">
-                <NavLink href="/about/"><span className="nav-link">About</span></NavLink>
+                <Link to="/about/"><span className="nav-link">About</span></Link>
               </NavItem>
               {!storedId && <NavItem className="nav-element">
-                <NavLink href="/form/"><span className="nav-link">Login/Register</span></NavLink>
+                <Link to="/form/"><span className="nav-link">Login/Register</span></Link>
               </NavItem>}
               {storedId && <NavItem className="nav-element">
-                <NavLink  href="/create-event/"><span className="nav-link">Create Event</span></NavLink>
+                <Link  to="/create-event/"><span className="nav-link">Create Event</span></Link>
               </NavItem>}
               {storedId &&<NavItem className="nav-element">
-                <NavLink  href="/user/"><span className="nav-link">My Profile</span></NavLink>
+                <Link  to="/user/"><span className="nav-link">My Profile</span></Link>
               </NavItem>}
             </Nav>
 
-            {storedId && <NavLink  className="signOut"  onClick={signOut}>
+            {storedId && <span  className="signOut"  onClick={signOut}>
               Sign out
-            </NavLink>}
+            </span>}
           </Collapse>
         </Navbar>
       </div>

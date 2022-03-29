@@ -21,7 +21,14 @@ app.use(require('./middlewares/logger'))
 app.use("/api" , routes)
 
 
-
+// We can serve our built frontend via express with express.static.
+app.use("/app", express.static("./src/app"));
+// By adding the following line, we make sure that whenever we try to access a subpage of our frontend directly
+// we serve index.html instead, which then handles the request with react router.
+app.use("/app/*", (req, res) => {
+	res.sendFile(__dirname + "/app/index.html")
+	console.log(__dirname);
+});
 
 
 app.listen(PORT, () => {

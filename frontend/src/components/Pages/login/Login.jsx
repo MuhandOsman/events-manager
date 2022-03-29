@@ -46,7 +46,7 @@ const Users = () => {
             setError(null)
             
           }
-        }).then((resp) => navigate("/", { replace: true }))
+        }).then((resp) => navigate("/"))
         .catch((error) => {
           
           setError(error.message);
