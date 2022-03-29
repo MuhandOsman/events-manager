@@ -8,8 +8,8 @@ import axios from 'axios';
 const UsersProfile = () => {
 
     const store = useContext(MyContext);
-    const {storedId,loading, setLoading} = store;
-    
+    const {loading, setLoading} = store;
+    const storedId = JSON.parse(localStorage.getItem("user-id")) || "";
 
     const [photo,setPhoto ] = useState({})
     const [avatar,setAvatar ] = useState("")
@@ -33,9 +33,11 @@ const UsersProfile = () => {
     }, [photo])
 
     useEffect(()=>{
+        const abortCont = new AbortController();
+
         const getUser = async() => {
             try {
-                const response = await fetch(`/api/user/${storedId.userId}`)
+                const response = await fetch(`/api/user/${storedId.userId}`,{signal:abortCont.signal})
             const userData = await response.json();
             setUser(userData);
             setLoading(false);
@@ -44,25 +46,32 @@ const UsersProfile = () => {
             }
         }
         getUser()
+        return () => abortCont.abort();
         
-    } , [storedId,setLoading])
+    } , [])
 
     useEffect(()=> {
+        const abortCont = new AbortController();
+
        const getCreated = async() => {
-        const response2 = await fetch(`/api/eventbyuserid/${storedId.userId}`)
+        const response2 = await fetch(`/api/eventbyuserid/${storedId.userId}`,{signal:abortCont.signal})
         const createdEvents = await response2.json();
         setCreated(createdEvents)
        }
        getCreated()
+       return () => abortCont.abort();
     },[storedId.userId])
 
     useEffect(()=> {
+        const abortCont = new AbortController();
+        
         const getSubscribed = async() => {
-            const response3 = await fetch(`/api/subscribeByuserid/${storedId.userId}`)
+            const response3 = await fetch(`/api/subscribeByuserid/${storedId.userId}`,{signal:abortCont.signal})
             const subscribedEvents = await response3.json();    
             setSubscribed(subscribedEvents)
         }
         getSubscribed()
+        return () => abortCont.abort();
     },[storedId.userId])
       
     if (loading) return ( "loading...")

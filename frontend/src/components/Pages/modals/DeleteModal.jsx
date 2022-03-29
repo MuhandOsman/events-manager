@@ -5,7 +5,7 @@ import MyContext from "../../../context/MyContext";
 
 const DeleteModal = () => {
   const store = useContext(MyContext)
-  const {openDeleteModal, setOpenDeleteModal,setOpenUpdateModal,eventId} = store;
+  const {openDeleteModal, setOpenDeleteModal,eventId} = store;
 
   const deleteEvent = () => {
     console.log(eventId);

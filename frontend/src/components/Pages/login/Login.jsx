@@ -46,7 +46,7 @@ const Users = () => {
             setError(null)
             
           }
-        }).then((resp) => navigate("/"))
+        }).then((resp) => navigate("/" , { replace: true}))
         .catch((error) => {
           
           setError(error.message);
@@ -56,7 +56,8 @@ const Users = () => {
     }
   };
   return (
-    <section>
+    <section className="login-section" >
+      <div className="login-bg"></div>
       <Form inline className="loginForm">
         <h1>Login to your account </h1>
         <FormGroup color="black" floating>
@@ -115,9 +116,9 @@ const Users = () => {
             </ModalFooter>
           </Modal>
         </div>
+      {error && <div className="show-error">{error}</div>}
       </Form>
 
-      {error && <div className="show-error">{error}</div>}
       
     </section>
   );

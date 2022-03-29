@@ -30,7 +30,7 @@ const NewEvent = () => {
               console.log(resp) 
               if (resp.data)
                   navigate("/", { replace: true})
-                  window.location.reload()
+                  
             })
         } catch (error) {
             console.error(error)
@@ -38,16 +38,17 @@ const NewEvent = () => {
     }
 
   return (
-    <section>
+    <section className="new-event">
       <div className="container">
         <h1>Create your Event </h1>
         <Form inline>
           <FormGroup floating>
-            <Input id="title" name="title" placeholder="Title" type="text" value={eventForm.title} onChange={handleEventForm} />
+            <Input bsSize="sm" id="title" name="title" placeholder="Title" type="text" value={eventForm.title} onChange={handleEventForm} />
             <Label for="title">Title</Label>
           </FormGroup>{" "}
           <FormGroup floating>
             <Input
+              bsSize="sm"
               id="category"
               name="category"
               placeholder="category"
@@ -58,12 +59,13 @@ const NewEvent = () => {
             <Label for="category">category</Label>
           </FormGroup>{" "}
           <FormGroup floating>
-            <Input id="price" name="price" placeholder="price" type="price" value={eventForm.price} onChange={handleEventForm} />
+            <Input bsSize="sm" id="price" name="price" placeholder="price" type="price" value={eventForm.price} onChange={handleEventForm} />
             <Label for="price">Price</Label>
           </FormGroup>
           
           <FormGroup floating>
             <Input
+              bsSize="sm"
               id="exampleDate"
               name="date"
               placeholder="date placeholder"
@@ -75,6 +77,7 @@ const NewEvent = () => {
           </FormGroup>
           <FormGroup floating>
             <Input
+              bsSize="sm"
               id="location"
               name="location"
               placeholder="location"
@@ -86,11 +89,11 @@ const NewEvent = () => {
           </FormGroup>
           <FormGroup >
             <Label style={{color:"floralwhite"}} for="exampleText">add description</Label>
-            <Input id="exampleText" name="description" type="textarea" value={eventForm.description} onChange={handleEventForm} />
+            <Input bsSize="sm" id="exampleText" name="description" type="textarea" value={eventForm.description} onChange={handleEventForm} />
           </FormGroup>
           <FormGroup>
             <Label style={{color:"floralwhite"}} for="exampleFile">Image</Label>
-            <Input id="exampleFile" name="thumbnail" type="file" onChange={ (e)=> { 
+            <Input bsSize="sm" id="exampleFile" name="thumbnail" type="file" onChange={ (e)=> { 
               const file = e.target.files[0]
               setFile(file)}} />
             <FormText color="light">upload an image (jpeg,jpg,png,gif)</FormText>

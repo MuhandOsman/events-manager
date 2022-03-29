@@ -67,7 +67,7 @@ const Home = () => {
     }
   };
   const storedId = JSON.parse(localStorage.getItem("user-id")) || "";
-  
+  console.log(login);
   return (
     <section>
       {/* <h1>EVENTLIT</h1> */}
@@ -163,7 +163,7 @@ const Home = () => {
                       />
                     </div>
                   ) : (
-                     /* login && */  (
+                     login &&  (
                       <div className="attend" onClick={() => subscribe(item)}>
                         <span className="text">  Follow Event  </span>
                       <GiGlassHeart

@@ -4,6 +4,7 @@
     height: 50vh;
     padding: 20px;
     position: relative;
+    line-height:1.6em;
 }
 .about-container h1 {
     margin-bottom: 30px;

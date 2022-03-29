@@ -5,7 +5,6 @@ import {
   Collapse,
   Nav,
   Navbar,
-  NavbarBrand,
   NavItem,
   
 } from "reactstrap";
@@ -25,12 +24,13 @@ const NavBar = () => {
   const [open, setOpen] = useState(false);
 
   const signOut = ()=> {
-    localStorage.removeItem("user-id")
     
-    axios.delete("/api/signout").then(response => {setLogin(false)
+    axios.delete("/api/signout").then(response => {
+      setLogin(false)
+      localStorage.removeItem("user-id")
       navigate("/", { replace: true })
-      window.location.reload()
-      console.log(response);
+      
+      
     })
   };
   const storedId =JSON.parse(localStorage.getItem("user-id")) || "";
@@ -39,9 +39,9 @@ const NavBar = () => {
     <>
       <div>
         <Navbar className="navbar" expand="md" fixed="top" >
-          <NavbarBrand href="/">
+          <Link to="/">
             <ImFire size="70" color="red"/> <span className="logo-span" >EVENTLIT</span>
-          </NavbarBrand>
+          </Link>
           <span className="nav-toggler" onClick={function toggler() {
               setOpen(!open);
             }}><CgMenuOreos size="40"/></span>
