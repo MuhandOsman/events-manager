@@ -15,7 +15,7 @@ import Header from "./components/Header";
 function App() {
   return (
     <MyProvider >
-      <Router basename="/app" >
+      <Router  >
         <Header />
       <Routes  >
         <Route path="/" element={<Home/>} />
