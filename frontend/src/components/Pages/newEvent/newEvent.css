@@ -5,5 +5,20 @@
 }
 
 .new-event {
+    background-color: transparent;
+}
+.new-event h1 {
+    text-shadow: 5px -2px 3px rgb(100, 100, 100);
+}
+
+.new-event-bg {
     background-image: url("../../backGroundImages/crowd-concert-27664953.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter:brightness(50%);
+  
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }

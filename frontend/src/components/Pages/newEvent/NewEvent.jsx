@@ -39,6 +39,7 @@ const NewEvent = () => {
 
   return (
     <section className="new-event">
+      <div className="new-event-bg"></div>
       <div className="container">
         <h1>Create your Event </h1>
         <Form inline>
