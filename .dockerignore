@@ -1,0 +1,8 @@
+./app
+./files-volume
+
+./node_modules
+./frontend/node_modules
+
+Dockerfile
+docker-compose.yml

@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: .
+    ports:
+      - "2000:8000"
+    volumes:
+      - ./files-volume:/project/files:rw
+    command: npm run start
