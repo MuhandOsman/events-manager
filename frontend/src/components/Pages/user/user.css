@@ -3,14 +3,14 @@
 }
 .profile {
     display: grid;
-    grid-template-columns: 250px 1fr 100px;
+    grid-template-columns: 250px 1fr .08fr;
     grid-template-rows:70px 20px repeat(2,1fr);
     min-height:80vh;
     grid-template-areas: 
-    "avatar title ."
-    "avatar .     ."
-    "avatar  contain    ."
-    "avatar  contain    ."
+    "avatar   title    . "
+    "avatar   .        . "   
+    "avatar  contain   . "
+    "avatar  contain   . "
 }   
 h3 {
     grid-area: title; 
@@ -22,7 +22,7 @@ h3 {
     
     display: flex;
     flex-direction: column;
-    width: 250px;
+    width: 240px;
     grid-area: avatar;
 }
 .avatar-photo {
@@ -35,7 +35,8 @@ h3 {
 }
 
 .userImg{
-    height:250px;
+    margin:20px;
+    height:200px;
     /* clip-path:ellipse(28% 40% at 50% 50%); */
     position: relative;
     background-image:  url('../../../../../files/avatar.png');
@@ -65,9 +66,9 @@ h3 {
     padding: 15px;
     margin :10px;
     display: flex;
-    height: 150px;
+    height: 170px;
     border-radius: 15px;
-    /* box-shadow:  10px 10px 10px gray; */
+    box-shadow:  5px 5px 3px gray;
     background-color: #212529;
     color: white;
 }
@@ -82,11 +83,23 @@ h3 {
 }
 
 .sub-data {
+    
     padding:10px;
+    flex-grow: 1;
+}
+.user-buttons {
+    display:flex;
+    width: 100%;
+    justify-content: space-between;
 }
 
-
-
+.unsubscribe {
+    text-align:right;
+}
+.unsubscribe:hover {
+    color:red;
+    cursor: pointer;
+}
 
 .created , .subscribed {
     width:50%;
@@ -100,7 +113,7 @@ h3 {
         display: none;
     }
     .profile {
-        grid-template-columns:100px 1fr 100px;
+        grid-template-columns:60px 1fr 60px;
         grid-template-areas:
         ". title ."
         ".   .   ."
@@ -109,15 +122,33 @@ h3 {
     }
 }
 
-@media (max-width:835px) {
+@media (max-width:850px) {
+    .profile {
+        grid-template-columns: 1fr ;
+        grid-template-areas:
+        " title "
+        "   .   "
+        "  contain   "
+        "  contain   "
+    }
     .eventContainer {
-        flex-direction: column;
+        flex-direction: column-reverse;
+        width:80%;
+        margin:0 auto;
     }
     .created , .subscribed {
         width: 100%;
     }
 }
 @media (max-width:630px) {
+    .profile {
+        grid-template-columns: 1fr ;
+        grid-template-areas:
+        " title "
+        "   .   "
+        "  contain   "
+        "  contain   "
+    }
     .sub-container {
         flex-direction: column;
         height: auto;

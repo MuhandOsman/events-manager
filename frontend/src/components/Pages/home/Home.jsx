@@ -3,8 +3,8 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { RiDeleteBinFill } from "react-icons/ri";
 import { ImSpinner } from "react-icons/im";
-import { MdPersonAdd } from "react-icons/md";
-import { GiGlassHeart } from "react-icons/gi";
+import { MdOutlineFollowTheSigns, MdPersonAdd } from "react-icons/md";
+// import { GiGlassHeart } from "react-icons/gi";
 import { BsSearch } from "react-icons/bs";
 
 import {
@@ -63,11 +63,11 @@ const Home = () => {
           event.title.includes(nameFilter)
       );
       setEvents(by2filters);
-      console.log("2filters", by2filters);
+      // console.log("2filters", by2filters);
     }
   };
   const storedId = JSON.parse(localStorage.getItem("user-id")) || "";
-  console.log(login);
+  
   return (
     <section>
       {/* <h1>EVENTLIT</h1> */}
@@ -166,7 +166,7 @@ const Home = () => {
                      login &&  (
                       <div className="attend" onClick={() => subscribe(item)}>
                         <span className="text">  Follow Event  </span>
-                      <GiGlassHeart
+                      <MdOutlineFollowTheSigns
                       size={32}
                         title="Subscribe"
                         className="subscribe" 

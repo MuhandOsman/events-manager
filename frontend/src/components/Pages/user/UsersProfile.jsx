@@ -1,14 +1,21 @@
 import React, { useContext, useEffect, useState } from 'react'
-import MyContext from '../../../context/MyContext';
 import "./user.css";
 import {Link} from "react-router-dom";
 import { BsCloudUploadFill } from "react-icons/bs"
+import { RiDeleteBinFill } from 'react-icons/ri';
+import {FaHeartBroken} from 'react-icons/fa'
+import { ImSpinner } from 'react-icons/im';
 import axios from 'axios';
+
+import MyContext from '../../../context/MyContext';
+import UpdateModal from '../modals/UpdateModal';
+import DeleteModal from "../modals/DeleteModal"
+
 
 const UsersProfile = () => {
 
     const store = useContext(MyContext);
-    const {loading, setLoading} = store;
+    const {loading, setLoading, openUpdate,openModal} = store;
     const storedId = JSON.parse(localStorage.getItem("user-id")) || "";
 
     const [photo,setPhoto ] = useState({})
@@ -74,11 +81,18 @@ const UsersProfile = () => {
         return () => abortCont.abort();
     },[storedId.userId])
       
-    if (loading) return ( "loading...")
+   
+
+    const unsubscribe = (element) => {
+        const findEvent = subscribed.filter(item => item.id !== element.id)
+        setSubscribed(findEvent)
+    }
+
 
   return (
-    <section className="profile">
-        <h3 className="title titles">Welcome to your profile  {user.firstName}</h3>
+      <section >
+      {!loading ?<div className="profile">
+        <h3 className="title titles">Welcome, {user.firstName}</h3>
         <div className="avatar">
             <div className="userImg">
                 <img src={avatar ||user.avatar_url} alt="user-img" className="avatar-photo" />
@@ -105,7 +119,11 @@ const UsersProfile = () => {
                             </Link>
                         <div className="sub-data">
                             <p >{element.title}</p>
-                            <p >Price: {element.price}</p>
+                            <p >Price: {element.price}{!isNaN(element.price)  && <span> €</span>}</p>
+                            <div className="unsubscribe" onClick={()=>unsubscribe(element)}>
+                                <FaHeartBroken size="25" />
+                                <span>unsubscribe</span>
+                            </div>
                         </div>
                         
                     </div> ) }    
@@ -121,14 +139,35 @@ const UsersProfile = () => {
                             </Link>
                             
                             <div className="sub-data">
-                            <p >{item.title}</p>
-                            <p >Price: {item.price}</p>
-                        </div>
+                                <p >{item.title}</p>
+                                <p >Price: {item.price}{!isNaN(item.price)  && <span> €</span>}</p>
+                                <div className="user-buttons">
+                                    <button
+                                    color="primary"
+                                    onClick={() => {
+                                    openUpdate(item);
+                                    }}
+                                    >
+                                    Update
+                                    </button>
+                                    <RiDeleteBinFill
+                                    title="Delete Event"
+                                    className="delete-icon"
+                                    size={32}
+                                    style={{ fill: "red" }}
+                                    onClick={() => {
+                                    openModal(item.id);
+                                    }}
+                                    />
+                                </div>
+                            </div>
                         </div>
                     )}    
                 </div>  
             </div> }   
         </div>
+        <UpdateModal />
+        <DeleteModal /> </div> : <ImSpinner className="loading" size={80} style={{ fill: "red" }} /> }
     </section>
   )
 }

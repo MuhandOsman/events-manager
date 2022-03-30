@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink,Link, useNavigate } from "react-router-dom";
 import {
   Collapse,
   Nav,
@@ -47,20 +47,20 @@ const NavBar = () => {
             }}><CgMenuOreos size="40"/></span>
           <Collapse navbar className="collapse" isOpen={open} >
             <Nav className="me-auto flex-nav"  navbar >
-              <NavItem className="nav-element">
-                <Link to="/"><span className="nav-link">Events</span></Link>
+              <NavItem >
+                <NavLink className="nav-element" to="/"><span className="nav-link ">Events</span></NavLink>
               </NavItem>
-              <NavItem className="nav-element">
-                <Link to="/about/"><span className="nav-link">About</span></Link>
+              <NavItem >
+                <NavLink className="nav-element" to="/about/"><span className="nav-link">About</span></NavLink>
               </NavItem>
-              {!storedId && <NavItem className="nav-element">
-                <Link to="/form/"><span className="nav-link">Login/Register</span></Link>
+              {!storedId && <NavItem >
+                <NavLink className="nav-element" to="/form/"><span className="nav-link">Login/Register</span></NavLink>
               </NavItem>}
-              {storedId && <NavItem className="nav-element">
-                <Link  to="/create-event/"><span className="nav-link">Create Event</span></Link>
+              {storedId && <NavItem >
+                <NavLink className="nav-element" to="/create-event/"><span className="nav-link">Create Event</span></NavLink>
               </NavItem>}
-              {storedId &&<NavItem className="nav-element">
-                <Link  to="/user/"><span className="nav-link">My Profile</span></Link>
+              {storedId &&<NavItem >
+                <NavLink className="nav-element" to="/user/"><span className="nav-link">My Profile</span></NavLink>
               </NavItem>}
             </Nav>
 

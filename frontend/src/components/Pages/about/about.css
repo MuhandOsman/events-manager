@@ -1,14 +1,24 @@
+.about-section {
+    background-color: darkgray;
+}
+
 .about-container {
+    /* text-align: center; */
+    background-color: #000;
     max-width: 1000px;
     margin: 0 auto;
-    height: 50vh;
-    padding: 20px;
+    height: 79vh;
+    padding: 40px;
     position: relative;
     line-height:1.6em;
 }
 .about-container h1 {
     margin-bottom: 30px;
 }
+/* .about-container h3 {
+    text-align: center;
+} */
+
 .joinUs {
     color: red
 }
