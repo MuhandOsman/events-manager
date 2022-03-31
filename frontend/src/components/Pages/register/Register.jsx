@@ -101,8 +101,8 @@ const Register = ({setOpen}) => {
       Password
       </Label>
     </FormGroup>
-    <Button onClick={handleRegisterSubmit}>
-      Submit
+    <Button className="custom-btn btn-7"onClick={handleRegisterSubmit}>
+      <span>S u b m i t</span> 
     </Button >
     {error && <div className="show-error">{error}</div> }
   </Form>

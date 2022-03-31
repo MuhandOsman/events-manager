@@ -32,10 +32,10 @@ const DeleteModal = () => {
         </ModalBody>
         <ModalFooter>
         
-          <Button color="danger" onClick={deleteEvent}>
-            DELETE EVENT
+          <Button className="custom-btn btn-7"onClick={deleteEvent}>
+           <span>DELETE EVENT</span> 
           </Button>
-          <Button onClick={() => setOpenDeleteModal(false)}>Cancel</Button>
+          <Button className="custom-btn btn-7 btn-red" onClick={() => setOpenDeleteModal(false)}> <span>Cancel</span> </Button>
         </ModalFooter>
       </Modal>
     </div>

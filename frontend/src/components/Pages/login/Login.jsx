@@ -85,17 +85,17 @@ const Users = () => {
           />
           <Label for="examplePassword">Password</Label>
         </FormGroup>{" "}
-        <Button color="warning" onClick={() => handleSubmit()}>
-          Submit
+        <Button className="custom-btn btn-7" onClick={() => handleSubmit()}>
+          <span>Submit</span>
         </Button>
-          <Label style={{margin: "0 10px 0 50px"}}>new user?</Label>
+          <Label style={{margin: "0 10px 0 50px" , color: "white"}}>new user?</Label>
           <Button
-            color="danger"
+            className="custom-btn btn-7 btn-red"
             onClick={() => {
               setOpen(true);
             }}
           >
-            Register
+            <span>Register</span>
           </Button>
         <div>
           <Modal isOpen={open}>
@@ -110,8 +110,8 @@ const Users = () => {
             </ModalBody>
             <ModalFooter>
               {" "}
-              <Button color="danger" onClick={() => setOpen(false)}>
-                Cancel
+              <Button className="custom-btn btn-7 btn-red" onClick={() => setOpen(false)}>
+                <span>Cancel</span> 
               </Button>
             </ModalFooter>
           </Modal>

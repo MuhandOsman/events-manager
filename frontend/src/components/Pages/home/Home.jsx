@@ -145,12 +145,12 @@ const Home = () => {
                   {item.user === storedId.userId ? (
                     <div className="flex">
                       <Button
-                        color="primary"
+                        className="custom-btn btn-7"
                         onClick={() => {
                           openUpdate(item);
                         }}
                       >
-                        Update Event
+                        <span>Update Event</span>
                       </Button>
                       <RiDeleteBinFill
                         title="Delete Event"

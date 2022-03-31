@@ -139,10 +139,10 @@ const UpdateModal = () => {
             </Form>
         </ModalBody>
         <ModalFooter>
-            <Button color="success" onClick={() => handleSubmit()}>send changes
+            <Button className="custom-btn btn-7" onClick={() => handleSubmit()}> <span>send changes</span> 
           </Button>
           
-          <Button onClick={() => setOpenUpdateModal(false)}>Cancel</Button>
+          <Button className="custom-btn btn-7 btn-red"onClick={() => setOpenUpdateModal(false)}> <span>Cancel</span> </Button>
         </ModalFooter>
       </Modal>
     </div>

@@ -7,18 +7,24 @@
 
 .loginForm {
   padding: 20px;
-  width: 80%;
+  width: 60%;
   margin: 0px auto;
   z-index: 1;
 }
 
 .login-bg {
-  background-image: url("../../backGroundImages/crowd-concert-summer-music-festival-crowd-concert-summer-music-festival-89546129.jpeg");
+  background-image: url("../../backGroundImages//handsup.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  filter: blur(3px);
+  /* filter: blur(3px); */
   z-index: -1;
   position: absolute;
   width: 100%;
   height: 100%;
+}
+
+@media screen and (max-width:900px) {
+  .loginForm {
+    width: 80%;
+  }
 }

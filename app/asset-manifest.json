@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/app/static/css/main.93ca1eda.css",
-    "main.js": "/app/static/js/main.cece0d74.js",
-    "static/media/crowd-concert-summer-music-festival-crowd-concert-summer-music-festival-89546129.jpeg": "/app/static/media/crowd-concert-summer-music-festival-crowd-concert-summer-music-festival-89546129.4b183e0d9d87ea13ed5b.jpeg",
-    "static/media/crowd-concert-27664953.jpeg": "/app/static/media/crowd-concert-27664953.8b30ec91e1c1444cfce5.jpeg",
+    "main.css": "/app/static/css/main.b0f0053b.css",
+    "main.js": "/app/static/js/main.710bfda7.js",
+    "static/media/handsup.jpg": "/app/static/media/handsup.ae5959d0a3388ff8aa13.jpg",
     "static/media/avatar.png": "/app/static/media/avatar.2969c205e8af9cd48d5e.png",
     "index.html": "/app/index.html",
-    "main.93ca1eda.css.map": "/app/static/css/main.93ca1eda.css.map",
-    "main.cece0d74.js.map": "/app/static/js/main.cece0d74.js.map"
+    "main.b0f0053b.css.map": "/app/static/css/main.b0f0053b.css.map",
+    "main.710bfda7.js.map": "/app/static/js/main.710bfda7.js.map"
   },
   "entrypoints": [
-    "static/css/main.93ca1eda.css",
-    "static/js/main.cece0d74.js"
+    "static/css/main.b0f0053b.css",
+    "static/js/main.710bfda7.js"
   ]
 }

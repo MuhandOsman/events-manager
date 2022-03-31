@@ -99,7 +99,7 @@ const NewEvent = () => {
               setFile(file)}} />
             <FormText color="light">upload an image (jpeg,jpg,png,gif)</FormText>
           </FormGroup>
-          <Button onClick={() => handleSubmit()}>Submit</Button>
+          <Button className="custom-btn btn-8" onClick={() => handleSubmit()}><span>Submit</span></Button>
         </Form>
       </div>
     </section>

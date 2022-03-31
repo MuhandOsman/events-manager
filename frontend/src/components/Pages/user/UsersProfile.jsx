@@ -143,12 +143,12 @@ const UsersProfile = () => {
                                 <p >Price: {item.price}{!isNaN(item.price)  && <span> €</span>}</p>
                                 <div className="user-buttons">
                                     <button
-                                    color="primary"
+                                    className="custom-btn btn-7"
                                     onClick={() => {
                                     openUpdate(item);
                                     }}
                                     >
-                                    Update
+                                    <span>Update</span>
                                     </button>
                                     <RiDeleteBinFill
                                     title="Delete Event"
