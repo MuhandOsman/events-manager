@@ -4,9 +4,7 @@
   box-sizing: border-box;
   font-family: 'Oswald', sans-serif;
 }
-body {
-  padding:0 !important;
-}
+
 header {
 
   height: 100px;
