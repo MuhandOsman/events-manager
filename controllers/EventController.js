@@ -81,7 +81,7 @@ module.exports = {
             console.error(error);
         }
     } ,
-    async addSubscriber (req, res) {
+    async   addSubscriber (req, res) {
         
         const { eventId} = req.params;
         

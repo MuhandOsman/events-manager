@@ -65,15 +65,15 @@ const MyProvider = (props) => {
     setEventToUpdate(item);
   };
   const subscribe = (item) => {
-    try {
+     try {
       axios
         .post(`/api/registration/${item.id}`)
         .then((resp) => {
           console.log(resp);
         })
         .catch((error) => {
-          if (error.response) setError(error.response.data); // access the error message error.response.data.message
-          console.log(error.response.data);
+          if (error.response) setError(error.response.data.message); // access the error message error.response.data.message
+          console.log(error.response);
         });
     } catch (error) {
       console.log(error);

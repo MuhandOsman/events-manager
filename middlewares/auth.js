@@ -5,7 +5,7 @@ const authentication = (req, res, next) => {
     const userToken = req.cookies.jwt;
     //console.log("userToken" , userToken);
     const tokenValid = verifyToken(userToken);
-    console.log(tokenValid.valid);    
+       
     if (tokenValid.valid) {
         res.user = {
             userId: tokenValid.payload.userId
