@@ -30,9 +30,10 @@ const About = () => {
           if you have any questions or notes I will be happy to hear from you{" "}
         </h5>
         <div className="contact-me">
-          <BsFillTelephoneOutboundFill size="40" className="contact1" />
-          <IoIosMailOpen size="40" className="contact2" />
-          <AiFillLinkedin size="40" className="contact3" />
+          <a rel="noreferrer" href="tel:+491791070118" className="contact1"><BsFillTelephoneOutboundFill title="+491791070118" href="tel:+491791070118" size="40"  /></a>
+          <a rel="noreferrer" href="mailto:mo1981ot@gmail.com"  ><IoIosMailOpen size="40" className="contact2" title="mo1981ot@gmail.com" /></a>
+          <a rel="noreferrer" href="https://linkedin.com/in/muhanadosman" target="_blank"><AiFillLinkedin size="40" className="contact3" /></a>
+          
         </div>
       </div>
     </section>

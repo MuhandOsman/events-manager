@@ -1,10 +1,10 @@
 import "./home.css";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+
 import { RiDeleteBinFill } from "react-icons/ri";
 import { ImSpinner } from "react-icons/im";
 import { MdOutlineFollowTheSigns, MdPersonAdd } from "react-icons/md";
-// import { GiGlassHeart } from "react-icons/gi";
 import { BsSearch } from "react-icons/bs";
 
 import {
@@ -21,6 +21,7 @@ import {
 import MyContext from "../../../context/MyContext";
 import DeleteModal from "../modals/DeleteModal";
 import UpdateModal from "../modals/UpdateModal";
+import ErrorOrSuccess from "../modals/ErrorOrSuccess"
 
 const Home = () => {
   const context = useContext(MyContext);
@@ -34,6 +35,7 @@ const Home = () => {
     subscribe,
     error,
     setEvents,
+    
   } = context;
 
   const [selectInput, setSelectInput] = useState("All");
@@ -173,7 +175,6 @@ const Home = () => {
                       /></div>
                     )
                   )}
-                </CardBody>
                 <div className="check-item">
                 
                   <span style={{ color: "white", fontSize: "16px" }}>
@@ -185,13 +186,15 @@ const Home = () => {
                     style={{ fill: "white" }}
                   />
                 </div>
+                </CardBody>
                       <div>
                         <DeleteModal />
                         <UpdateModal />
+                        <ErrorOrSuccess />
                       </div>
               </Card>
             ))}
-          {error && <div className="show-error">{error}</div>}
+            {error && <div className="show-error">{error}</div>}
         </div>
       ) : (
         <ImSpinner className="loading" size={80} style={{ fill: "red" }} />

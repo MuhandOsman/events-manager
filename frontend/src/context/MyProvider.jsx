@@ -11,6 +11,8 @@ const MyProvider = (props) => {
   const [events, setEvents] = useState([]);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openUpdateModal, setOpenUpdateModal] = useState(false);
+  const [errorOrSuccess, setErrorOrSuccess] = useState(false); 
+
   const storedId = JSON.parse(localStorage.getItem("user-id")) || "";
   
   /* // user profile states
@@ -65,6 +67,7 @@ const MyProvider = (props) => {
     setEventToUpdate(item);
   };
   const subscribe = (item) => {
+    setErrorOrSuccess(true);
      try {
       axios
         .post(`/api/registration/${item.id}`)
@@ -104,7 +107,8 @@ const MyProvider = (props) => {
         error,
         setError,
         subscribe,
-        
+        errorOrSuccess,
+        setErrorOrSuccess,
       }}
     >
       {props.children}

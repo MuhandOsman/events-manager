@@ -9,6 +9,7 @@
     margin: 0 auto;
     height: 79vh;
     padding: 40px;
+    border-radius: 20px;
     position: relative;
     line-height:1.6em;
 }
@@ -67,7 +68,12 @@
     display: flex;
     justify-content: space-between;
     position: relative;
-    animation: color-change 3s linear infinite both;
+}
+.contact-me a {
+    color:white;
+}
+.contact-me a:visited {
+    color: white;
 }
 
 @keyframes upUp {
@@ -98,11 +104,4 @@
 .contact3 {
     animation: upLeft 2s ease-in-out 0.2s 1 normal;
     position: relative;
-}
-
-@keyframes color-change {
-    0% {color:rgb(100, 100, 100)}
-    75% {color:lightgrey}
-    100% {color:rgb(100, 100, 100)}
-    
 }
