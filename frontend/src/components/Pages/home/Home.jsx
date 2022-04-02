@@ -194,7 +194,7 @@ const Home = () => {
                       </div>
               </Card>
             ))}
-            {error && <div className="show-error">{error}</div>}
+            {/* {error && <div className="show-error">{error}</div>} */}
         </div>
       ) : (
         <ImSpinner className="loading" size={80} style={{ fill: "red" }} />

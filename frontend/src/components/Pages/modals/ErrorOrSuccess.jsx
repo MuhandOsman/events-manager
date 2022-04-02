@@ -4,23 +4,24 @@ import MyContext from "../../../context/MyContext";
 
 const ErrorOrSuccess = () => {
   const store = useContext(MyContext);
-  const { errorOrSuccess, setErrorOrSuccess } = store;
+  const { errorOrSuccess, setErrorOrSuccess,error } = store;
   return (
     <div>
       <Modal
         isOpen={errorOrSuccess}
+        backdrop={false}
         centered
         fullscreen="sm"
         size="md"
         toggle={() => setErrorOrSuccess(false)}
       >
-        <ModalHeader toggle={()=>setErrorOrSuccess(false)}>Modal title</ModalHeader>
-        <ModalBody>You are already registered to this event!</ModalBody>
+        {/* <ModalHeader toggle={()=>setErrorOrSuccess(false)}>Modal title</ModalHeader> */}
+        <ModalBody>{error ? <span style={{color: "red"}}>{error}</span>  : <span style={{color: 'green'}}>your information successfully added to this event</span>  }</ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={function noRefCheck() {}}>
+          {/* <Button color="primary" onClick={function noRefCheck() {}}>
             Do Something
-          </Button>{" "}
-          <Button onClick={function noRefCheck() {}}>Cancel</Button>
+          </Button>{" "} */}
+          <Button className="custom-btn btn-7 btn-red" onClick={()=>setErrorOrSuccess(false)}><span>OK</span></Button>
         </ModalFooter>
       </Modal>
     </div>
