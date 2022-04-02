@@ -33,7 +33,7 @@ const Home = () => {
     openUpdate,
     loading,
     subscribe,
-    error,
+    
     setEvents,
     
   } = context;

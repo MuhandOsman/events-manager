@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import { Button, Modal, ModalBody, ModalFooter} from "reactstrap";
 import MyContext from "../../../context/MyContext";
 
 const ErrorOrSuccess = () => {
   const store = useContext(MyContext);
-  const { errorOrSuccess, setErrorOrSuccess,error } = store;
+  const { errorOrSuccess, setErrorOrSuccess,error,setError } = store;
   return (
     <div>
       <Modal
@@ -21,7 +21,10 @@ const ErrorOrSuccess = () => {
           {/* <Button color="primary" onClick={function noRefCheck() {}}>
             Do Something
           </Button>{" "} */}
-          <Button className="custom-btn btn-7 btn-red" onClick={()=>setErrorOrSuccess(false)}><span>OK</span></Button>
+          <Button className="custom-btn btn-7 btn-red" onClick={()=>{
+              setErrorOrSuccess(false)
+              setError(null)
+              }}><span>OK</span></Button>
         </ModalFooter>
       </Modal>
     </div>

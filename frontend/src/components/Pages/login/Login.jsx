@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.css"
+
 import {
   Button,
   Form,
@@ -12,17 +13,19 @@ import {
   ModalFooter,
   ModalHeader,
 } from "reactstrap";
+
 import MyContext from "../../../context/MyContext";
 import Register from "../register/Register";
+import ErrorOrSuccess from "../modals/ErrorOrSuccess"
 
 const Users = () => {
   const navigate = useNavigate();
 
   const context = useContext(MyContext);
-  const { postForm,setLogin,error, setError } = context;
+  const { postForm,setLogin,error, setError,setErrorOrSuccess } = context;
 
   
-  const [form, setForm] = useState({ email: "peter@gmail.com", password: "12345" });
+  const [form, setForm] = useState({ email: "", password: "12345" });
   const [open, setOpen] = useState(false);
 
   
@@ -116,7 +119,11 @@ const Users = () => {
             </ModalFooter>
           </Modal>
         </div>
-      {error && <div className="show-error">{error}</div>}
+        <ErrorOrSuccess />
+      {error && 
+        setErrorOrSuccess(true)
+        
+        }
       </Form>
 
       
