@@ -109,18 +109,25 @@ a {
     .nav-toggler{
         display:block;
     }  
-    .nav-element , .signout{
+    .nav-element {
         text-align:center;
+        width: 200px;
+        margin: 0 auto;
     }
     .collapse {
         background-color: rgba(122, 118, 118, 0.63);
-    }
-    .flex-nav {
-        background-color: rgba(122, 118, 118, 0.63);
         border-radius: 10px;
     }
+    /* .flex-nav {
+        background-color: rgba(122, 118, 118, 0.63);
+        border-radius: 10px;
+    } */
     .flex-nav:last-child {
         right:0;
+    }
+    .signOut {
+        display:block;
+        text-align:center;
     }
 }
 

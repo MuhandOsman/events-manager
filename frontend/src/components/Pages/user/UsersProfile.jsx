@@ -84,8 +84,9 @@ const UsersProfile = () => {
    
 
     const unsubscribe = (element) => {
-        const findEvent = subscribed.filter(item => item.id !== element.id)
+         const findEvent = subscribed.filter(item => item.id !== element.id)
         setSubscribed(findEvent)
+
     }
 
 
