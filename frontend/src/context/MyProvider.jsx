@@ -57,6 +57,9 @@ const MyProvider = (props) => {
       console.error(error.message);
     }
   };
+  useEffect(()=> {
+    error && setErrorOrSuccess(true)
+  },[error])
 
   const openModal = (id) => {
     setOpenDeleteModal(true);

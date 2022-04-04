@@ -33,9 +33,8 @@ const Home = () => {
     openUpdate,
     loading,
     subscribe,
-    
     setEvents,
-    
+    setError,
   } = context;
 
   const [selectInput, setSelectInput] = useState("All");
@@ -48,13 +47,13 @@ const Home = () => {
         ? setRendered(events.filter((event) => event.category === selectInput))
         : setRendered(events);
     } else if (selectInput === "All" && nameFilter !== "") {
-      return setRendered(
-        events.filter(
+      const filterByName =  events.filter(
           (event) =>
             event.description.includes(nameFilter) ||
-            event.title.includes(nameFilter)
-        )
-      );
+            event.title.includes(nameFilter))
+      if (filterByName.length === 0)  return setError("no event match your search") 
+      else  setRendered(filterByName);
+      
     } else {
       const byCategory = events.filter(
         (event) => event.category === selectInput
@@ -64,6 +63,8 @@ const Home = () => {
           event.description.includes(nameFilter) ||
           event.title.includes(nameFilter)
       );
+      console.log(by2filters);
+      if (by2filters.length === 0 ) return setError("no event match your search")
       setEvents(by2filters);
       // console.log("2filters", by2filters);
     }
