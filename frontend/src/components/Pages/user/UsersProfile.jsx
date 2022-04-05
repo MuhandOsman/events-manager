@@ -89,6 +89,10 @@ const UsersProfile = () => {
         try {
             axios.post(`/api/unsubscribe/${element.id}`)
             .then(response => console.log(response))
+            .then(response => {
+                const findEvent = subscribed.filter(item => item.id !== element.id)
+                setSubscribed(findEvent)
+            } )
         } catch (error) {
             console.log(error);
         }

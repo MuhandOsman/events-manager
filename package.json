@@ -1,7 +1,7 @@
 {
   "name": "events-manager",
   "version": "1.0.0",
-  "description": "events manager (DCI final project)",
+  "description": "events manager ",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/MuhandOsman/events-manager.git"
   },
-  "author": "",
+  "author": "Muhannad Osman",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/MuhandOsman/events-manager/issues"

@@ -135,10 +135,15 @@ module.exports = {
     async unsubscribe(req, res) {
         const { eventId} = req.params;
         const userId = res.user.userId
-
+        
         try {
-            const targetEvent = Event.findById(eventId)
-            console.log("target event :" , targetEvent);
+            const targetEvent = await Event.findById(eventId)
+            const evIndex = targetEvent.subscribers.indexOf(userId)
+            const cloneSub = [...targetEvent.subscribers]
+             cloneSub.splice(evIndex,1)
+            
+            const newEvent = await Event.findByIdAndUpdate({_id:eventId},{subscribers:cloneSub} , {new: true})
+            res.status(201).json({message: "unsubscribed successfully" })
         } catch (error) {
             console.error(error)
         }
