@@ -55,7 +55,7 @@ const UsersProfile = () => {
         getUser()
         return () => abortCont.abort();
         
-    } , [])
+    } , [setLoading, storedId.userId])
 
     useEffect(()=> {
         const abortCont = new AbortController();
@@ -84,9 +84,14 @@ const UsersProfile = () => {
    
 
     const unsubscribe = (element) => {
-         const findEvent = subscribed.filter(item => item.id !== element.id)
-        setSubscribed(findEvent)
-
+         /* const findEvent = subscribed.filter(item => item.id !== element.id)
+        setSubscribed(findEvent) */
+        try {
+            axios.post(`/api/unsubscribe/${element.id}`)
+            .then(response => console.log(response))
+        } catch (error) {
+            console.log(error);
+        }
     }
 
 

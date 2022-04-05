@@ -131,5 +131,16 @@ module.exports = {
             console.log(error);
         }
         
+    },
+    async unsubscribe(req, res) {
+        const { eventId} = req.params;
+        const userId = res.user.userId
+
+        try {
+            const targetEvent = Event.findById(eventId)
+            console.log("target event :" , targetEvent);
+        } catch (error) {
+            console.error(error)
+        }
     }
 }

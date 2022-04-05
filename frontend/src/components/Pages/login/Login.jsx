@@ -47,7 +47,7 @@ const Users = () => {
             setLogin(true);
             localStorage.setItem("user-id", JSON.stringify(resp));
             setError(null)
-            
+            console.log(resp);
           }
         }).then((resp) => navigate("/" , { replace: true}))
         .catch((error) => {

@@ -30,7 +30,7 @@ const Register = ({setOpen}) => {
                 throw new Error(resp.message);
               } else {
                 
-                localStorage.setItem("user-id", JSON.stringify(resp._id));
+                localStorage.setItem("user-id", JSON.stringify(resp));
                 setLogin(true);
                 setError(null);
                 navigate("/", { replace: true })

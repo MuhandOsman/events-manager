@@ -37,6 +37,7 @@ routes.get("/subscribeByuserid/:userId", EventController.getRegistrationUserId)
 routes.post('/registration/:eventId',authentication, EventController.addSubscriber)
 //routes.post('/registration/:eventId', RegistrationController.create)
 routes.get('/registration/:registration_id', RegistrationController.getRegistration)
+routes.post("/unsubscribe/:eventId" , authentication , EventController.unsubscribe)
 /* routes.post('/registration/:registration_id/approvals', ApprovalController.approval)
 routes.post('/registration/:registration_id/rejections', RejectionController.rejection) */
 
