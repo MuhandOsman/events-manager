@@ -44,11 +44,12 @@ const NewEvent = () => {
         <h1>Create your Event </h1>
         <Form inline>
           <FormGroup floating>
-            <Input bsSize="sm" id="title" name="title" placeholder="Title" type="text" value={eventForm.title} onChange={handleEventForm} />
+            <Input maxLength="25" bsSize="sm" id="title" name="title" placeholder="Title" type="text" value={eventForm.title} onChange={handleEventForm} />
             <Label for="title">Title</Label>
           </FormGroup>{" "}
           <FormGroup floating>
             <Input
+              maxLength="15"
               bsSize="sm"
               id="category"
               name="category"
@@ -60,12 +61,13 @@ const NewEvent = () => {
             <Label for="category">category</Label>
           </FormGroup>{" "}
           <FormGroup floating>
-            <Input bsSize="sm" id="price" name="price" placeholder="price" type="price" value={eventForm.price} onChange={handleEventForm} />
+            <Input maxLength="25" bsSize="sm" id="price" name="price" placeholder="price" type="price" value={eventForm.price} onChange={handleEventForm} />
             <Label for="price">Price</Label>
           </FormGroup>
           
           <FormGroup floating>
             <Input
+              
               bsSize="sm"
               id="exampleDate"
               name="date"
@@ -78,6 +80,7 @@ const NewEvent = () => {
           </FormGroup>
           <FormGroup floating>
             <Input
+              maxLength="25"
               bsSize="sm"
               id="location"
               name="location"
@@ -90,7 +93,7 @@ const NewEvent = () => {
           </FormGroup>
           <FormGroup >
             <Label style={{color:"floralwhite"}} for="exampleText">add description</Label>
-            <Input bsSize="sm" id="exampleText" name="description" type="textarea" value={eventForm.description} onChange={handleEventForm} />
+            <Input bsSize="sm" id="exampleText" name="description" type="textarea" maxLength="500" value={eventForm.description} onChange={handleEventForm} />
           </FormGroup>
           <FormGroup>
             <Label style={{color:"floralwhite"}} for="exampleFile">Image</Label>

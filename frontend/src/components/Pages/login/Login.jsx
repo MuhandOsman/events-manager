@@ -25,7 +25,7 @@ const Users = () => {
   const { postForm,setLogin,error, setError,setErrorOrSuccess } = context;
 
   
-  const [form, setForm] = useState({ email: "", password: "12345" });
+  const [form, setForm] = useState({ email: "", password: "" });
   const [open, setOpen] = useState(false);
 
   
@@ -65,6 +65,7 @@ const Users = () => {
         <h1>Login to your account </h1>
         <FormGroup color="black" floating>
           <Input
+            maxLength="25"
             required={true}
             id="Email"
             name="email"
@@ -78,6 +79,7 @@ const Users = () => {
         {""}
         <FormGroup floating>
           <Input
+            maxLength="25"
             required={true}
             id="Password"
             name="password"

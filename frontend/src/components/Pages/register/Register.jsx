@@ -49,6 +49,7 @@ const Register = ({setOpen}) => {
     <Form inline className="loginForm">
     <FormGroup floating>
       <Input
+        maxLength="15"
         id="firstName"
         name="firstName"
         placeholder="firstName"
@@ -63,6 +64,7 @@ const Register = ({setOpen}) => {
     {' '}
     <FormGroup floating>
       <Input
+        maxLength="15"
         id="lastName"
         name="lastName"
         placeholder="lastName"
@@ -77,6 +79,7 @@ const Register = ({setOpen}) => {
     {' '}
     <FormGroup floating>
       <Input
+        maxLength="25"
         id="Email"
         name="email"
         placeholder="Email"
@@ -90,6 +93,7 @@ const Register = ({setOpen}) => {
     </FormGroup>
     <FormGroup floating>
       <Input
+        maxLength="25"
         id="password"
         name="password"
         placeholder="password"

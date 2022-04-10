@@ -64,6 +64,7 @@ const UpdateModal = () => {
         <Form inline>
               <FormGroup floating>
                 <Input
+                  maxLength="25"
                   id="title"
                   name="title"
                   placeholder="Title"
@@ -73,6 +74,7 @@ const UpdateModal = () => {
               </FormGroup>{" "}
               <FormGroup floating>
                 <Input
+                  maxLength="15"
                   id="category"
                   name="category"
                   placeholder="category"
@@ -84,6 +86,7 @@ const UpdateModal = () => {
               </FormGroup>{" "}
               <FormGroup floating>
                 <Input
+                  maxLength="25"
                   id="price"
                   name="price"
                   placeholder="price"
@@ -93,6 +96,7 @@ const UpdateModal = () => {
               </FormGroup>
               <FormGroup floating>
                 <Input
+
                   id="exampleDate"
                   name="date"
                   placeholder="date placeholder"
@@ -104,6 +108,7 @@ const UpdateModal = () => {
               </FormGroup>
               <FormGroup floating>
                 <Input
+                  maxLength="25"
                   id="location"
                   name="location"
                   placeholder="location"
@@ -116,6 +121,7 @@ const UpdateModal = () => {
               <FormGroup>
                 <Label for="exampleText">add description</Label>
                 <Input
+                  maxLength="500"
                   id="exampleText"
                   name="description"
                   type="textarea" value={eventToUpdate.description} onChange={handleUpdate}
