@@ -55,6 +55,7 @@ const UpdateModal = () => {
         isOpen={openUpdateModal}
         centered
         scrollable
+        size="lg"
         toggle={() => setOpenUpdateModal(false)}
       >
         <ModalHeader toggle={() => setOpenUpdateModal(false)}>
@@ -148,7 +149,7 @@ const UpdateModal = () => {
             <Button className="custom-btn btn-7" onClick={() => handleSubmit()}> <span>send changes</span> 
           </Button>
           
-          <Button className="custom-btn btn-7 btn-red"onClick={() => setOpenUpdateModal(false)}> <span>Cancel</span> </Button>
+          <Button className="custom-btn btn-7 btn-red" onClick={() => setOpenUpdateModal(false)}> <span>Cancel</span> </Button>
         </ModalFooter>
       </Modal>
     </div>

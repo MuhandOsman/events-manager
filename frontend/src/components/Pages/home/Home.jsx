@@ -188,18 +188,16 @@ const Home = () => {
                   />
                 </div>
                 </CardBody>
-                      <div>
-                        <DeleteModal />
-                        <UpdateModal />
-                        <ErrorOrSuccess />
-                      </div>
               </Card>
             ))}
             {/* {error && <div className="show-error">{error}</div>} */}
         </div>
       ) : (
         <ImSpinner className="loading" size={80} style={{ fill: "red" }} />
-      )}
+        )}
+        <DeleteModal />
+        <UpdateModal />
+        <ErrorOrSuccess />
     </section>
   );
 };

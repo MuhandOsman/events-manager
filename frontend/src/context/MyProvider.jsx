@@ -38,7 +38,6 @@ const MyProvider = (props) => {
         }
   };
 
-  console.log("events",events);
 
   const postForm = async (url = "", data = {}) => {
     try {

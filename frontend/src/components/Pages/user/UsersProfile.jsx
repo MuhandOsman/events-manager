@@ -175,6 +175,7 @@ const UsersProfile = () => {
                     )}    
                 </div>  
             </div> }   
+            <img src={avatar ||user.avatar_url} alt="user" className="avatar-photo-small" style={{ width:"70px" , height:"70px"}}/>
         </div>
         <UpdateModal />
         <DeleteModal /> </div> : <ImSpinner className="loading" size={80} style={{ fill: "red" }} /> }

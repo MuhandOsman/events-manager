@@ -25,7 +25,7 @@ const Users = () => {
   const { postForm,setLogin,error, setError,setErrorOrSuccess } = context;
 
   
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [form, setForm] = useState({ email: "peter@gmail.com", password: "12345" });
   const [open, setOpen] = useState(false);
 
   

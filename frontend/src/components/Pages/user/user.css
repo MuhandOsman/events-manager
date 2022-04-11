@@ -110,21 +110,33 @@ h3 {
 .titles {
     text-align: center;
 }
-@media (max-width:1030px) {
+.avatar-photo-small {
+    display:none;
+}
+
+@media (max-width:1130px) {
     .avatar {
         display: none;
+    } 
+    .avatar-photo-small {
+        display: block;
+        position:fixed;
+        top: 20px;;
+        right: 100px;
+        z-index: 1031;
+        border-radius: 40%;
     }
     .profile {
         grid-template-columns:60px 1fr 60px;
         grid-template-areas:
-        ". title ."
+        "avatar title ."
         ".   .   ."
         ".  contain   ."
         ".  contain   ."
     }
 }
 
-@media (max-width:850px) {
+@media (max-width:930px) {
     .profile {
         grid-template-columns: 1fr ;
         grid-template-areas:
