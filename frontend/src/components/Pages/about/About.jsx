@@ -11,7 +11,7 @@ const About = () => {
         <h1>About this project</h1>
         <p className="ani-1">
           EVENTLIT help to connect Event's organizers/Promoters with people
-          trough their favorite local events.
+          through their favorite local events.
         </p>
         <p className="ani-2">
           Users will be able to search for events, check description, see how

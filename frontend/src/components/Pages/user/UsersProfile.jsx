@@ -104,13 +104,13 @@ const UsersProfile = () => {
       {!loading ?<div className="profile">
         <h3 className="title titles">Welcome, {user.firstName}</h3>
         <div className="avatar">
-            <div className="userImg">
+            <aside className="userImg">
                 <img src={avatar ||user.avatar_url} alt="user" className="avatar-photo" />
                 <label htmlFor="upload"><BsCloudUploadFill size="32"style={{color:"white", border:"2px grey solid", borderRadius:"20px"}} /><input type="file" name="upload" id="upload" onChange={ (e)=> { 
               const file = e.target.files[0]
               setPhoto(file)}} /></label>
                 
-            </div>
+            </aside>
             <div className="userInfo">
                 <p>{`${user.firstName} ${user.lastName}`}</p>
                 <p>{user.email}</p>    

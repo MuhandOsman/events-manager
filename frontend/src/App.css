@@ -31,9 +31,15 @@ footer {
   align-items: center;
 background-color: black;
   color: white;
-  height:10vh;
+  height:11vh;
 }
-
+ .notFound {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  color: red;
+  font-size:3em;
+ }
 
 
 .show-error {

@@ -43,6 +43,10 @@
     color: rgb(151, 34, 89);
 }
 
+.organizer {
+    padding-left:30px
+}
+
 @media (max-width:1000px) {
     .event-img {
        
