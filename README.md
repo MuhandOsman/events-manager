@@ -1,12 +1,12 @@
 # events-manager
-events manager (DCI final project)
+events manager 
 
-## Contributors
-Muhanad, Omar, Jerreh, Gabriele
+
 
 ## Tech Stack
 
-**Client:** React
+**Front:** React.js , contextAPI, styled with Reactstrap
 
-**Server:** Node, Express, MongoDB, AWS 
-Good Luck for our final project
+**Server:** Express
+**Backend** MongoDB(mongoose) , node.js
+
