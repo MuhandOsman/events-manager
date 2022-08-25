@@ -1,31 +1,32 @@
 .container {
-    padding: 15px;
-    width: 50%;
-    margin: 0px auto;
+  padding: 15px;
+  width: 50%;
+  margin: 0px auto;
 }
 
 .new-event {
-    background-color: transparent;
+  background-color: transparent;
 }
 .new-event h1 {
-    text-shadow: 5px -2px 3px rgb(100, 100, 100);
+  text-shadow: 5px -2px 3px rgb(100, 100, 100);
 }
 
 .new-event-bg {
-    background-image: url("../../backGroundImages/handsup.jpg");
+  background-color: rgb(129, 220, 220);
+  /*
+    background-image: url("../../backGroundImages/handsup.jpg");  
     background-repeat: no-repeat;
     background-size: cover;
     filter:brightness(70%);
   
-    z-index: -1;
-    position: absolute;
-    width: 100%;
-    height: 100%;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;*/
 }
 
-
-@media screen and (max-width:800px) {
-    .container {
-        width:80%;
-    }
+@media screen and (max-width: 800px) {
+  .container {
+    width: 80%;
+  }
 }

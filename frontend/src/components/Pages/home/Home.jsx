@@ -21,14 +21,13 @@ import {
 import MyContext from "../../../context/MyContext";
 import DeleteModal from "../modals/DeleteModal";
 import UpdateModal from "../modals/UpdateModal";
-import ErrorOrSuccess from "../modals/ErrorOrSuccess"
+import ErrorOrSuccess from "../modals/ErrorOrSuccess";
 
 const Home = () => {
   const context = useContext(MyContext);
   const {
     events,
     login,
-    // storedId,
     openModal,
     openUpdate,
     loading,
@@ -47,13 +46,14 @@ const Home = () => {
         ? setRendered(events.filter((event) => event.category === selectInput))
         : setRendered(events);
     } else if (selectInput === "All" && nameFilter !== "") {
-      const filterByName =  events.filter(
-          (event) =>
-            event.description.includes(nameFilter) ||
-            event.title.includes(nameFilter))
-      if (filterByName.length === 0)  return setError("no event match your search") 
-      else  setRendered(filterByName);
-      
+      const filterByName = events.filter(
+        (event) =>
+          event.description.includes(nameFilter) ||
+          event.title.includes(nameFilter)
+      );
+      if (filterByName.length === 0)
+        return setError("no event match your search");
+      else setRendered(filterByName);
     } else {
       const byCategory = events.filter(
         (event) => event.category === selectInput
@@ -64,16 +64,16 @@ const Home = () => {
           event.title.includes(nameFilter)
       );
       console.log(by2filters);
-      if (by2filters.length === 0 ) return setError("no event match your search")
+      if (by2filters.length === 0)
+        return setError("no event match your search");
       setEvents(by2filters);
-      // console.log("2filters", by2filters);
     }
   };
   const storedId = JSON.parse(localStorage.getItem("user-id")) || "";
-  
+
   return (
     <section>
-      {/* <h1>EVENTLIT</h1> */}
+      <h1>EVENTLIT</h1>
 
       {!loading ? (
         <div className="container-xl">
@@ -92,7 +92,6 @@ const Home = () => {
               bsSize="sm"
               name="category"
               id="name"
-              
               onChange={(e) => setSelectInput(e.target.value)}
             >
               <option value="All">All</option>
@@ -108,8 +107,8 @@ const Home = () => {
               onClick={filterByKeyWords}
             />
           </div>
-          {((events.length > 0 && rendered.length===0) ? events : rendered)
-            .map((item) => (
+          {(events.length > 0 && rendered.length === 0 ? events : rendered).map(
+            (item) => (
               <Card key={item.id} color="dark" className="event-card ">
                 <Link to="/event-detail" state={item}>
                   <CardImg
@@ -122,19 +121,21 @@ const Home = () => {
                   />
                 </Link>
                 <CardBody className="card-body" tag="div">
-                 <Link to="/event-detail" state={item}>
-                  <CardTitle className="text-light title-event">
-                   <h4 className="title-event">{item.title} <br /></h4>
-                    <small>
-                      {item.date
-                        .slice(0, 16)
-                        .split(".")
-                        .slice(0, 1)
-                        .join("")
-                        .split("T")
-                        .join(" ")}
-                    </small>
-                  </CardTitle>
+                  <Link to="/event-detail" state={item}>
+                    <CardTitle className="text-light title-event">
+                      <h4 className="title-event">
+                        {item.title} <br />
+                      </h4>
+                      <small>
+                        {item.date
+                          .slice(0, 16)
+                          .split(".")
+                          .slice(0, 1)
+                          .join("")
+                          .split("T")
+                          .join(" ")}
+                      </small>
+                    </CardTitle>
                   </Link>
                   <CardSubtitle className="mb-2 text-light" tag="h6">
                     {" "}
@@ -142,7 +143,8 @@ const Home = () => {
                     {item.category}
                   </CardSubtitle>
                   <CardText className="text-light" tag="h6">
-                    Entry price : {item.price}{!isNaN(item.price)  && <span> €</span>}
+                    Entry price : {item.price}
+                    {!isNaN(item.price) && <span> €</span>}
                   </CardText>
 
                   {item.user === storedId.userId ? (
@@ -166,38 +168,39 @@ const Home = () => {
                       />
                     </div>
                   ) : (
-                     login &&  (
+                    login && (
                       <div className="attend" onClick={() => subscribe(item)}>
-                        <span className="text">  Follow Event  </span>
-                      <MdOutlineFollowTheSigns
-                      size={32}
-                        title="Subscribe"
-                        className="subscribe" 
-                      /></div>
+                        <span className="text"> Follow Event </span>
+                        <MdOutlineFollowTheSigns
+                          size={32}
+                          title="Subscribe"
+                          className="subscribe"
+                        />
+                      </div>
                     )
                   )}
-                <div className="check-item">
-                
-                  <span style={{ color: "white", fontSize: "16px" }}>
-                  Attending  {item.subscribers.length + 5} 
-                  </span>
-                  <MdPersonAdd
-                    size={32}
-                    title="Subscribers"
-                    style={{ fill: "white" }}
-                  />
-                </div>
+                  <div className="check-item">
+                    <span style={{ color: "white", fontSize: "16px" }}>
+                      Attending {item.subscribers.length + 5}
+                    </span>
+                    <MdPersonAdd
+                      size={32}
+                      title="Subscribers"
+                      style={{ fill: "white" }}
+                    />
+                  </div>
                 </CardBody>
               </Card>
-            ))}
-            {/* {error && <div className="show-error">{error}</div>} */}
+            )
+          )}
+          {/* {error && <div className="show-error">{error}</div>} */}
         </div>
       ) : (
         <ImSpinner className="loading" size={80} style={{ fill: "red" }} />
-        )}
-        <DeleteModal />
-        <UpdateModal />
-        <ErrorOrSuccess />
+      )}
+      {/* <DeleteModal />
+      <UpdateModal />
+      <ErrorOrSuccess /> */}
     </section>
   );
 };
