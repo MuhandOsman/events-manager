@@ -62,17 +62,24 @@ const NewEvent = () => {
           </FormGroup>{" "}
           <FormGroup floating>
             <Input
-              maxLength="15"
+              type="select"
               bsSize="sm"
-              id="category"
               name="category"
               placeholder="category"
-              type="text"
+              id="category"
               value={eventForm.category}
               onChange={handleEventForm}
-            />
+            >
+              <option value="All">All</option>
+              <option value="music">Music</option>
+              <option value="sport">Sport</option>
+              <option value="family">Family</option>
+              <option value="culture">Culture</option>
+              <option value="commerce">Commerce</option>
+            </Input>
+
             <Label for="category">category</Label>
-          </FormGroup>{" "}
+          </FormGroup>
           <FormGroup floating>
             <Input
               maxLength="25"

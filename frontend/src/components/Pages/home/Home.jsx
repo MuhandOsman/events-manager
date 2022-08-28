@@ -198,9 +198,9 @@ const Home = () => {
       ) : (
         <ImSpinner className="loading" size={80} style={{ fill: "red" }} />
       )}
-      {/* <DeleteModal />
+      <DeleteModal />
       <UpdateModal />
-      <ErrorOrSuccess /> */}
+      <ErrorOrSuccess />
     </section>
   );
 };
